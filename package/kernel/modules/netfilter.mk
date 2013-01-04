@@ -401,6 +401,26 @@ endef
 
 $(eval $(call KernelPackage,ip6tables))
 
+define KernelPackage/ip6t-nat
+  SUBMENU:=$(NF_MENU)
+  TITLE:=IPv6 NAT modules
+  DEPENDS:=+kmod-ipv6 +kmod-ip6tables
+  KCONFIG:=$(KCONFIG_IP6T_NAT)
+  FILES:=$(foreach mod,$(IP6T_NAT-m),$(LINUX_DIR)/net/$(mod).ko)
+  AUTOLOAD:=$(call AutoLoad,50,$(notdir $(IP6T_NAT-m)))
+endef
+
+define KernelPackage/ip6t-nat/description
+ Netfilter IPv6 NAT support.
+ 
+ This support is intended to facilitate dealing with geolocation restrictions
+ and similar issues. It should not be deployed as a means of allowing a lazy
+ and stupid ISP to give you a single on-link address.
+
+ If unsure or unfamiliar with routing vs NAT, say N
+endef
+
+$(eval $(call KernelPackage,ip6t-nat))
 
 define KernelPackage/arptables
   SUBMENU:=$(NF_MENU)
