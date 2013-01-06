@@ -89,6 +89,8 @@ $(eval $(call nf_add,IPT_EXTRA,CONFIG_NETFILTER_XT_MATCH_QUOTA, $(P_XT)xt_quota)
 # filter
 
 $(eval $(call nf_add,IPT_FILTER,CONFIG_NETFILTER_XT_MATCH_LAYER7, $(P_XT)xt_layer7))
+$(eval $(call nf_add,IPT_FILTER,CONFIG_IP_NF_MATCH_RPFILTER, $(P_V4)ipt_rpfilter))
+$(eval $(if $(NF_KMOD),,$(call nf_add,IPT_FILTER,CONFIG_NETFILTER_XT_MATCH_RPFILTER, $(P_XT)xt_rpfilter)))
 $(eval $(call nf_add,IPT_FILTER,CONFIG_NETFILTER_XT_MATCH_STRING, $(P_XT)xt_string))
 
 
@@ -152,6 +154,7 @@ $(eval $(call nf_add,IPT_IPV6,CONFIG_IP6_NF_MATCH_IPV6HEADER, $(P_V6)ip6t_ipv6he
 $(eval $(call nf_add,IPT_IPV6,CONFIG_IP6_NF_MATCH_MH, $(P_V6)ip6t_mh))
 $(eval $(call nf_add,IPT_IPV6,CONFIG_IP6_NF_MATCH_OPTS, $(P_V6)ip6t_hbh))
 $(eval $(call nf_add,IPT_IPV6,CONFIG_IP6_NF_MATCH_RT, $(P_V6)ip6t_rt))
+$(eval $(call nf_add,IPT_IPV6,CONFIG_IP6_NF_MATCH_RPFILTER, $(P_V6)ip6t_rpfilter))
 
 $(eval $(call nf_add,IPT_IPV6,CONFIG_IP6_NF_TARGET_LOG, $(P_V6)ip6t_LOG))
 $(eval $(call nf_add,IPT_IPV6,CONFIG_IP6_NF_TARGET_REJECT, $(P_V6)ip6t_REJECT))
@@ -294,7 +297,7 @@ IPT_BUILTIN += $(IPT_DEBUG-y)
 IPT_BUILTIN += $(IPT_TPROXY-y)
 IPT_BUILTIN += $(EBTABLES-y)
 IPT_BUILTIN += $(EBTABLES_IP4-y)
-IPT_BUILTIN += $(EBTALTES_IP6-y)
+IPT_BUILTIN += $(EBTABLES_IP6-y)
 IPT_BUILTIN += $(EBTABLES_WATCHERS-y)
 
 endif # __inc_netfilter
