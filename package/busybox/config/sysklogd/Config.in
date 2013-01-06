@@ -7,7 +7,6 @@
 menu "System Logging Utilities"
 
 
-
 config BUSYBOX_CONFIG_SYSLOGD
 	bool "syslogd"
 	default y

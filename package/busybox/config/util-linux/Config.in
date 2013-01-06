@@ -11,6 +11,63 @@ config BUSYBOX_CONFIG_BLOCKDEV
 	default n
 	help
 	  Performs some ioctls with block devices.
+config BUSYBOX_CONFIG_MDEV
+	bool "mdev"
+	default n
+	select BUSYBOX_CONFIG_PLATFORM_LINUX
+	help
+	  mdev is a mini-udev implementation for dynamically creating device
+	  nodes in the /dev directory.
+
+	  For more information, please see docs/mdev.txt
+
+config BUSYBOX_CONFIG_FEATURE_MDEV_CONF
+	bool "Support /etc/mdev.conf"
+	default n
+	depends on BUSYBOX_CONFIG_MDEV
+	help
+	  Add support for the mdev config file to control ownership and
+	  permissions of the device nodes.
+
+	  For more information, please see docs/mdev.txt
+
+config BUSYBOX_CONFIG_FEATURE_MDEV_RENAME
+	bool "Support subdirs/symlinks"
+	default n
+	depends on BUSYBOX_CONFIG_FEATURE_MDEV_CONF
+	help
+	  Add support for renaming devices and creating symlinks.
+
+	  For more information, please see docs/mdev.txt
+
+config BUSYBOX_CONFIG_FEATURE_MDEV_RENAME_REGEXP
+	bool "Support regular expressions substitutions when renaming device"
+	default n
+	depends on BUSYBOX_CONFIG_FEATURE_MDEV_RENAME
+	help
+	  Add support for regular expressions substitutions when renaming
+	  device.
+
+config BUSYBOX_CONFIG_FEATURE_MDEV_EXEC
+	bool "Support command execution at device addition/removal"
+	default n
+	depends on BUSYBOX_CONFIG_FEATURE_MDEV_CONF
+	help
+	  This adds support for an optional field to /etc/mdev.conf for
+	  executing commands when devices are created/removed.
+
+	  For more information, please see docs/mdev.txt
+
+config BUSYBOX_CONFIG_FEATURE_MDEV_LOAD_FIRMWARE
+	bool "Support loading of firmwares"
+	default n
+	depends on BUSYBOX_CONFIG_MDEV
+	help
+	  Some devices need to load firmware before they can be usable.
+
+	  These devices will request userspace look up the files in
+	  /lib/firmware/ and if it exists, send it to the kernel for
+	  loading into the hardware.
 config BUSYBOX_CONFIG_REV
 	bool "rev"
 	default n
@@ -414,64 +471,6 @@ config BUSYBOX_CONFIG_LSUSB
 
 	  This version uses sysfs (/sys/bus/usb/devices) only.
 
-config BUSYBOX_CONFIG_MDEV
-	bool "mdev"
-	default n
-	select BUSYBOX_CONFIG_PLATFORM_LINUX
-	help
-	  mdev is a mini-udev implementation for dynamically creating device
-	  nodes in the /dev directory.
-
-	  For more information, please see docs/mdev.txt
-
-config BUSYBOX_CONFIG_FEATURE_MDEV_CONF
-	bool "Support /etc/mdev.conf"
-	default n
-	depends on BUSYBOX_CONFIG_MDEV
-	help
-	  Add support for the mdev config file to control ownership and
-	  permissions of the device nodes.
-
-	  For more information, please see docs/mdev.txt
-
-config BUSYBOX_CONFIG_FEATURE_MDEV_RENAME
-	bool "Support subdirs/symlinks"
-	default n
-	depends on BUSYBOX_CONFIG_FEATURE_MDEV_CONF
-	help
-	  Add support for renaming devices and creating symlinks.
-
-	  For more information, please see docs/mdev.txt
-
-config BUSYBOX_CONFIG_FEATURE_MDEV_RENAME_REGEXP
-	bool "Support regular expressions substitutions when renaming device"
-	default n
-	depends on BUSYBOX_CONFIG_FEATURE_MDEV_RENAME
-	help
-	  Add support for regular expressions substitutions when renaming
-	  device.
-
-config BUSYBOX_CONFIG_FEATURE_MDEV_EXEC
-	bool "Support command execution at device addition/removal"
-	default n
-	depends on BUSYBOX_CONFIG_FEATURE_MDEV_CONF
-	help
-	  This adds support for an optional field to /etc/mdev.conf for
-	  executing commands when devices are created/removed.
-
-	  For more information, please see docs/mdev.txt
-
-config BUSYBOX_CONFIG_FEATURE_MDEV_LOAD_FIRMWARE
-	bool "Support loading of firmwares"
-	default n
-	depends on BUSYBOX_CONFIG_MDEV
-	help
-	  Some devices need to load firmware before they can be usable.
-
-	  These devices will request userspace look up the files in
-	  /lib/firmware/ and if it exists, send it to the kernel for
-	  loading into the hardware.
-
 config BUSYBOX_CONFIG_MKSWAP
 	bool "mkswap"
 	default n
@@ -553,13 +552,18 @@ config BUSYBOX_CONFIG_FEATURE_MOUNT_LABEL
 	  This also enables label or uuid support for swapon.
 
 config BUSYBOX_CONFIG_FEATURE_MOUNT_NFS
-	bool "Support mounting NFS file systems"
+	bool "Support mounting NFS file systems on Linux < 2.6.23"
 	default n
 	depends on BUSYBOX_CONFIG_MOUNT
 	select BUSYBOX_CONFIG_FEATURE_HAVE_RPC
 	select BUSYBOX_CONFIG_FEATURE_SYSLOG
 	help
-	  Enable mounting of NFS file systems.
+	  Enable mounting of NFS file systems on Linux kernels prior
+	  to version 2.6.23. Note that in this case mounting of NFS
+	  over IPv6 will not be possible.
+
+	  Note that this option links in RPC support from libc,
+	  which is rather large (~10 kbytes on uclibc).
 
 config BUSYBOX_CONFIG_FEATURE_MOUNT_CIFS
 	bool "Support mounting CIFS/SMB file systems"

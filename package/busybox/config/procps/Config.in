@@ -11,6 +11,12 @@ config BUSYBOX_CONFIG_IOSTAT
 	default n
 	help
 	  Report CPU and I/O statistics
+config BUSYBOX_CONFIG_LSOF
+	bool "lsof"
+	default y
+	help
+	  Show open files in the format of:
+	  PID <TAB> /path/to/executable <TAB> /path/to/opened/file
 config BUSYBOX_CONFIG_MPSTAT
 	bool "mpstat"
 	default n
@@ -133,7 +139,7 @@ config BUSYBOX_CONFIG_FEATURE_PIDOF_OMIT
 
 config BUSYBOX_CONFIG_PKILL
 	bool "pkill"
-	default n
+	default y
 	help
 	  Send signals to processes by name.
 
@@ -151,6 +157,14 @@ config BUSYBOX_CONFIG_FEATURE_PS_WIDE
 	  Support argument 'w' for wide output.
 	  If given once, 132 chars are printed, and if given more
 	  than once, the length is unlimited.
+
+config BUSYBOX_CONFIG_FEATURE_PS_LONG
+	bool "Enable long output option (-l)"
+	default y
+	depends on BUSYBOX_CONFIG_PS && !BUSYBOX_CONFIG_DESKTOP
+	help
+	  Support argument 'l' for long output.
+	  Adds fields PPID, RSS, START, TIME & TTY
 
 config BUSYBOX_CONFIG_FEATURE_PS_TIME
 	bool "Enable time and elapsed time output"

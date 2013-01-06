@@ -72,7 +72,7 @@ config BUSYBOX_CONFIG_FEATURE_VI_REGEX_SEARCH
 
 config BUSYBOX_CONFIG_FEATURE_VI_USE_SIGNALS
 	bool "Catch signals"
-	default y
+	default n
 	depends on BUSYBOX_CONFIG_VI
 	help
 	  Selecting this option will make busybox vi signal aware. This will

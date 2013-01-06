@@ -1,3 +1,17 @@
+From 3c62bbae94642e6d05bc9f900bbdb5173d26cc51 Mon Sep 17 00:00:00 2001
+From: Alexey Froloff <raorn@raorn.name>
+Date: Mon, 17 Sep 2012 14:02:44 +0000
+Subject: ushcpc: gracefully handle packets with CHECKSUM_PARTIAL
+
+function                                             old     new   delta
+udhcp_recv_raw_packet                                415     579    +164
+change_listen_mode                                   317     370     +53
+------------------------------------------------------------------------------
+(add/remove: 0/0 grow/shrink: 2/0 up/down: 217/0)             Total: 217 bytes
+
+Signed-off-by: Alexey Froloff <raorn@raorn.name>
+Signed-off-by: Denys Vlasenko <vda.linux@googlemail.com>
+---
 --- a/networking/udhcp/dhcpc.c
 +++ b/networking/udhcp/dhcpc.c
 @@ -26,8 +26,8 @@
@@ -8,79 +22,96 @@
  #include <linux/filter.h>
 +#include <linux/if_packet.h>
  
- /* struct client_config_t client_config is in bb_common_bufsiz1 */
+ /* "struct client_config_t client_config" is in bb_common_bufsiz1 */
  
-@@ -846,17 +846,41 @@ static int send_release(uint32_t server,
- static NOINLINE int udhcp_recv_raw_packet(struct dhcp_packet *dhcp_pkt, int fd)
- {
+@@ -843,12 +843,31 @@ static NOINLINE int udhcp_recv_raw_packe
  	int bytes;
-+	int nocsum = 0;
  	struct ip_udp_dhcp_packet packet;
  	uint16_t check;
 +	unsigned char cmsgbuf[CMSG_LEN(sizeof(struct tpacket_auxdata))];
-+	struct iovec iov = {
-+		.iov_base = &packet,
-+		.iov_len = sizeof(packet),
-+	};
-+	struct msghdr msg = {
-+		.msg_iov = &iov,
-+		.msg_iovlen = 1,
-+		.msg_control = cmsgbuf,
-+		.msg_controllen = sizeof(cmsgbuf),
-+	};
++	struct iovec iov;
++	struct msghdr msg;
 +	struct cmsghdr *cmsg;
  
- 	memset(&packet, 0, sizeof(packet));
 -	bytes = safe_read(fd, &packet, sizeof(packet));
-+	do {
+-	if (bytes < 0) {
+-		log1("Packet read error, ignoring");
+-		/* NB: possible down interface, etc. Caller should pause. */
+-		return bytes; /* returns -1 */
++	/* used to use just safe_read(fd, &packet, sizeof(packet))
++	 * but we need to check for TP_STATUS_CSUMNOTREADY :(
++	 */
++	iov.iov_base = &packet;
++	iov.iov_len = sizeof(packet);
++	memset(&msg, 0, sizeof(msg));
++	msg.msg_iov = &iov;
++	msg.msg_iovlen = 1;
++	msg.msg_control = cmsgbuf;
++	msg.msg_controllen = sizeof(cmsgbuf);
++	for (;;) {
 +		bytes = recvmsg(fd, &msg, 0);
-+	} while (bytes < 0 && errno == EINTR);
-+
- 	if (bytes < 0) {
- 		log1("Packet read error, ignoring");
- 		/* NB: possible down interface, etc. Caller should pause. */
- 		return bytes; /* returns -1 */
++		if (bytes < 0) {
++			if (errno == EINTR)
++				continue;
++			log1("Packet read error, ignoring");
++			/* NB: possible down interface, etc. Caller should pause. */
++			return bytes; /* returns -1 */
++		}
++		break;
+ 	}
+ 
+ 	if (bytes < (int) (sizeof(packet.ip) + sizeof(packet.udp))) {
+@@ -885,6 +904,20 @@ static NOINLINE int udhcp_recv_raw_packe
+ 		return -2;
  	}
  
 +	for (cmsg = CMSG_FIRSTHDR(&msg); cmsg; cmsg = CMSG_NXTHDR(&msg, cmsg)) {
-+		if (cmsg->cmsg_level == SOL_PACKET &&
-+			cmsg->cmsg_type == PACKET_AUXDATA) {
++		if (cmsg->cmsg_level == SOL_PACKET
++		 && cmsg->cmsg_type == PACKET_AUXDATA
++		) {
++			/* some VMs don't checksum UDP and TCP data
++			 * they send to the same physical machine,
++			 * here we detect this case:
++			 */
 +			struct tpacket_auxdata *aux = (void *)CMSG_DATA(cmsg);
-+			nocsum = aux->tp_status & TP_STATUS_CSUMNOTREADY;
++			if (aux->tp_status & TP_STATUS_CSUMNOTREADY)
++				goto skip_udp_sum_check;
 +		}
 +	}
 +
- 	if (bytes < (int) (sizeof(packet.ip) + sizeof(packet.udp))) {
- 		log1("Packet is too short, ignoring");
- 		return -2;
-@@ -896,7 +920,7 @@ static NOINLINE int udhcp_recv_raw_packe
- 	packet.ip.tot_len = packet.udp.len; /* yes, this is needed */
- 	check = packet.udp.check;
- 	packet.udp.check = 0;
--	if (check && check != udhcp_checksum(&packet, bytes)) {
-+	if (!nocsum && check && check != udhcp_checksum(&packet, bytes)) {
+ 	/* verify UDP checksum. IP header has to be modified for this */
+ 	memset(&packet.ip, 0, offsetof(struct iphdr, protocol));
+ 	/* ip.xx fields which are not memset: protocol, check, saddr, daddr */
+@@ -895,6 +928,7 @@ static NOINLINE int udhcp_recv_raw_packe
  		log1("Packet with bad UDP checksum received, ignoring");
  		return -2;
  	}
-@@ -942,6 +966,7 @@ static int udhcp_raw_socket(int ifindex)
- {
- 	int fd;
- 	struct sockaddr_ll sock;
-+	int val;
++ skip_udp_sum_check:
  
- 	/*
- 	 * Comment:
-@@ -1008,6 +1033,13 @@ static int udhcp_raw_socket(int ifindex)
- 			log1("Attached filter to raw socket fd %d", fd); // log?
- 	}
+ 	if (packet.data.cookie != htonl(DHCP_MAGIC)) {
+ 		bb_info_msg("Packet with bad magic, ignoring");
+@@ -990,7 +1024,7 @@ static int udhcp_raw_socket(int ifindex)
+ 	log1("Opening raw socket on ifindex %d", ifindex); //log2?
  
-+	val = 1;
-+	if (setsockopt(fd, SOL_PACKET, PACKET_AUXDATA, &val,
-+			sizeof(val)) < 0) {
-+		if (errno != ENOPROTOOPT)
-+			log1("Failed to set auxiliary packet data for socket fd %d", fd);
+ 	fd = xsocket(PF_PACKET, SOCK_DGRAM, htons(ETH_P_IP));
+-	log1("Got raw socket fd %d", fd); //log2?
++	log1("Got raw socket fd"); //log2?
+ 
+ 	sock.sll_family = AF_PACKET;
+ 	sock.sll_protocol = htons(ETH_P_IP);
+@@ -1002,7 +1036,14 @@ static int udhcp_raw_socket(int ifindex)
+ 		/* Ignoring error (kernel may lack support for this) */
+ 		if (setsockopt(fd, SOL_SOCKET, SO_ATTACH_FILTER, &filter_prog,
+ 				sizeof(filter_prog)) >= 0)
+-			log1("Attached filter to raw socket fd %d", fd); // log?
++			log1("Attached filter to raw socket fd"); // log?
 +	}
 +
- 	log1("Created raw socket");
++	if (setsockopt(fd, SOL_PACKET, PACKET_AUXDATA,
++			&const_int_1, sizeof(int)) < 0
++	) {
++		if (errno != ENOPROTOOPT)
++			log1("Can't set PACKET_AUXDATA on raw socket");
+ 	}
  
- 	return fd;
+ 	log1("Created raw socket");

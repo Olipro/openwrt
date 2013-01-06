@@ -58,6 +58,12 @@ config BUSYBOX_CONFIG_FEATURE_DATE_COMPAT
 	  With this option off, 'date DATE' is 'date -s DATE' support
 	  the same format. With it on, 'date DATE' additionally supports
 	  MMDDhhmm[[YY]YY][.ss] format.
+config BUSYBOX_CONFIG_HOSTID
+	bool "hostid"
+	default y
+	help
+	  hostid prints the numeric identifier (in hexadecimal) for
+	  the current host.
 config BUSYBOX_CONFIG_ID
 	bool "id"
 	default y
@@ -88,6 +94,13 @@ config BUSYBOX_CONFIG_TOUCH
 	help
 	  touch is used to create or change the access and/or
 	  modification timestamp of specified files.
+
+config BUSYBOX_CONFIG_FEATURE_TOUCH_SUSV3
+	bool "Add support for SUSV3 features (-d -t -r)"
+	default y
+	depends on BUSYBOX_CONFIG_TOUCH
+	help
+	  Enable touch to use a reference file or a given date/time argument.
 config BUSYBOX_CONFIG_TR
 	bool "tr"
 	default y
@@ -392,13 +405,6 @@ config BUSYBOX_CONFIG_FEATURE_FANCY_HEAD
 	depends on BUSYBOX_CONFIG_HEAD
 	help
 	  This enables the head options (-c, -q, and -v).
-
-config BUSYBOX_CONFIG_HOSTID
-	bool "hostid"
-	default y
-	help
-	  hostid prints the numeric identifier (in hexadecimal) for
-	  the current host.
 
 config BUSYBOX_CONFIG_INSTALL
 	bool "install"

@@ -28,7 +28,7 @@ config BUSYBOX_CONFIG_PASSWORD_MINLEN
 	help
 	  Minimum allowable password length.
 
-config BUSYBOX_CONFIG_MD5_SIZE_VS_SPEED
+config BUSYBOX_CONFIG_MD5_SMALL
 	int "MD5: Trade bytes for speed (0:fast, 3:slow)"
 	default 2
 	range 0 3
@@ -107,6 +107,13 @@ config BUSYBOX_CONFIG_FEATURE_EDITING_SAVEHISTORY
 	depends on BUSYBOX_CONFIG_FEATURE_EDITING
 	help
 	  Enable history saving in shells.
+
+config BUSYBOX_CONFIG_FEATURE_EDITING_SAVE_ON_EXIT
+	bool "Save history on shell exit, not after every command"
+	default n
+	depends on BUSYBOX_CONFIG_FEATURE_EDITING_SAVEHISTORY
+	help
+	  Save history on shell exit, not after every command.
 
 config BUSYBOX_CONFIG_FEATURE_REVERSE_SEARCH
 	bool "Reverse history search"
@@ -198,8 +205,8 @@ config BUSYBOX_CONFIG_FEATURE_SKIP_ROOTFS
 
 	  However, some systems do not mount anything on /.
 	  If you need to configure busybox for one of these systems,
-	  you may find useful to turn this option off to make df show
-	  initramfs statistic.
+	  you may find it useful to turn this option off to make df show
+	  initramfs statistics.
 
 	  Otherwise, choose Y.
 

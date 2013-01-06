@@ -36,7 +36,7 @@ config BUSYBOX_CONFIG_FEATURE_LESS_BRACKETS
 	  brackets, facilitating programming.
 
 config BUSYBOX_CONFIG_FEATURE_LESS_FLAGS
-	bool "Enable extra flags"
+	bool "Enable -m/-M"
 	default n
 	depends on BUSYBOX_CONFIG_LESS
 	help
