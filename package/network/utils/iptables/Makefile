@@ -254,6 +254,7 @@ define Package/iptables-mod-extra/description
 Other extra iptables extensions.
 
  Matches:
+  - addrtype
   - condition
   - owner
   - physdev (if ebtables is enabled)
