@@ -21,8 +21,6 @@ Conflicts:
  configure | 14 +++++++++++---
  1 file changed, 11 insertions(+), 3 deletions(-)
 
-diff --git a/configure b/configure
-index 9912114..f0540c3 100755
 --- a/configure
 +++ b/configure
 @@ -2,14 +2,20 @@
@@ -58,6 +56,3 @@ index 9912114..f0540c3 100755
  
  echo "TC schedulers"
  
--- 
-1.8.0.2
-
