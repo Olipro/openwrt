@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2006-2012 OpenWrt.org
+# Copyright (C) 2006-2013 OpenWrt.org
 #
 # This is free software, licensed under the GNU General Public License v2.
 # See /LICENSE for more information.
@@ -9,15 +9,15 @@ include $(TOPDIR)/rules.mk
 include $(INCLUDE_DIR)/kernel.mk
 
 PKG_NAME:=iptables
-PKG_VERSION:=1.4.17
-PKG_RELEASE:=1
+PKG_VERSION:=1.4.18
+PKG_RELEASE:=3
 
-PKG_MD5SUM:=c3fb2ffd5b39d0d54b06ccc4c8660116
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.bz2
 PKG_SOURCE_URL:=http://www.netfilter.org/projects/iptables/files \
 	ftp://ftp.be.netfilter.org/pub/netfilter/iptables/ \
 	ftp://ftp.de.netfilter.org/pub/netfilter/iptables/ \
 	ftp://ftp.no.netfilter.org/pub/netfilter/iptables/
+PKG_MD5SUM:=a819199d5ec013b82da13a8ffbba857e
 
 PKG_FIXUP:=autoreconf
 PKG_INSTALL:=1
@@ -62,13 +62,13 @@ endef
 
 define Package/iptables
 $(call Package/iptables/Default)
-  TITLE:=IPv4 firewall administration tool
+  TITLE:=IP firewall administration tool
   MENU:=1
-  DEPENDS+= +kmod-ipt-core +libip4tc +libxtables $(if $(CONFIG_IPV6),+libip6tc,)
+  DEPENDS+= +kmod-ipt-core +libip4tc +IPV6:libip6tc +libxtables
 endef
 
 define Package/iptables/description
-IPv4 firewall administration tool.
+IP firewall administration tool.
 
  Matches:
   - icmp
@@ -100,7 +100,6 @@ endef
 define Package/iptables-mod-conntrack-extra
 $(call Package/iptables/Module, +kmod-ipt-conntrack-extra)
   TITLE:=Extra connection tracking extensions
-# DEPENDS+= +libxtables
 endef
 
 define Package/iptables-mod-conntrack-extra/description
@@ -320,7 +319,7 @@ endef
 
 define Package/ip6tables
 $(call Package/iptables/Default)
-  DEPENDS:=+kmod-ip6tables +libip4tc +libip6tc +libxtables
+  DEPENDS:=@IPV6 +kmod-ip6tables +iptables
   CATEGORY:=IPv6
   TITLE:=IPv6 firewall administration tool
   MENU:=1
@@ -393,7 +392,6 @@ TARGET_CFLAGS += \
 CONFIGURE_ARGS += \
 	--enable-shared \
 	--enable-devel \
-	$(if $(CONFIG_IPV6),,--disable-ipv6) \
 	--with-kernel="$(LINUX_DIR)/user_headers" \
 	--with-xtlibdir=/usr/lib/iptables \
 	--enable-static
@@ -403,7 +401,7 @@ MAKE_FLAGS := \
 	COPT_FLAGS="$(TARGET_CFLAGS)" \
 	KERNEL_DIR="$(LINUX_DIR)/user_headers/" PREFIX=/usr \
 	KBUILD_OUTPUT="$(LINUX_DIR)" \
-	BUILTIN_MODULES="$(patsubst ipt_%,%,$(patsubst xt_%,%,$(IPT_BUILTIN) $(IPT_CONNTRACK-m) $(IPT_NAT-m)))"
+	BUILTIN_MODULES="$(patsubst ip6t_%,%,$(patsubst ipt_%,%,$(patsubst xt_%,%,$(IPT_BUILTIN) $(IPT_CONNTRACK-m) $(IPT_NAT-m))))"
 
 define Build/InstallDev
 	$(INSTALL_DIR) $(1)/usr/include
@@ -411,7 +409,7 @@ define Build/InstallDev
 	$(INSTALL_DIR) $(1)/usr/include/net/netfilter
 
 	# XXX: iptables header fixup, some headers are not installed by iptables anymore
-	$(CP) $(PKG_BUILD_DIR)/include/xtables.h $(1)/usr/include/
+	$(CP) $(PKG_BUILD_DIR)/include/net/netfilter/*.h $(1)/usr/include/net/netfilter/
 	$(CP) $(PKG_BUILD_DIR)/include/iptables/*.h $(1)/usr/include/iptables/
 	$(CP) $(PKG_BUILD_DIR)/include/iptables.h $(1)/usr/include/
 	$(CP) $(PKG_BUILD_DIR)/include/ip6tables.h $(1)/usr/include/
@@ -429,23 +427,14 @@ endef
 
 define Package/iptables/install
 	$(INSTALL_DIR) $(1)/usr/sbin
-	$(INSTALL_BIN) $(PKG_INSTALL_DIR)/usr/sbin/xtables-multi $(1)/usr/sbin/
-	$(LN) xtables-multi $(1)/usr/sbin/iptables
-	$(LN) xtables-multi $(1)/usr/sbin/iptables-save
-	$(LN) xtables-multi $(1)/usr/sbin/iptables-restore
+	$(CP) $(PKG_INSTALL_DIR)/usr/sbin/xtables-multi $(1)/usr/sbin/
+	$(CP) $(PKG_INSTALL_DIR)/usr/sbin/iptables{,-restore,-save} $(1)/usr/sbin/
 	$(INSTALL_DIR) $(1)/usr/lib/iptables
 endef
 
 define Package/ip6tables/install
 	$(INSTALL_DIR) $(1)/usr/sbin
-	$(INSTALL_BIN) $(PKG_INSTALL_DIR)/usr/sbin/xtables-multi $(1)/usr/sbin/
-	$(LN) xtables-multi $(1)/usr/sbin/ip6tables
-	$(LN) xtables-multi $(1)/usr/sbin/ip6tables-save
-	$(LN) xtables-multi $(1)/usr/sbin/ip6tables-restore
-	$(INSTALL_DIR) $(1)/usr/lib/iptables
-	(cd $(PKG_INSTALL_DIR)/usr/lib/iptables ; \
-		$(CP) libip6t_*.so $(1)/usr/lib/iptables/ \
-	)
+	$(CP) $(PKG_INSTALL_DIR)/usr/sbin/ip6tables{,-restore,-save} $(1)/usr/sbin/
 endef
 
 define Package/libiptc/install
@@ -471,7 +460,7 @@ endef
 define BuildPlugin
   define Package/$(1)/install
 	$(INSTALL_DIR) $$(1)/usr/lib/iptables
-	for m in $(patsubst xt_%,ipt_,%ip6t_%,$(2)) $(patsubst ipt_%,xt_%,ip6t_%,$(2)); do \
+	for m in $(patsubst xt_%,ipt_%,$(2)) $(patsubst ipt_%,xt_%,$(2)) $(patsubst xt_%,ip6t_%,$(2)) $(patsubst ip6t_%,xt_%,$(2)); do \
 		if [ -f $(PKG_INSTALL_DIR)/usr/lib/iptables/lib$$$$$$$${m}.so ]; then \
 			$(CP) $(PKG_INSTALL_DIR)/usr/lib/iptables/lib$$$$$$$${m}.so $$(1)/usr/lib/iptables/ ; \
 		fi; \

@@ -1,7 +1,5 @@
-Index: iptables-1.4.17/libxtables/xtables.c
-===================================================================
---- iptables-1.4.17.orig/libxtables/xtables.c
-+++ iptables-1.4.17/libxtables/xtables.c
+--- a/libxtables/xtables.c
++++ b/libxtables/xtables.c
 @@ -336,6 +336,7 @@ static char *get_modprobe(void)
  
  int xtables_insmod(const char *modname, const char *modprobe, bool quiet)

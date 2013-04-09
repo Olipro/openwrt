@@ -1,15 +1,15 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=libubox
-PKG_VERSION:=2013-01-13
+PKG_VERSION:=2013-03-05
 PKG_RELEASE=$(PKG_SOURCE_VERSION)
 
 PKG_SOURCE_PROTO:=git
 PKG_SOURCE_URL:=git://nbd.name/luci2/libubox.git
 PKG_SOURCE_SUBDIR:=$(PKG_NAME)-$(PKG_VERSION)
-PKG_SOURCE_VERSION:=c360ec576c5a0fe85e6665d07a091264b714a399
+PKG_SOURCE_VERSION:=49e6e062b8effe281a85de167c16c5f039b74442
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION)-$(PKG_SOURCE_VERSION).tar.gz
-PKG_MIRROR_MD5SUM:=7bae10828309334b6b58cfef86d64be8
+PKG_MIRROR_MD5SUM:=b32d297d846b271585925f190fad2c60
 CMAKE_INSTALL:=1
 
 PKG_LICENSE:=ISC BSD-3c
@@ -47,6 +47,13 @@ define Package/jshn/description
   Library for parsing and generating JSON from shell scripts
 endef
 
+define Package/libjson-script
+  SECTION:=utils
+  CATEGORY:=Utilities
+  DEPENDS:=+libubox
+  TITLE:=Minimalistic JSON based scripting engine
+endef
+
 TARGET_CFLAGS += -I$(STAGING_DIR)/usr/include
 CMAKE_OPTIONS = \
 	-DLUAPATH=/usr/lib/lua
@@ -67,7 +74,12 @@ define Package/jshn/install
 	$(INSTALL_DATA) $(PKG_INSTALL_DIR)/usr/share/libubox/jshn.sh $(1)/usr/share/libubox
 endef
 
+define Package/libjson-script/install
+	$(INSTALL_DIR) $(1)/lib/
+	$(INSTALL_DATA) $(PKG_INSTALL_DIR)/usr/lib/libjson_script.so $(1)/lib/
+endef
+
 $(eval $(call BuildPackage,libubox))
 $(eval $(call BuildPackage,libblobmsg-json))
 $(eval $(call BuildPackage,jshn))
-
+$(eval $(call BuildPackage,libjson-script))

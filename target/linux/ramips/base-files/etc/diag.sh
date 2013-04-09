@@ -1,39 +1,15 @@
 #!/bin/sh
-#
-# Copyright (C) 2010 OpenWrt.org
-#
-#
+# Copyright (C) 2010-2013 OpenWrt.org
 
+. /lib/functions/leds.sh
 . /lib/ramips.sh
-
-status_led=""
-
-led_set_attr() {
-	[ -f "/sys/class/leds/$1/$2" ] && echo "$3" > "/sys/class/leds/$1/$2"
-}
-
-status_led_set_timer() {
-	led_set_attr $status_led "trigger" "timer"
-	led_set_attr $status_led "delay_on" "$1"
-	led_set_attr $status_led "delay_off" "$2"
-}
-
-status_led_on() {
-	led_set_attr $status_led "trigger" "none"
-	led_set_attr $status_led "brightness" 255
-}
-
-status_led_off() {
-	led_set_attr $status_led "trigger" "none"
-	led_set_attr $status_led "brightness" 0
-}
 
 get_status_led() {
 	case $(ramips_board_name) in
 	3g-6200n)
 		status_led="edimax:green:power"
 		;;
-	3g300m)
+	3g300m | w150m)
 		status_led="tenda:blue:ap"
 		;;
 	argus-atp52b)
@@ -41,6 +17,12 @@ get_status_led() {
 		;;
 	br6524n)
 		status_led="edimax:blue:power"
+		;;
+	br6425)
+		status_led="edimax:green:power"
+		;;
+	d105)
+		status_led="d105:red:power"
 		;;
 	dir-300-b1 | dir-600-b1 | dir-600-b2 | dir-615-h1 | dir-615-d | dir-620-a1)
 		status_led="d-link:green:status"
@@ -76,7 +58,8 @@ get_status_led() {
 	nw718)
 		status_led="nw718:amber:cpu"
 		;;
-	omni-emb)
+	omni-emb|\
+	omni-emb-hpm)
 		status_led="emb:green:status"
 		;;
 	psr-680w)
@@ -131,6 +114,9 @@ get_status_led() {
 	mzk-w300nh2)
 		status_led="mzkw300nh2:green:power"
 		;;
+	ur-326n4g)
+		status_led="ur326:green:wps"
+		;;
 	ur-336un)
 		status_led="ur336:green:wps"
 		;;
@@ -145,11 +131,11 @@ set_state() {
 
 	case "$1" in
 	preinit)
-		insmod leds-gpio
-		status_led_set_timer 200 200
+		insmod leds-gpio 2> /dev/null
+		status_led_blink_preinit
 		;;
 	failsafe)
-		status_led_set_timer 50 50
+		status_led_blink_failsafe
 		;;
 	done)
 		status_led_on

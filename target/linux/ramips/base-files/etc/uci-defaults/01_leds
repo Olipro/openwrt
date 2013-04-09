@@ -18,6 +18,9 @@ case $board in
 		set_wifi_led "edimax:amber:wlan"
 		set_usb_led "edimax:blue:3g"
 		;;
+	3g-6200nl)
+		set_wifi_led "edimax:green:wlan"
+		;;
 	3g300m)
 		set_usb_led "tenda:blue:3g"
 		;;
@@ -35,12 +38,19 @@ case $board in
 	bc2)
 		set_usb_led "bc2:blue:usb"
 		;;
+	br6425)
+		set_wifi_led "edimax:orange:wlan"
+		;;
 	broadway)
 		set_usb_led "red:diskmounted"
 		set_wifi_led "red:wps_active"
 		;;
 	br6524n)
 		set_wifi_led "edimax:blue:wlan"
+		;;
+	d105)
+		ucidef_set_led_default "power" "POWER" "d105:red:power" "1"
+		set_usb_led "d105:green:usb"
 		;;
 	dir-300-b1|\
 	dir-600-b1|\
@@ -80,6 +90,11 @@ case $board in
 		;;
 	nw718)
 		set_usb_led "nw718:amber:usb"
+		;;
+	omni-emb-hpm)
+		ucidef_set_led_default "power" "POWER" "emb:orange:power" "1"
+		ucidef_set_led_netdev "eth" "ETH" "emb:green:eth" "eth0"
+		set_wifi_led "emb:green:wifi"
 		;;
 	sl-r7205)
 		set_wifi_led "rt2800pci-phy0::radio"

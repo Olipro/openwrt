@@ -1,7 +1,5 @@
-Index: iptables-1.4.17/extensions/libip6t_ipv6header.c
-===================================================================
---- iptables-1.4.17.orig/extensions/libip6t_ipv6header.c
-+++ iptables-1.4.17/extensions/libip6t_ipv6header.c
+--- a/extensions/libip6t_ipv6header.c
++++ b/extensions/libip6t_ipv6header.c
 @@ -10,6 +10,9 @@ on whether they contain certain headers
  #include <netdb.h>
  #include <xtables.h>
@@ -12,10 +10,8 @@ Index: iptables-1.4.17/extensions/libip6t_ipv6header.c
  
  enum {
  	O_HEADER = 0,
-Index: iptables-1.4.17/extensions/libxt_TCPOPTSTRIP.c
-===================================================================
---- iptables-1.4.17.orig/extensions/libxt_TCPOPTSTRIP.c
-+++ iptables-1.4.17/extensions/libxt_TCPOPTSTRIP.c
+--- a/extensions/libxt_TCPOPTSTRIP.c
++++ b/extensions/libxt_TCPOPTSTRIP.c
 @@ -12,6 +12,21 @@
  #ifndef TCPOPT_MD5SIG
  #	define TCPOPT_MD5SIG 19
@@ -38,10 +34,8 @@ Index: iptables-1.4.17/extensions/libxt_TCPOPTSTRIP.c
  
  enum {
  	O_STRIP_OPTION = 0,
-Index: iptables-1.4.17/include/libiptc/ipt_kernel_headers.h
-===================================================================
---- iptables-1.4.17.orig/include/libiptc/ipt_kernel_headers.h
-+++ iptables-1.4.17/include/libiptc/ipt_kernel_headers.h
+--- a/include/libiptc/ipt_kernel_headers.h
++++ b/include/libiptc/ipt_kernel_headers.h
 @@ -5,7 +5,6 @@
  
  #include <limits.h>
@@ -66,10 +60,8 @@ Index: iptables-1.4.17/include/libiptc/ipt_kernel_headers.h
 -#include <linux/in6.h>
 -#endif
  #endif
-Index: iptables-1.4.17/include/linux/netfilter/xt_osf.h
-===================================================================
---- iptables-1.4.17.orig/include/linux/netfilter/xt_osf.h
-+++ iptables-1.4.17/include/linux/netfilter/xt_osf.h
+--- a/include/linux/netfilter/xt_osf.h
++++ b/include/linux/netfilter/xt_osf.h
 @@ -21,6 +21,9 @@
  #define _XT_OSF_H
  
@@ -80,10 +72,8 @@ Index: iptables-1.4.17/include/linux/netfilter/xt_osf.h
  
  #define MAXGENRELEN		32
  
-Index: iptables-1.4.17/include/linux/netfilter_ipv4/ip_tables.h
-===================================================================
---- iptables-1.4.17.orig/include/linux/netfilter_ipv4/ip_tables.h
-+++ iptables-1.4.17/include/linux/netfilter_ipv4/ip_tables.h
+--- a/include/linux/netfilter_ipv4/ip_tables.h
++++ b/include/linux/netfilter_ipv4/ip_tables.h
 @@ -16,6 +16,7 @@
  #define _IPTABLES_H
  
@@ -92,10 +82,8 @@ Index: iptables-1.4.17/include/linux/netfilter_ipv4/ip_tables.h
  
  #include <linux/netfilter_ipv4.h>
  
-Index: iptables-1.4.17/iptables/ip6tables-restore.c
-===================================================================
---- iptables-1.4.17.orig/iptables/ip6tables-restore.c
-+++ iptables-1.4.17/iptables/ip6tables-restore.c
+--- a/iptables/ip6tables-restore.c
++++ b/iptables/ip6tables-restore.c
 @@ -9,7 +9,7 @@
   */
  
@@ -105,10 +93,8 @@ Index: iptables-1.4.17/iptables/ip6tables-restore.c
  #include <stdbool.h>
  #include <string.h>
  #include <stdio.h>
-Index: iptables-1.4.17/iptables/ip6tables-save.c
-===================================================================
---- iptables-1.4.17.orig/iptables/ip6tables-save.c
-+++ iptables-1.4.17/iptables/ip6tables-save.c
+--- a/iptables/ip6tables-save.c
++++ b/iptables/ip6tables-save.c
 @@ -6,7 +6,7 @@
   * This code is distributed under the terms of GNU GPL v2
   */
@@ -118,10 +104,8 @@ Index: iptables-1.4.17/iptables/ip6tables-save.c
  #include <stdio.h>
  #include <fcntl.h>
  #include <stdlib.h>
-Index: iptables-1.4.17/iptables/iptables-restore.c
-===================================================================
---- iptables-1.4.17.orig/iptables/iptables-restore.c
-+++ iptables-1.4.17/iptables/iptables-restore.c
+--- a/iptables/iptables-restore.c
++++ b/iptables/iptables-restore.c
 @@ -6,7 +6,7 @@
   */
  
@@ -131,10 +115,8 @@ Index: iptables-1.4.17/iptables/iptables-restore.c
  #include <stdbool.h>
  #include <string.h>
  #include <stdio.h>
-Index: iptables-1.4.17/iptables/iptables-save.c
-===================================================================
---- iptables-1.4.17.orig/iptables/iptables-save.c
-+++ iptables-1.4.17/iptables/iptables-save.c
+--- a/iptables/iptables-save.c
++++ b/iptables/iptables-save.c
 @@ -6,7 +6,7 @@
   *
   */
@@ -144,10 +126,8 @@ Index: iptables-1.4.17/iptables/iptables-save.c
  #include <stdio.h>
  #include <fcntl.h>
  #include <stdlib.h>
-Index: iptables-1.4.17/iptables/iptables-xml.c
-===================================================================
---- iptables-1.4.17.orig/iptables/iptables-xml.c
-+++ iptables-1.4.17/iptables/iptables-xml.c
+--- a/iptables/iptables-xml.c
++++ b/iptables/iptables-xml.c
 @@ -7,7 +7,7 @@
   */
  
