@@ -1,7 +1,5 @@
-Index: iptables-1.4.17/extensions/libxt_layer7.c
-===================================================================
 --- /dev/null
-+++ iptables-1.4.17/extensions/libxt_layer7.c
++++ b/extensions/libxt_layer7.c
 @@ -0,0 +1,368 @@
 +/* 
 +   Shared library add-on to iptables for layer 7 matching support. 
