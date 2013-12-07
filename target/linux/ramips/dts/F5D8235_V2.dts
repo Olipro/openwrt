@@ -6,27 +6,13 @@
 	compatible = "F5D8235_V2", "ralink,rt3052-soc";
 	model = "Belkin F5D8235 v2";
 
-	memorydetect {
-		ralink,memory = <0x0 0x200000 0x4000000>;
-	};
-
-
-	chosen {
-		bootargs = "console=ttyS0,57600 mtdparts=1f000000.cfi:320k(u-boot)ro,7744k(firmware),64k(nvram),64k(factory)";
-	};
-
-	palmbus@10000000 {
-		sysc@0 {
-			ralink,pinmux = "uartlite", "jtag", "sdram", "rgmii";
-			ralink,gpiomux = "i2c", "spi", "mdio";
-			ralink,uartmux = "gpio";
-			ralink,wdtmux = <1>;
+	pinctrl {
+		state_default: pinctrl0 {
+			gpio {
+				ralink,group = "spi", "i2c", "jtag", "rgmii", "mdio", "uartf";
+				ralink,function = "gpio";
+			};
 		};
-
-		gpio0: gpio@600 {
-			status = "okay";
-		};
-
 	};
 
 	cfi@1f000000 {
@@ -37,19 +23,35 @@
 		device-width = <2>;
 		#address-cells = <1>;
 		#size-cells = <1>;
+
+		uboot: partition@0 {
+			label = "u-boot";
+			reg = <0x0 0x50000>;
+			read-only;
+		};
+
+		partition@50000 {
+			label = "firmware";
+			reg = <0x50000 0x790000>;
+		};
+
+		partition@7e0000 {
+			label = "nvram";
+			reg = <0x7e0000 0x10000>;
+		};
+
+		factory: partition@7f0000 {
+			label = "factory";
+			reg = <0x7f0000 0x10000>;
+		};
 	};
 
 	ethernet@10100000 {
-		status = "okay";
+		mtd-mac-address = <&uboot 0x40004>;
 	};
 
 	esw@10110000 {
-		status = "okay";
 		ralink,portmap = <0x3f>;
-	};
-
-	wmac@10180000 {
-		status = "okay";
 	};
 
 	otg@101c0000 {

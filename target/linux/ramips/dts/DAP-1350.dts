@@ -6,25 +6,17 @@
 	compatible = "DAP-1350", "ralink,rt3052-soc";
 	model = "D-Link DAP-1350";
 
-	memorydetect {
-		ralink,memory = <0x0 0x200000 0x4000000>;
-	};
-
 	chosen {
-		bootargs = "console=ttyS0,115200 mtdparts=1f000000.cfi:192k(u-boot)ro,64k(devdata)ro,192k(devconf)ro,256k(devlang)ro,7488k@0xb0000(firmware)";
+		bootargs = "console=ttyS0,115200";
 	};
 
-	palmbus@10000000 {
-		sysc@0 {
-			ralink,pinmux = "i2c", "spi", "uartlite", "jtag", "mdio", "sdram", "rgmii";
-			ralink,uartmux = "gpio";
-			ralink,wdtmux = <1>;
+	pinctrl {
+		state_default: pinctrl0 {
+			gpio {
+				ralink,group = "spi", "i2c", "jtag", "rgmii", "mdio", "uartf";
+				ralink,function = "gpio";
+			};
 		};
-
-		gpio0: gpio@600 {
-			status = "okay";
-		};
-
 	};
 
 	cfi@1f000000 {
@@ -35,14 +27,38 @@
 		device-width = <2>;
 		#address-cells = <1>;
 		#size-cells = <1>;
-	};
 
-	ethernet@10100000 {
-		status = "okay";
+		partition@0 {
+			label = "u-boot";
+			reg = <0x0 0x30000>;
+			read-only;
+		};
+
+		partition@30000 {
+			label = "devdata";
+			reg = <0x30000 0x10000>;
+			read-only;
+		};
+
+		partition@40000 {
+			label = "devconf";
+			reg = <0x40000 0x30000>;
+			read-only;
+		};
+
+		partition@70000 {
+			label = "devlang";
+			reg = <0x70000 0x40000>;
+			read-only;
+		};
+
+		partition@b0000 {
+			label = "firmware";
+			reg = <0xb0000 0x750000>;
+		};
 	};
 
 	esw@10110000 {
-		status = "okay";
 		ralink,portmap = <0x2f>;
 	};
 
@@ -87,10 +103,6 @@
 			gpios = <&gpio0 7 1>;
 			linux,code = <0x101>;
 		};
-	};
-
-	wmac@10180000 {
-		status = "okay";
 	};
 
 	otg@101c0000 {

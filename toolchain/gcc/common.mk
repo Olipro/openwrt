@@ -27,19 +27,21 @@ GCC_DIR:=$(PKG_NAME)-$(PKG_VERSION)
 
 ifeq ($(findstring linaro, $(CONFIG_GCC_VERSION)),linaro)
     ifeq ($(CONFIG_GCC_VERSION),"4.6-linaro")
-      PKG_REV:=4.6-2012.12
+      PKG_REV:=4.6-2013.05
       PKG_VERSION:=4.6.4
       PKG_VERSION_MAJOR:=4.6
-      PKG_MD5SUM:=6b6c6a4faa026edd1193cf6426309039
+      PKG_MD5SUM:=26b48802ae1203cd99415026fbf56ed7
+      PKG_COMP:=bz2
     endif
-    ifeq ($(CONFIG_GCC_VERSION),"4.7-linaro")
-      PKG_REV:=4.7-2013.03
-      PKG_VERSION:=4.7.3
-      PKG_VERSION_MAJOR:=4.7
-      PKG_MD5SUM:=72e37ed0601f72e4d7e842d7e5373148
+    ifeq ($(CONFIG_GCC_VERSION),"4.8-linaro")
+      PKG_REV:=4.8-2013.11
+      PKG_VERSION:=4.8.3
+      PKG_VERSION_MAJOR:=4.8
+      PKG_MD5SUM:=729f4ac34ad404892ecafb991bea2da5
+      PKG_COMP:=xz
     endif
     PKG_SOURCE_URL:=http://launchpad.net/gcc-linaro/$(PKG_VERSION_MAJOR)/$(PKG_REV)/+download/
-    PKG_SOURCE:=$(PKG_NAME)-linaro-$(PKG_REV).tar.bz2
+    PKG_SOURCE:=$(PKG_NAME)-linaro-$(PKG_REV).tar.$(PKG_COMP)
     GCC_DIR:=gcc-linaro-$(PKG_REV)
     HOST_BUILD_DIR:=$(BUILD_DIR_TOOLCHAIN)/$(GCC_DIR)
 else
@@ -51,9 +53,6 @@ else
   endif
   ifeq ($(PKG_VERSION),4.6.3)
     PKG_MD5SUM:=773092fe5194353b02bb0110052a972e
-  endif
-  ifeq ($(PKG_VERSION),4.7.2)
-    PKG_MD5SUM:=cc308a0891e778cfda7a151ab8a6e762
   endif
   ifeq ($(PKG_VERSION),4.8.0)
     PKG_MD5SUM:=e6040024eb9e761c3bea348d1fa5abb0
@@ -87,7 +86,7 @@ HOST_STAMP_CONFIGURED:=$(GCC_BUILD_DIR)/.configured
 HOST_STAMP_INSTALLED:=$(STAGING_DIR_HOST)/stamp/.gcc_$(GCC_VARIANT)_installed
 
 SEP:=,
-TARGET_LANGUAGES:="c$(if $(CONFIG_INSTALL_LIBSTDCPP),$(SEP)c++)$(if $(CONFIG_INSTALL_LIBGCJ),$(SEP)java)$(if $(CONFIG_INSTALL_GFORTRAN),$(SEP)fortran)"
+TARGET_LANGUAGES:="c,c++$(if $(CONFIG_INSTALL_LIBGCJ),$(SEP)java)$(if $(CONFIG_INSTALL_GFORTRAN),$(SEP)fortran)"
 
 export libgcc_cv_fixed_point=no
 ifdef CONFIG_USE_UCLIBC

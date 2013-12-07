@@ -6,25 +6,17 @@
 	compatible = "WR6202", "ralink,rt3052-soc";
 	model = "AWB WR6202";
 
-	memorydetect {
-		ralink,memory = <0x0 0x200000 0x4000000>;
-	};
-
 	chosen {
-		bootargs = "console=ttyS0,115200 mtdparts=1f000000.cfi:192k(u-boot)ro,64k(u-boot-env)ro,64k(factory)ro,7872k@0x50000(firmware)";
+		bootargs = "console=ttyS0,115200";
 	};
 
-	palmbus@10000000 {
-		sysc@0 {
-			ralink,pinmux = "i2c", "spi", "uartlite", "jtag", "mdio", "sdram", "rgmii";
-			ralink,uartmux = "gpio";
-			ralink,wdtmux = <1>;
+	pinctrl {
+		state_default: pinctrl0 {
+			gpio {
+				ralink,group = "spi", "i2c", "jtag", "rgmii", "mdio", "uartf";
+				ralink,function = "gpio";
+			};
 		};
-
-		gpio0: gpio@600 {
-			status = "okay";
-		};
-
 	};
 
 	gpio-leds {
@@ -64,19 +56,33 @@
 		device-width = <2>;
 		#address-cells = <1>;
 		#size-cells = <1>;
-	};
 
-	ethernet@10100000 {
-		status = "okay";
+		partition@0 {
+			label = "u-boot";
+			reg = <0x0 0x30000>;
+			read-only;
+		};
+
+		partition@30000 {
+			label = "u-boot-env";
+			reg = <0x30000 0x10000>;
+			read-only;
+		};
+
+		factory: partition@40000 {
+			label = "factory";
+			reg = <0x40000 0x10000>;
+			read-only;
+		};
+
+		partition@50000 {
+			label = "firmware";
+			reg = <0x50000 0x7b0000>;
+		};
 	};
 
 	esw@10110000 {
-		status = "okay";
 		ralink,portmap = <0x3e>;
-	};
-
-	wmac@10180000 {
-		status = "okay";
 	};
 
 	otg@101c0000 {

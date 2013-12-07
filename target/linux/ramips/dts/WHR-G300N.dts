@@ -6,23 +6,12 @@
 	compatible = "WHR-G300N", "ralink,rt3052-soc";
 	model = "Buffalo WHR-G300N";
 
-	memorydetect {
-		ralink,memory = <0x0 0x200000 0x4000000>;
-	};
-
-	chosen {
-		bootargs = "console=ttyS0,57600";
-	};
-
-	palmbus@10000000 {
-		sysc@0 {
-			ralink,pinmux = "i2c", "spi", "uartlite", "jtag", "mdio", "sdram", "rgmii";
-			ralink,uartmux = "gpio";
-			ralink,wdtmux = <1>;
-		};
-
-		gpio0: gpio@600 {
-			status = "okay";
+	pinctrl {
+		state_default: pinctrl0 {
+			gpio {
+				ralink,group = "spi", "i2c", "jtag", "rgmii", "mdio", "uartf";
+				ralink,function = "gpio";
+			};
 		};
 	};
 
@@ -36,12 +25,7 @@
 		#size-cells = <1>;
 	};
 
-	ethernet@10100000 {
-		status = "okay";
-	};
-
 	esw@10110000 {
-		status = "okay";
 		ralink,portmap = <0x2f>;
 	};
 
@@ -86,9 +70,5 @@
 			gpios = <&gpio0 8 1>;
 			linux,code = <0x103>;
 		};
-	};
-
-	wmac@10180000 {
-		status = "okay";
 	};
 };

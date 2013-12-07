@@ -6,20 +6,6 @@
 RAMIPS_BOARD_NAME=
 RAMIPS_MODEL=
 
-all500x_board_detect() {
-	local systype
-
-	systype=$(awk 'BEGIN{FS="[ \t]+:[ \t]"} /system type/ {print $2}' /proc/cpuinfo)
-	case "$systype" in
-	*"RT5350"*)
-		RAMIPS_MODEL="Allnet ALL5003"
-		;;
-	*"RT3352"*)
-		RAMIPS_MODEL="Allnet ALL5002"
-		;;
-	esac
-}
-
 ramips_board_detect() {
 	local machine
 	local name
@@ -48,14 +34,20 @@ ramips_board_detect() {
 	*"Allnet ALL0256N")
 		name="all0256n"
 		;;
-	*"Allnet ALL5002/ALL5003")
+	*"Allnet ALL5002")
 		name="all5002"
+		;;
+	*"Allnet ALL5003")
+		name="all5003"
 		;;
 	*"ARC FreeStation5")
 		name="freestation5"
 		;;
 	*"Argus ATP-52B")
 		name="argus-atp52b"
+		;;
+	*"AsiaRF AWM002 EVB")
+		name="awm002-evb"
 		;;
 	*"BR6524N")
 		name="br6524n"
@@ -66,11 +58,23 @@ ramips_board_detect() {
 	*"Asus WL-330N3G")
 		name="wl-330n3g"
 		;;
+	*"Alpha ASL26555")
+		name="asl26555"
+		;;
 	*"Aztech HW550-3G")
 		name="hw550-3g"
 		;;
+	*"DCS-930")
+		name="dcs-930"
+		;;
 	*"DIR-300 B1")
 		name="dir-300-b1"
+		;;
+	*"DIR-300 B7")
+		name="dir-300-b7"
+		;;
+	*"DIR-320 B1")
+		name="dir-320-b1"
 		;;
 	*"DIR-600 B1")
 		name="dir-600-b1"
@@ -78,8 +82,14 @@ ramips_board_detect() {
 	*"DIR-600 B2")
 		name="dir-600-b2"
 		;;
+	*"DIR-610 A1")
+		name="dir-610-a1"
+		;;
 	*"DIR-620 A1")
 		name="dir-620-a1"
+		;;
+	*"DIR-620 D1")
+		name="dir-620-d1"
 		;;
 	*"DIR-615 H1")
 		name="dir-615-h1"
@@ -90,11 +100,17 @@ ramips_board_detect() {
 	*"DIR-645")
 		name="dir-645"
 		;;
+	*"DIR-810L")
+		name="dir-810l"
+		;;
 	*"DAP-1350")
 		name="dap-1350"
 		;;
 	*"ESR-9753")
 		name="esr-9753"
+		;;
+	*"F7C027")
+		name="f7c027"
 		;;
 	*"F5D8235 v1")
 		name="f5d8235-v1"
@@ -117,8 +133,17 @@ ramips_board_detect() {
 	*"MoFi Network MOFI3500-3GN")
 		name="mofi3500-3gn"
 		;;
+	*"HAME MPR-A1")
+ 		name="mpr-a1"
+ 		;;
+	*"HAME MPR-A2")
+ 		name="mpr-a2"
+ 		;;
 	*"NBG-419N")
 		name="nbg-419n"
+		;;
+	*"Netgear WNCE2001")
+		name="wnce2001"
 		;;
 	*"NexAira BC2")
 		name="bc2"
@@ -138,8 +163,26 @@ ramips_board_detect() {
 	*"Planex MZK-W300NH2"*)
 		name="mzk-w300nh2"
 		;;
+	*"Poray IP2202")
+		name="ip2202"
+		;;
+	*"Poray M3")
+		name="m3"
+		;;
+	*"Poray M4")
+		name="m4"
+		;;
+	*"Poray X5")
+		name="x5"
+		;;
+	*"Poray X8")
+		name="x8"
+		;;
 	*"PWH2004")
 		name="pwh2004"
+		;;
+	*"Asus RP-N53")
+		name="rp-n53"
 		;;
 	*"RT-G32 B1")
 		name="rt-g32-b1"
@@ -164,6 +207,15 @@ ramips_board_detect() {
 		;;
 	*"W502U")
 		name="w502u"
+		;;
+	*"WMR-300")
+		name="wmr300"
+		;;
+	*"WHR-300HP2")
+		name="whr-300hp2"
+		;;
+	*"WHR-600D")
+		name="whr-600d"
 		;;
 	*"WHR-G300N")
 		name="whr-g300n"
@@ -203,7 +255,7 @@ ramips_board_detect() {
 		;;
 	*"UR-326N4G Wireless N router")
 		name="ur-326n4g"
- 		;;
+		;;
 	*"UR-336UN Wireless N router")
 		name="ur-336un"
 		;;
@@ -213,14 +265,14 @@ ramips_board_detect() {
 	*"XDX RN502J")
 		name="xdxrn502j"
 		;;
+	*"HG255D")
+		name="hg255d"
+		;;
+	*"V22SG")
+		name="v22sg"
+		;;
 	*)
 		name="generic"
-		;;
-	esac
-
-	case "$machine" in
-	*"Allnet ALL5002/ALL5003")
-		all500x_board_detect
 		;;
 	esac
 

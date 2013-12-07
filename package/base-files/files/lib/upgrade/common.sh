@@ -99,7 +99,7 @@ kill_remaining() { # [ <signal> ]
 
 		case "$name" in
 			# Skip essential services
-			*procd*|*ash*|*init*|*watchdog*|*ssh*|*dropbear*|*telnet*|*login*|*hostapd*|*wpa_supplicant*) : ;;
+			*procd*|*ash*|*init*|*watchdog*|*ssh*|*dropbear*|*telnet*|*login*|*hostapd*|*wpa_supplicant*|*nas*) : ;;
 
 			# Killable process
 			*)
@@ -157,14 +157,14 @@ get_image() { # <source> [ <command> ]
 		*) cmd="cat";;
 	esac
 	if [ -z "$conc" ]; then
-		local magic="$(eval $cmd $from | dd bs=2 count=1 2>/dev/null | hexdump -n 2 -e '1/1 "%02x"')"
+		local magic="$(eval $cmd $from 2>/dev/null | dd bs=2 count=1 2>/dev/null | hexdump -n 2 -e '1/1 "%02x"')"
 		case "$magic" in
 			1f8b) conc="zcat";;
 			425a) conc="bzcat";;
 		esac
 	fi
 
-	eval "$cmd $from ${conc:+| $conc}"
+	eval "$cmd $from 2>/dev/null ${conc:+| $conc}"
 }
 
 get_magic_word() {
@@ -173,10 +173,6 @@ get_magic_word() {
 
 get_magic_long() {
 	get_image "$@" | dd bs=4 count=1 2>/dev/null | hexdump -v -n 4 -e '1/1 "%02x"'
-}
-
-refresh_mtd_partitions() {
-	mtd refresh rootfs
 }
 
 jffs2_copy_config() {
@@ -191,8 +187,8 @@ jffs2_copy_config() {
 
 default_do_upgrade() {
 	sync
-	if [ "$SAVE_CONFIG" -eq 1 -a -z "$USE_REFRESH" ]; then
-		get_image "$1" | mtd -j "$CONF_TAR" write - "${PART_NAME:-image}"
+	if [ "$SAVE_CONFIG" -eq 1 ]; then
+		get_image "$1" | mtd $MTD_CONFIG_ARGS -j "$CONF_TAR" write - "${PART_NAME:-image}"
 	else
 		get_image "$1" | mtd write - "${PART_NAME:-image}"
 	fi
@@ -206,19 +202,10 @@ do_upgrade() {
 		default_do_upgrade "$ARGV"
 	fi
 
-	[ "$SAVE_CONFIG" -eq 1 -a -n "$USE_REFRESH" ] && {
-		v "Refreshing partitions"
-		if type 'platform_refresh_partitions' >/dev/null 2>/dev/null; then
-			platform_refresh_partitions
-		else
-			refresh_mtd_partitions
-		fi
-		if type 'platform_copy_config' >/dev/null 2>/dev/null; then
-			platform_copy_config
-		else
-			jffs2_copy_config
-		fi
-	}
+	if [ "$SAVE_CONFIG" -eq 1 ] && type 'platform_copy_config' >/dev/null 2>/dev/null; then
+		platform_copy_config
+	fi
+
 	v "Upgrade completed"
 	[ -n "$DELAY" ] && sleep "$DELAY"
 	ask_bool 1 "Reboot" && {

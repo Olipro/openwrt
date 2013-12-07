@@ -14,7 +14,7 @@ endif
 include $(TOPDIR)/include/debug.mk
 include $(TOPDIR)/include/verbose.mk
 
-TMP_DIR:=$(TOPDIR)/tmp
+export TMP_DIR:=$(TOPDIR)/tmp
 
 GREP_OPTIONS=
 export GREP_OPTIONS
@@ -38,6 +38,7 @@ ARCH:=$(subst i486,i386,$(subst i586,i386,$(subst i686,i386,$(call qstrip,$(CONF
 ARCH_PACKAGES:=$(call qstrip,$(CONFIG_TARGET_ARCH_PACKAGES))
 BOARD:=$(call qstrip,$(CONFIG_TARGET_BOARD))
 TARGET_OPTIMIZATION:=$(call qstrip,$(CONFIG_TARGET_OPTIMIZATION))
+export EXTRA_OPTIMIZATION:=$(call qstrip,$(CONFIG_EXTRA_OPTIMIZATION))
 TARGET_SUFFIX=$(call qstrip,$(CONFIG_TARGET_SUFFIX))
 BUILD_SUFFIX:=$(call qstrip,$(CONFIG_BUILD_SUFFIX))
 SUBDIR:=$(patsubst $(TOPDIR)/%,%,${CURDIR})
@@ -53,34 +54,26 @@ endif
 
 HOST_FPIC:=-fPIC
 
-ARCH_SUFFIX:=
+ARCH_SUFFIX:=$(call qstrip,$(CONFIG_CPU_TYPE))
 GCC_ARCH:=
 
+ifneq ($(ARCH_SUFFIX),)
+  ARCH_SUFFIX:=_$(ARCH_SUFFIX)
+endif
 ifneq ($(filter -march=armv%,$(TARGET_OPTIMIZATION)),)
-  ARCH_SUFFIX:=_$(patsubst -march=arm%,%,$(filter -march=armv%,$(TARGET_OPTIMIZATION)))
   GCC_ARCH:=$(patsubst -march=%,%,$(filter -march=armv%,$(TARGET_OPTIMIZATION)))
-endif
-ifneq ($(filter -mips%r2,$(TARGET_OPTIMIZATION)),)
-  ARCH_SUFFIX:=_r2
-endif
-ifdef CONFIG_USE_MIPS16
-   TARGET_OPTIMIZATION+= -minterlink-mips16 -mips16
-endif
-ifneq ($(findstring -mips16,$(TARGET_OPTIMIZATION)),)
-  TARGET_ASFLAGS_OVERRIDE:=-mno-mips16
-  ARCH_SUFFIX:= $(ARCH_SUFFIX)_m16
 endif
 ifdef CONFIG_HAS_SPE_FPU
   TARGET_SUFFIX:=$(TARGET_SUFFIX)spe
 endif
 ifdef CONFIG_MIPS64_ABI
   ifneq ($(CONFIG_MIPS64_ABI_O32),y)
-     ARCH_SUFFIX:=$(ARCH_SUFFIX)_$(subst ",,$(CONFIG_MIPS64_ABI))
+     ARCH_SUFFIX:=$(ARCH_SUFFIX)_$(call qstrip,$(CONFIG_MIPS64_ABI))
   endif
 endif
 
 DL_DIR:=$(if $(call qstrip,$(CONFIG_DOWNLOAD_FOLDER)),$(call qstrip,$(CONFIG_DOWNLOAD_FOLDER)),$(TOPDIR)/dl)
-BIN_DIR:=$(TOPDIR)/bin/$(BOARD)
+BIN_DIR:=$(if $(call qstrip,$(CONFIG_BINARY_FOLDER)),$(call qstrip,$(CONFIG_BINARY_FOLDER)),$(TOPDIR)/bin/$(BOARD))
 INCLUDE_DIR:=$(TOPDIR)/include
 SCRIPT_DIR:=$(TOPDIR)/scripts
 BUILD_DIR_BASE:=$(TOPDIR)/build_dir
@@ -121,9 +114,10 @@ BUILD_LOG_DIR:=$(TOPDIR)/logs
 PKG_INFO_DIR := $(STAGING_DIR)/pkginfo
 
 TARGET_PATH:=$(STAGING_DIR_HOST)/bin:$(subst $(space),:,$(filter-out .,$(filter-out ./,$(subst :,$(space),$(PATH)))))
-TARGET_CFLAGS:=$(TARGET_OPTIMIZATION)$(if $(CONFIG_DEBUG), -g3)
+TARGET_CFLAGS:=$(TARGET_OPTIMIZATION)$(if $(CONFIG_DEBUG), -g3) $(EXTRA_OPTIMIZATION)
 TARGET_CXXFLAGS = $(TARGET_CFLAGS)
-TARGET_ASFLAGS = $(TARGET_CFLAGS) $(TARGET_ASFLAGS_OVERRIDE)
+TARGET_ASFLAGS_DEFAULT = $(TARGET_CFLAGS)
+TARGET_ASFLAGS = $(TARGET_ASFLAGS_DEFAULT)
 TARGET_CPPFLAGS:=-I$(STAGING_DIR)/usr/include -I$(STAGING_DIR)/include
 TARGET_LDFLAGS:=-L$(STAGING_DIR)/usr/lib -L$(STAGING_DIR)/lib
 ifneq ($(CONFIG_EXTERNAL_TOOLCHAIN),)
@@ -174,9 +168,16 @@ TARGET_PATH_PKG:=$(STAGING_DIR)/host/bin:$(TARGET_PATH)
 
 ifeq ($(CONFIG_SOFT_FLOAT),y)
   SOFT_FLOAT_CONFIG_OPTION:=--with-float=soft
-  TARGET_CFLAGS+= -msoft-float
+  ifeq ($(CONFIG_arm),y)
+    TARGET_CFLAGS+= -mfloat-abi=soft
+  else
+    TARGET_CFLAGS+= -msoft-float
+  endif
 else
   SOFT_FLOAT_CONFIG_OPTION:=
+  ifeq ($(CONFIG_arm),y)
+    TARGET_CFLAGS+= -mfloat-abi=hard
+  endif
 endif
 
 export PATH:=$(TARGET_PATH)
@@ -196,11 +197,12 @@ HOST_LDFLAGS:=-L$(STAGING_DIR_HOST)/lib
 TARGET_CC:=$(TARGET_CROSS)gcc
 TARGET_AR:=$(TARGET_CROSS)ar
 TARGET_RANLIB:=$(TARGET_CROSS)ranlib
-TARGET_CXX:=$(if $(CONFIG_INSTALL_LIBSTDCPP),$(TARGET_CROSS)g++,no)
+TARGET_CXX:=$(TARGET_CROSS)g++
 KPATCH:=$(SCRIPT_DIR)/patch-kernel.sh
 SED:=$(STAGING_DIR_HOST)/bin/sed -i -e
 CP:=cp -fpR
 LN:=ln -sf
+XARGS:=xargs -r
 
 INSTALL_BIN:=install -m0755
 INSTALL_DIR:=install -d -m0755

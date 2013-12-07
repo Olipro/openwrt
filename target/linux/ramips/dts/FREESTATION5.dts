@@ -3,15 +3,20 @@
 /include/ "rt3050.dtsi"
 
 / {
-	compatible = "FREESTATION5", "ralink,rt3052-soc";
+	compatible = "FREESTATION5", "ralink,rt3050-soc";
 	model = "ARC FreeStation5";
 
-	memorydetect {
-		ralink,memory = <0x0 0x200000 0x4000000>;
+	chosen {
+		bootargs = "console=ttyS0,115200";
 	};
 
-	chosen {
-		bootargs = "console=ttyS0,115200 mtdparts=1f000000.cfi:192k(u-boot)ro,64k(u-boot-env)ro,64k(factory)ro,7872k@0x50000(firmware)";
+	pinctrl {
+		state_default: pinctrl0 {
+			gpio {
+				ralink,group = "spi", "i2c", "jtag", "rgmii", "mdio", "uartf";
+				ralink,function = "gpio";
+			};
+		};
 	};
 
 	cfi@1f000000 {
@@ -22,22 +27,69 @@
 		device-width = <2>;
 		#address-cells = <1>;
 		#size-cells = <1>;
+
+		partition@0 {
+			label = "u-boot";
+			reg = <0x0 0x30000>;
+			read-only;
+		};
+
+		partition@30000 {
+			label = "u-boot-env";
+			reg = <0x30000 0x10000>;
+			read-only;
+		};
+
+		factory: partition@40000 {
+			label = "factory";
+			reg = <0x40000 0x10000>;
+			read-only;
+		};
+
+		partition@50000 {
+			label = "firmware";
+			reg = <0x50000 0x7b0000>;
+		};
 	};
 
 	ethernet@10100000 {
-		status = "okay";
+		mtd-mac-address = <&factory 0x28>;
 	};
 
 	esw@10110000 {
-		status = "okay";
-		ralink,portmap = <0x3e>;
-	};
-
-	wmac@10180000 {
-		status = "okay";
+		ralink,portmap = <0x01>;
 	};
 
 	otg@101c0000 {
 		status = "okay";
+	};
+
+	gpio-export {
+		compatible = "gpio-export";
+		// Used to enable power-over-ethernet passthrough from port0 to port1.
+		// Disable passthrough by default to prevent accidental equipment damage.
+		poe {
+			gpio-export,name = "poe-passthrough";
+			gpio-export,output = <1>; // OUT_INIT_HIGH
+			gpios = <&gpio0 11 1>;    // GPIO 11, ACTIVE_LOW
+		};
+	};
+
+	gpio-leds {
+		compatible = "gpio-leds";
+		// The following leds are defined in the ArcOS firmware, but reportedly
+		// not present in the Freestation5 device.
+		wifi {
+			label = "freestation:unknown:wifi";
+			gpios = <&gpio0 7 1>;
+		};
+		powerg {
+			label = "freestation:unknown:powerg";
+			gpios = <&gpio0 9 1>;
+		};
+		usb {
+			label = "freestation:unknown:usb";
+			gpios = <&gpio0 14 1>;
+		};
 	};
 };

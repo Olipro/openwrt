@@ -3,7 +3,7 @@ source "tmp/.config-target.in"
 # Kernel/Hardware features
 
 config HAS_SPE_FPU
-	depends powerpc
+	depends on powerpc
 	select HAS_FPU
 	bool
 
@@ -39,6 +39,9 @@ config RTC_SUPPORT
 config BIG_ENDIAN
 	bool
 
+config USES_DEVICETREE
+	bool
+
 config USES_INITRAMFS
 	bool
 
@@ -46,6 +49,9 @@ config USES_SQUASHFS
 	bool
 
 config USES_JFFS2
+	bool
+
+config USES_JFFS2_NAND
 	bool
 
 config USES_EXT4
@@ -67,7 +73,10 @@ config NOMMU
 	bool
 
 config HAS_MIPS16
-	depends (mips || mipsel || mips64 || mips64el)
+	depends on (mips || mipsel || mips64 || mips64el)
+	bool
+
+config RFKILL_SUPPORT
 	bool
 
 config ARCH_64BIT
@@ -80,6 +89,18 @@ config arm
 
 config armeb
 	select BIG_ENDIAN
+	bool
+
+config arm_v4
+	bool
+
+config arm_v5
+	bool
+
+config arm_v6
+	bool
+
+config arm_v7
 	bool
 
 config avr32
