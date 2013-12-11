@@ -1,6 +1,8 @@
---- a/networking/udhcp/dhcpc.c
-+++ b/networking/udhcp/dhcpc.c
-@@ -677,6 +677,7 @@ static int raw_bcast_from_client_config_
+Index: busybox-1.21.1/networking/udhcp/dhcpc.c
+===================================================================
+--- busybox-1.21.1.orig/networking/udhcp/dhcpc.c
++++ busybox-1.21.1/networking/udhcp/dhcpc.c
+@@ -672,6 +672,7 @@ static int raw_bcast_from_client_config_
  static NOINLINE int send_discover(uint32_t xid, uint32_t requested)
  {
  	struct dhcp_packet packet;
@@ -8,7 +10,7 @@
  
  	/* Fill in: op, htype, hlen, cookie, chaddr fields,
  	 * random xid field (we override it below),
-@@ -694,6 +695,7 @@ static NOINLINE int send_discover(uint32
+@@ -689,6 +690,7 @@ static NOINLINE int send_discover(uint32
  	 */
  	add_client_options(&packet);
  

@@ -259,7 +259,7 @@ config BUSYBOX_CONFIG_HUSH_FUNCTIONS
 
 config BUSYBOX_CONFIG_HUSH_LOCAL
 	bool "Support local builtin"
-	default n
+	default y
 	depends on BUSYBOX_CONFIG_HUSH_FUNCTIONS
 	help
 	  Enable support for local variables in functions.

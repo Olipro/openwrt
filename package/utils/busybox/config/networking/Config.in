@@ -324,8 +324,8 @@ config BUSYBOX_CONFIG_FEATURE_HTTPD_CONFIG_WITH_SCRIPT_INTERPR
 	help
 	  This option enables support for running scripts through an
 	  interpreter. Turn this on if you want PHP scripts to work
-	  properly. You need to supply an additional line in your httpd
-	  config file:
+	  properly. You need to supply an additional line in your
+	  httpd.conf file:
 	  *.php:/path/to/your/php
 
 config BUSYBOX_CONFIG_FEATURE_HTTPD_SET_REMOTE_PORT_TO_ENV
@@ -1044,8 +1044,8 @@ config BUSYBOX_CONFIG_WGET
 	bool "wget"
 	default y
 	help
-	  wget is a utility for non-interactive download of files from HTTP,
-	  HTTPS, and FTP servers.
+	  wget is a utility for non-interactive download of files from HTTP
+	  and FTP servers.
 
 config BUSYBOX_CONFIG_FEATURE_WGET_STATUSBAR
 	bool "Enable a nifty process meter (+2k)"

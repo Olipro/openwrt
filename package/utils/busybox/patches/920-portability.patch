@@ -1,6 +1,8 @@
---- a/scripts/kconfig/mconf.c
-+++ b/scripts/kconfig/mconf.c
-@@ -25,6 +25,10 @@
+Index: busybox-1.21.1/scripts/kconfig/mconf.c
+===================================================================
+--- busybox-1.21.1.orig/scripts/kconfig/mconf.c
++++ busybox-1.21.1/scripts/kconfig/mconf.c
+@@ -27,6 +27,10 @@
  #include <unistd.h>
  #include <locale.h>
  

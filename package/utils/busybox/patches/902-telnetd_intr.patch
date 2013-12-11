@@ -1,6 +1,8 @@
---- a/networking/telnetd.c
-+++ b/networking/telnetd.c
-@@ -330,6 +330,7 @@ make_new_session(
+Index: busybox-1.21.1/networking/telnetd.c
+===================================================================
+--- busybox-1.21.1.orig/networking/telnetd.c
++++ busybox-1.21.1/networking/telnetd.c
+@@ -331,6 +331,7 @@ make_new_session(
  
  	/* Restore default signal handling ASAP */
  	bb_signals((1 << SIGCHLD) + (1 << SIGPIPE), SIG_DFL);

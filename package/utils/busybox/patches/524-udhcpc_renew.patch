@@ -1,6 +1,8 @@
---- a/networking/udhcp/dhcpc.c
-+++ b/networking/udhcp/dhcpc.c
-@@ -1042,7 +1042,6 @@ static void perform_renew(void)
+Index: busybox-1.21.1/networking/udhcp/dhcpc.c
+===================================================================
+--- busybox-1.21.1.orig/networking/udhcp/dhcpc.c
++++ busybox-1.21.1/networking/udhcp/dhcpc.c
+@@ -1078,7 +1078,6 @@ static void perform_renew(void)
  		state = RENEW_REQUESTED;
  		break;
  	case RENEW_REQUESTED: /* impatient are we? fine, square 1 */

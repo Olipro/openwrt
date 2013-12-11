@@ -1,6 +1,8 @@
---- a/include/platform.h
-+++ b/include/platform.h
-@@ -443,6 +443,13 @@ typedef unsigned smalluint;
+Index: busybox-1.21.1/include/platform.h
+===================================================================
+--- busybox-1.21.1.orig/include/platform.h
++++ busybox-1.21.1/include/platform.h
+@@ -453,6 +453,13 @@ typedef unsigned smalluint;
  # undef HAVE_NET_ETHERNET_H
  #endif
  

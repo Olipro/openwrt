@@ -72,7 +72,7 @@ config BUSYBOX_CONFIG_FEATURE_VI_REGEX_SEARCH
 
 config BUSYBOX_CONFIG_FEATURE_VI_USE_SIGNALS
 	bool "Catch signals"
-	default n
+	default y
 	depends on BUSYBOX_CONFIG_VI
 	help
 	  Selecting this option will make busybox vi signal aware. This will
@@ -126,14 +126,6 @@ config BUSYBOX_CONFIG_FEATURE_VI_ASK_TERMINAL
 	  cursor position using "ESC [ 6 n" escape sequence, then read stdin.
 
 	  This is not clean but helps a lot on serial lines and such.
-
-config BUSYBOX_CONFIG_FEATURE_VI_OPTIMIZE_CURSOR
-	bool "Optimize cursor movement"
-	default y
-	depends on BUSYBOX_CONFIG_VI
-	help
-	  This will make the cursor movement faster, but requires more memory
-	  and it makes the applet a tiny bit larger.
 
 config BUSYBOX_CONFIG_AWK
 	bool "awk"

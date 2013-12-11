@@ -1,6 +1,8 @@
---- a/networking/wget.c
-+++ b/networking/wget.c
-@@ -873,7 +873,7 @@ int wget_main(int argc UNUSED_PARAM, cha
+Index: busybox-1.21.1/networking/wget.c
+===================================================================
+--- busybox-1.21.1.orig/networking/wget.c
++++ busybox-1.21.1/networking/wget.c
+@@ -920,7 +920,7 @@ int wget_main(int argc UNUSED_PARAM, cha
  		/* Ignored: */
  		// "tries\0"            Required_argument "t"
  		/* Ignored (we always use PASV): */
