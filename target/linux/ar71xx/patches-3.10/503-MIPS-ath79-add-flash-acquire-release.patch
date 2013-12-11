@@ -1,5 +1,7 @@
---- a/arch/mips/ath79/common.c
-+++ b/arch/mips/ath79/common.c
+Index: linux-3.10.23/arch/mips/ath79/common.c
+===================================================================
+--- linux-3.10.23.orig/arch/mips/ath79/common.c
++++ linux-3.10.23/arch/mips/ath79/common.c
 @@ -22,6 +22,7 @@
  #include "common.h"
  
@@ -25,8 +27,10 @@
 +}
 +EXPORT_SYMBOL_GPL(ath79_flash_release);
 +
---- a/arch/mips/include/asm/mach-ath79/ath79.h
-+++ b/arch/mips/include/asm/mach-ath79/ath79.h
+Index: linux-3.10.23/arch/mips/include/asm/mach-ath79/ath79.h
+===================================================================
+--- linux-3.10.23.orig/arch/mips/include/asm/mach-ath79/ath79.h
++++ linux-3.10.23/arch/mips/include/asm/mach-ath79/ath79.h
 @@ -143,4 +143,7 @@ static inline u32 ath79_reset_rr(unsigne
  void ath79_device_reset_set(u32 mask);
  void ath79_device_reset_clear(u32 mask);

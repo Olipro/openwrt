@@ -1,5 +1,7 @@
---- a/scripts/setlocalversion
-+++ b/scripts/setlocalversion
+Index: linux-3.10.23/scripts/setlocalversion
+===================================================================
+--- linux-3.10.23.orig/scripts/setlocalversion
++++ linux-3.10.23/scripts/setlocalversion
 @@ -167,7 +167,7 @@ else
  	# annotated or signed tagged state (as git describe only
  	# looks at signed or annotated tags - git tag -a/-s) and

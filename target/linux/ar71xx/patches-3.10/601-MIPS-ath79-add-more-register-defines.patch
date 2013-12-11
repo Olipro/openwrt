@@ -1,5 +1,7 @@
---- a/arch/mips/include/asm/mach-ath79/ar71xx_regs.h
-+++ b/arch/mips/include/asm/mach-ath79/ar71xx_regs.h
+Index: linux-3.10.23/arch/mips/include/asm/mach-ath79/ar71xx_regs.h
+===================================================================
+--- linux-3.10.23.orig/arch/mips/include/asm/mach-ath79/ar71xx_regs.h
++++ linux-3.10.23/arch/mips/include/asm/mach-ath79/ar71xx_regs.h
 @@ -21,6 +21,10 @@
  #include <linux/bitops.h>
  

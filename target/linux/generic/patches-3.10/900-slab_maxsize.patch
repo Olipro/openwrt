@@ -1,5 +1,7 @@
---- a/include/linux/slab.h
-+++ b/include/linux/slab.h
+Index: linux-3.10.23/include/linux/slab.h
+===================================================================
+--- linux-3.10.23.orig/include/linux/slab.h
++++ linux-3.10.23/include/linux/slab.h
 @@ -189,8 +189,8 @@ struct kmem_cache {
   * to do various tricks to work around compiler limitations in order to
   * ensure proper constant folding.

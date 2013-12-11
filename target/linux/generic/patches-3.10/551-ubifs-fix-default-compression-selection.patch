@@ -1,5 +1,7 @@
---- a/fs/ubifs/sb.c
-+++ b/fs/ubifs/sb.c
+Index: linux-3.10.23/fs/ubifs/sb.c
+===================================================================
+--- linux-3.10.23.orig/fs/ubifs/sb.c
++++ linux-3.10.23/fs/ubifs/sb.c
 @@ -63,6 +63,17 @@
  /* Default time granularity in nanoseconds */
  #define DEFAULT_TIME_GRAN 1000000000

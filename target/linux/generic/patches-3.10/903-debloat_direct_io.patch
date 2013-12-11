@@ -1,5 +1,7 @@
---- a/fs/Kconfig
-+++ b/fs/Kconfig
+Index: linux-3.10.23/fs/Kconfig
+===================================================================
+--- linux-3.10.23.orig/fs/Kconfig
++++ linux-3.10.23/fs/Kconfig
 @@ -62,6 +62,11 @@ config FILE_LOCKING
            for filesystems like NFS and for the flock() system
            call. Disabling this option saves about 11k.
@@ -12,8 +14,10 @@
  source "fs/notify/Kconfig"
  
  source "fs/quota/Kconfig"
---- a/fs/Makefile
-+++ b/fs/Makefile
+Index: linux-3.10.23/fs/Makefile
+===================================================================
+--- linux-3.10.23.orig/fs/Makefile
++++ linux-3.10.23/fs/Makefile
 @@ -14,7 +14,8 @@ obj-y :=	open.o read_write.o file_table.
  		stack.o fs_struct.o statfs.o
  
@@ -24,8 +28,10 @@
  else
  obj-y +=	no-block.o
  endif
---- a/include/linux/fs.h
-+++ b/include/linux/fs.h
+Index: linux-3.10.23/include/linux/fs.h
+===================================================================
+--- linux-3.10.23.orig/include/linux/fs.h
++++ linux-3.10.23/include/linux/fs.h
 @@ -2468,12 +2468,26 @@ enum {
  	DIO_SKIP_HOLES	= 0x02,
  };
@@ -53,8 +59,10 @@
  
  static inline ssize_t blockdev_direct_IO(int rw, struct kiocb *iocb,
  		struct inode *inode, const struct iovec *iov, loff_t offset,
---- a/fs/fcntl.c
-+++ b/fs/fcntl.c
+Index: linux-3.10.23/fs/fcntl.c
+===================================================================
+--- linux-3.10.23.orig/fs/fcntl.c
++++ linux-3.10.23/fs/fcntl.c
 @@ -51,8 +51,10 @@ static int setfl(int fd, struct file * f
  		   arg |= O_NONBLOCK;
  
@@ -66,8 +74,10 @@
  				return -EINVAL;
  	}
  
---- a/fs/open.c
-+++ b/fs/open.c
+Index: linux-3.10.23/fs/open.c
+===================================================================
+--- linux-3.10.23.orig/fs/open.c
++++ linux-3.10.23/fs/open.c
 @@ -652,9 +652,12 @@ int open_check_o_direct(struct file *f)
  {
  	/* NB: we're sure to have correct a_ops only after f_op->open */

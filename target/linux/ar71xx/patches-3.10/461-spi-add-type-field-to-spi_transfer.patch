@@ -1,5 +1,7 @@
---- a/include/linux/spi/spi.h
-+++ b/include/linux/spi/spi.h
+Index: linux-3.10.23/include/linux/spi/spi.h
+===================================================================
+--- linux-3.10.23.orig/include/linux/spi/spi.h
++++ linux-3.10.23/include/linux/spi/spi.h
 @@ -422,6 +422,12 @@ extern struct spi_master *spi_busnum_to_
  
  /*---------------------------------------------------------------------------*/

@@ -1,5 +1,7 @@
---- a/drivers/net/phy/Kconfig
-+++ b/drivers/net/phy/Kconfig
+Index: linux-3.10.23/drivers/net/phy/Kconfig
+===================================================================
+--- linux-3.10.23.orig/drivers/net/phy/Kconfig
++++ linux-3.10.23/drivers/net/phy/Kconfig
 @@ -12,6 +12,16 @@ menuconfig PHYLIB
  
  if PHYLIB
@@ -17,8 +19,10 @@
  comment "MII PHY device drivers"
  
  config AT803X_PHY
---- a/drivers/net/phy/Makefile
-+++ b/drivers/net/phy/Makefile
+Index: linux-3.10.23/drivers/net/phy/Makefile
+===================================================================
+--- linux-3.10.23.orig/drivers/net/phy/Makefile
++++ linux-3.10.23/drivers/net/phy/Makefile
 @@ -3,6 +3,7 @@
  libphy-objs			:= phy.o phy_device.o mdio_bus.o
  
@@ -27,8 +31,10 @@
  obj-$(CONFIG_MARVELL_PHY)	+= marvell.o
  obj-$(CONFIG_DAVICOM_PHY)	+= davicom.o
  obj-$(CONFIG_CICADA_PHY)	+= cicada.o
---- a/include/uapi/linux/Kbuild
-+++ b/include/uapi/linux/Kbuild
+Index: linux-3.10.23/include/uapi/linux/Kbuild
+===================================================================
+--- linux-3.10.23.orig/include/uapi/linux/Kbuild
++++ linux-3.10.23/include/uapi/linux/Kbuild
 @@ -361,6 +361,7 @@ header-y += stddef.h
  header-y += string.h
  header-y += suspend_ioctls.h

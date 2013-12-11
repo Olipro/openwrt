@@ -1,5 +1,7 @@
---- a/include/linux/netdevice.h
-+++ b/include/linux/netdevice.h
+Index: linux-3.10.23/include/linux/netdevice.h
+===================================================================
+--- linux-3.10.23.orig/include/linux/netdevice.h
++++ linux-3.10.23/include/linux/netdevice.h
 @@ -139,7 +139,7 @@ static inline bool dev_xmit_complete(int
   */
  

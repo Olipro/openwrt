@@ -1,5 +1,7 @@
+Index: linux-3.10.23/drivers/mmc/host/gpiommc.c
+===================================================================
 --- /dev/null
-+++ b/drivers/mmc/host/gpiommc.c
++++ linux-3.10.23/drivers/mmc/host/gpiommc.c
 @@ -0,0 +1,609 @@
 +/*
 + * Driver an MMC/SD card on a bitbanging GPIO SPI bus.
@@ -610,8 +612,10 @@
 +	platform_driver_unregister(&gpiommc_plat_driver);
 +}
 +module_exit(gpiommc_modexit);
---- a/drivers/mmc/host/Kconfig
-+++ b/drivers/mmc/host/Kconfig
+Index: linux-3.10.23/drivers/mmc/host/Kconfig
+===================================================================
+--- linux-3.10.23.orig/drivers/mmc/host/Kconfig
++++ linux-3.10.23/drivers/mmc/host/Kconfig
 @@ -474,6 +474,31 @@ config MMC_SDHI
  	  This provides support for the SDHI SD/SDIO controller found in
  	  SuperH and ARM SH-Mobile SoCs
@@ -644,8 +648,10 @@
  config MMC_CB710
  	tristate "ENE CB710 MMC/SD Interface support"
  	depends on PCI && GENERIC_HARDIRQS
---- a/drivers/mmc/host/Makefile
-+++ b/drivers/mmc/host/Makefile
+Index: linux-3.10.23/drivers/mmc/host/Makefile
+===================================================================
+--- linux-3.10.23.orig/drivers/mmc/host/Makefile
++++ linux-3.10.23/drivers/mmc/host/Makefile
 @@ -38,6 +38,7 @@ tmio_mmc_core-$(subst m,y,$(CONFIG_MMC_S
  obj-$(CONFIG_MMC_SDHI)		+= sh_mobile_sdhi.o
  obj-$(CONFIG_MMC_CB710)		+= cb710-mmc.o
@@ -654,8 +660,10 @@
  obj-$(CONFIG_SDH_BFIN)		+= bfin_sdh.o
  obj-$(CONFIG_MMC_DW)		+= dw_mmc.o
  obj-$(CONFIG_MMC_DW_PLTFM)	+= dw_mmc-pltfm.o
+Index: linux-3.10.23/include/linux/mmc/gpiommc.h
+===================================================================
 --- /dev/null
-+++ b/include/linux/mmc/gpiommc.h
++++ linux-3.10.23/include/linux/mmc/gpiommc.h
 @@ -0,0 +1,71 @@
 +/*
 + * Device driver for MMC/SD cards driven over a GPIO bus.
@@ -728,8 +736,10 @@
 +int gpiommc_next_id(void);
 +
 +#endif /* LINUX_GPIOMMC_H_ */
+Index: linux-3.10.23/Documentation/gpiommc.txt
+===================================================================
 --- /dev/null
-+++ b/Documentation/gpiommc.txt
++++ linux-3.10.23/Documentation/gpiommc.txt
 @@ -0,0 +1,97 @@
 +GPIOMMC - Driver for an MMC/SD card on a bitbanging GPIO SPI bus
 +================================================================
@@ -828,8 +838,10 @@
 +(/config/gpiommc/my_mmc in this example).
 +There's no need to first unregister the device before removing it. That will
 +be done automatically.
---- a/MAINTAINERS
-+++ b/MAINTAINERS
+Index: linux-3.10.23/MAINTAINERS
+===================================================================
+--- linux-3.10.23.orig/MAINTAINERS
++++ linux-3.10.23/MAINTAINERS
 @@ -3670,6 +3670,11 @@ L:	linuxppc-dev@lists.ozlabs.org
  S:	Odd Fixes
  F:	drivers/tty/hvc/

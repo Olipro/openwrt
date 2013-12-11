@@ -1,5 +1,7 @@
---- a/arch/mips/ath79/dev-wmac.c
-+++ b/arch/mips/ath79/dev-wmac.c
+Index: linux-3.10.23/arch/mips/ath79/dev-wmac.c
+===================================================================
+--- linux-3.10.23.orig/arch/mips/ath79/dev-wmac.c
++++ linux-3.10.23/arch/mips/ath79/dev-wmac.c
 @@ -165,6 +165,137 @@ static void qca955x_wmac_setup(void)
  		ath79_wmac_data.is_clk_25mhz = true;
  }
@@ -138,8 +140,10 @@
  void __init ath79_register_wmac(u8 *cal_data, u8 *mac_addr)
  {
  	if (soc_is_ar913x())
---- a/arch/mips/ath79/dev-wmac.h
-+++ b/arch/mips/ath79/dev-wmac.h
+Index: linux-3.10.23/arch/mips/ath79/dev-wmac.h
+===================================================================
+--- linux-3.10.23.orig/arch/mips/ath79/dev-wmac.h
++++ linux-3.10.23/arch/mips/ath79/dev-wmac.h
 @@ -14,5 +14,6 @@
  
  void ath79_register_wmac(u8 *cal_data, u8 *mac_addr);
@@ -147,8 +151,10 @@
 +bool ar93xx_wmac_read_mac_address(u8 *dest);
  
  #endif /* _ATH79_DEV_WMAC_H */
---- a/arch/mips/include/asm/mach-ath79/ar71xx_regs.h
-+++ b/arch/mips/include/asm/mach-ath79/ar71xx_regs.h
+Index: linux-3.10.23/arch/mips/include/asm/mach-ath79/ar71xx_regs.h
+===================================================================
+--- linux-3.10.23.orig/arch/mips/include/asm/mach-ath79/ar71xx_regs.h
++++ linux-3.10.23/arch/mips/include/asm/mach-ath79/ar71xx_regs.h
 @@ -113,6 +113,14 @@
  #define QCA955X_EHCI1_BASE	0x1b400000
  #define QCA955X_EHCI_SIZE	0x1000

@@ -17,8 +17,10 @@ Signed-off-by: Felix Fietkau <nbd@openwrt.org>
  arch/mips/mm/dma-default.c          | 163 ++--------------
  3 files changed, 373 insertions(+), 154 deletions(-)
 
---- a/arch/mips/Kconfig
-+++ b/arch/mips/Kconfig
+Index: linux-3.10.23/arch/mips/Kconfig
+===================================================================
+--- linux-3.10.23.orig/arch/mips/Kconfig
++++ linux-3.10.23/arch/mips/Kconfig
 @@ -1431,6 +1431,7 @@ config CPU_CAVIUM_OCTEON
  	select LIBFDT
  	select USE_OF
@@ -37,8 +39,10 @@ Signed-off-by: Felix Fietkau <nbd@openwrt.org>
  #
  # CPU may reorder R->R, R->W, W->R, W->W
  # Reordering beyond LL and SC is handled in WEAK_REORDERING_BEYOND_LLSC
---- a/arch/mips/include/asm/dma-mapping.h
-+++ b/arch/mips/include/asm/dma-mapping.h
+Index: linux-3.10.23/arch/mips/include/asm/dma-mapping.h
+===================================================================
+--- linux-3.10.23.orig/arch/mips/include/asm/dma-mapping.h
++++ linux-3.10.23/arch/mips/include/asm/dma-mapping.h
 @@ -1,6 +1,12 @@
  #ifndef _ASM_DMA_MAPPING_H
  #define _ASM_DMA_MAPPING_H
@@ -448,8 +452,10 @@ Signed-off-by: Felix Fietkau <nbd@openwrt.org>
  
  	debug_dma_free_coherent(dev, size, vaddr, dma_handle);
  }
---- a/arch/mips/mm/dma-default.c
-+++ b/arch/mips/mm/dma-default.c
+Index: linux-3.10.23/arch/mips/mm/dma-default.c
+===================================================================
+--- linux-3.10.23.orig/arch/mips/mm/dma-default.c
++++ linux-3.10.23/arch/mips/mm/dma-default.c
 @@ -24,7 +24,7 @@
  
  #ifdef CONFIG_DMA_MAYBE_COHERENT

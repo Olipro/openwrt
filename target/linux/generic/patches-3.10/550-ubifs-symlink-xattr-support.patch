@@ -1,5 +1,7 @@
---- a/fs/ubifs/file.c
-+++ b/fs/ubifs/file.c
+Index: linux-3.10.23/fs/ubifs/file.c
+===================================================================
+--- linux-3.10.23.orig/fs/ubifs/file.c
++++ linux-3.10.23/fs/ubifs/file.c
 @@ -1576,6 +1576,12 @@ const struct inode_operations ubifs_syml
  	.follow_link = ubifs_follow_link,
  	.setattr     = ubifs_setattr,
@@ -13,8 +15,10 @@
  };
  
  const struct file_operations ubifs_file_operations = {
---- a/fs/ubifs/journal.c
-+++ b/fs/ubifs/journal.c
+Index: linux-3.10.23/fs/ubifs/journal.c
+===================================================================
+--- linux-3.10.23.orig/fs/ubifs/journal.c
++++ linux-3.10.23/fs/ubifs/journal.c
 @@ -553,7 +553,8 @@ int ubifs_jnl_update(struct ubifs_info *
  
  	dbg_jnl("ino %lu, dent '%.*s', data len %d in dir ino %lu",
@@ -49,8 +53,10 @@
  	if (err)
  		goto out_ro;
  
---- a/fs/ubifs/xattr.c
-+++ b/fs/ubifs/xattr.c
+Index: linux-3.10.23/fs/ubifs/xattr.c
+===================================================================
+--- linux-3.10.23.orig/fs/ubifs/xattr.c
++++ linux-3.10.23/fs/ubifs/xattr.c
 @@ -209,12 +209,12 @@ static int change_xattr(struct ubifs_inf
  		goto out_free;
  	}

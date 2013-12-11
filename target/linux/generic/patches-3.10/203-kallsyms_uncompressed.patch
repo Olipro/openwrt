@@ -1,5 +1,7 @@
---- a/scripts/kallsyms.c
-+++ b/scripts/kallsyms.c
+Index: linux-3.10.23/scripts/kallsyms.c
+===================================================================
+--- linux-3.10.23.orig/scripts/kallsyms.c
++++ linux-3.10.23/scripts/kallsyms.c
 @@ -54,6 +54,7 @@ static struct text_range text_ranges[] =
  static struct sym_entry *table;
  static unsigned int table_size, table_cnt;
@@ -49,8 +51,10 @@
  				usage();
  		}
  	} else if (argc != 1)
---- a/init/Kconfig
-+++ b/init/Kconfig
+Index: linux-3.10.23/init/Kconfig
+===================================================================
+--- linux-3.10.23.orig/init/Kconfig
++++ linux-3.10.23/init/Kconfig
 @@ -1245,6 +1245,17 @@ config SYSCTL_ARCH_UNALIGN_ALLOW
  	  the unaligned access emulation.
  	  see arch/parisc/kernel/unaligned.c for reference
@@ -69,8 +73,10 @@
  config HOTPLUG
  	def_bool y
  
---- a/scripts/link-vmlinux.sh
-+++ b/scripts/link-vmlinux.sh
+Index: linux-3.10.23/scripts/link-vmlinux.sh
+===================================================================
+--- linux-3.10.23.orig/scripts/link-vmlinux.sh
++++ linux-3.10.23/scripts/link-vmlinux.sh
 @@ -84,6 +84,10 @@ kallsyms()
  
  	kallsymopt="${kallsymopt} --page-offset=$CONFIG_PAGE_OFFSET"
@@ -82,8 +88,10 @@
  	local aflags="${KBUILD_AFLAGS} ${KBUILD_AFLAGS_KERNEL}               \
  		      ${NOSTDINC_FLAGS} ${LINUXINCLUDE} ${KBUILD_CPPFLAGS}"
  
---- a/kernel/kallsyms.c
-+++ b/kernel/kallsyms.c
+Index: linux-3.10.23/kernel/kallsyms.c
+===================================================================
+--- linux-3.10.23.orig/kernel/kallsyms.c
++++ linux-3.10.23/kernel/kallsyms.c
 @@ -108,6 +108,11 @@ static unsigned int kallsyms_expand_symb
  	 * For every byte on the compressed symbol data, copy the table
  	 * entry for that byte.

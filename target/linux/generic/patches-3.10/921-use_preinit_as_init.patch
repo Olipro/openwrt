@@ -1,5 +1,7 @@
---- a/init/main.c
-+++ b/init/main.c
+Index: linux-3.10.23/init/main.c
+===================================================================
+--- linux-3.10.23.orig/init/main.c
++++ linux-3.10.23/init/main.c
 @@ -840,7 +840,8 @@ static int __ref kernel_init(void *unuse
  		pr_err("Failed to execute %s.  Attempting defaults...\n",
  			execute_command);

@@ -1,5 +1,7 @@
---- a/arch/mips/include/asm/mach-ath79/cpu-feature-overrides.h
-+++ b/arch/mips/include/asm/mach-ath79/cpu-feature-overrides.h
+Index: linux-3.10.23/arch/mips/include/asm/mach-ath79/cpu-feature-overrides.h
+===================================================================
+--- linux-3.10.23.orig/arch/mips/include/asm/mach-ath79/cpu-feature-overrides.h
++++ linux-3.10.23/arch/mips/include/asm/mach-ath79/cpu-feature-overrides.h
 @@ -36,6 +36,7 @@
  #define cpu_has_mdmx		0
  #define cpu_has_mips3d		0

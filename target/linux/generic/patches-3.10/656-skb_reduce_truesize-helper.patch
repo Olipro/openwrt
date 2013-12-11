@@ -12,9 +12,11 @@ when needed.
  include/linux/skbuff.h |   18 ++++++++++++++++++
  1 file changed, 18 insertions(+)
 
---- a/include/linux/skbuff.h
-+++ b/include/linux/skbuff.h
-@@ -1898,6 +1898,24 @@ static inline void pskb_trim_unique(stru
+Index: linux-3.10.23/include/linux/skbuff.h
+===================================================================
+--- linux-3.10.23.orig/include/linux/skbuff.h
++++ linux-3.10.23/include/linux/skbuff.h
+@@ -1889,6 +1889,24 @@ static inline void pskb_trim_unique(stru
  	BUG_ON(err);
  }
  

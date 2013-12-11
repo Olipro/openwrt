@@ -10,8 +10,10 @@ Signed-off-by: Jonas Gorsi <jogo@openwrt.org>
  target/linux/generic/files/drivers/net/phy/mvswitch.c | 6 +++---
  1 file changed, 3 insertions(+), 3 deletions(-)
 
---- a/drivers/net/phy/mvswitch.c
-+++ b/drivers/net/phy/mvswitch.c
+Index: linux-3.10.23/drivers/net/phy/mvswitch.c
+===================================================================
+--- linux-3.10.23.orig/drivers/net/phy/mvswitch.c
++++ linux-3.10.23/drivers/net/phy/mvswitch.c
 @@ -173,7 +173,7 @@ mvswitch_mangle_rx(struct net_device *de
  	if (vlan == -1)
  		return;

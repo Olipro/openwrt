@@ -1,5 +1,7 @@
---- a/drivers/mtd/Kconfig
-+++ b/drivers/mtd/Kconfig
+Index: linux-3.10.23/drivers/mtd/Kconfig
+===================================================================
+--- linux-3.10.23.orig/drivers/mtd/Kconfig
++++ linux-3.10.23/drivers/mtd/Kconfig
 @@ -37,6 +37,17 @@ config MTD_UIMAGE_SPLIT
  	depends on MTD_SPLIT_FIRMWARE
  	default y
@@ -18,8 +20,10 @@
  config MTD_SPLIT
  	def_bool n
  	help 
---- a/drivers/mtd/Makefile
-+++ b/drivers/mtd/Makefile
+Index: linux-3.10.23/drivers/mtd/Makefile
+===================================================================
+--- linux-3.10.23.orig/drivers/mtd/Makefile
++++ linux-3.10.23/drivers/mtd/Makefile
 @@ -7,6 +7,7 @@ obj-$(CONFIG_MTD)		+= mtd.o
  mtd-y				:= mtdcore.o mtdsuper.o mtdconcat.o mtdpart.o mtdchar.o
  

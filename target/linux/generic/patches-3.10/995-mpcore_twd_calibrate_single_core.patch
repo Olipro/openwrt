@@ -1,5 +1,7 @@
---- a/arch/arm/kernel/smp_twd.c
-+++ b/arch/arm/kernel/smp_twd.c
+Index: linux-3.10.23/arch/arm/kernel/smp_twd.c
+===================================================================
+--- linux-3.10.23.orig/arch/arm/kernel/smp_twd.c
++++ linux-3.10.23/arch/arm/kernel/smp_twd.c
 @@ -188,7 +188,7 @@ core_initcall(twd_cpufreq_init);
  
  #endif

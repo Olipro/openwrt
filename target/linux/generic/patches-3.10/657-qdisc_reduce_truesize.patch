@@ -11,8 +11,10 @@ commont qdiscs.
  net/sched/sch_fq_codel.c |    2 ++
  3 files changed, 12 insertions(+), 4 deletions(-)
 
---- a/net/sched/sch_codel.c
-+++ b/net/sched/sch_codel.c
+Index: linux-3.10.23/net/sched/sch_codel.c
+===================================================================
+--- linux-3.10.23.orig/net/sched/sch_codel.c
++++ linux-3.10.23/net/sched/sch_codel.c
 @@ -96,6 +96,8 @@ static int codel_qdisc_enqueue(struct sk
  	struct codel_sched_data *q;
  
@@ -22,8 +24,10 @@ commont qdiscs.
  		codel_set_enqueue_time(skb);
  		return qdisc_enqueue_tail(skb, sch);
  	}
---- a/net/sched/sch_fifo.c
-+++ b/net/sched/sch_fifo.c
+Index: linux-3.10.23/net/sched/sch_fifo.c
+===================================================================
+--- linux-3.10.23.orig/net/sched/sch_fifo.c
++++ linux-3.10.23/net/sched/sch_fifo.c
 @@ -29,17 +29,21 @@ static int bfifo_enqueue(struct sk_buff
  
  static int pfifo_enqueue(struct sk_buff *skb, struct Qdisc *sch)
@@ -50,8 +54,10 @@ commont qdiscs.
  	/* queue full, remove one skb to fulfill the limit */
  	__qdisc_queue_drop_head(sch, &sch->q);
  	sch->qstats.drops++;
---- a/net/sched/sch_fq_codel.c
-+++ b/net/sched/sch_fq_codel.c
+Index: linux-3.10.23/net/sched/sch_fq_codel.c
+===================================================================
+--- linux-3.10.23.orig/net/sched/sch_fq_codel.c
++++ linux-3.10.23/net/sched/sch_fq_codel.c
 @@ -182,6 +182,8 @@ static int fq_codel_enqueue(struct sk_bu
  		return ret;
  	}

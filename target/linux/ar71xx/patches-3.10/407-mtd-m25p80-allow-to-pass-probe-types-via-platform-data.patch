@@ -1,5 +1,7 @@
---- a/drivers/mtd/devices/m25p80.c
-+++ b/drivers/mtd/devices/m25p80.c
+Index: linux-3.10.23/drivers/mtd/devices/m25p80.c
+===================================================================
+--- linux-3.10.23.orig/drivers/mtd/devices/m25p80.c
++++ linux-3.10.23/drivers/mtd/devices/m25p80.c
 @@ -1120,7 +1120,9 @@ static int m25p_probe(struct spi_device
  	/* partitions should match sector boundaries; and it may be good to
  	 * use readonly partitions for writeprotected sectors (BP2..BP0).
@@ -11,8 +13,10 @@
  			data ? data->parts : NULL,
  			data ? data->nr_parts : 0);
  }
---- a/include/linux/spi/flash.h
-+++ b/include/linux/spi/flash.h
+Index: linux-3.10.23/include/linux/spi/flash.h
+===================================================================
+--- linux-3.10.23.orig/include/linux/spi/flash.h
++++ linux-3.10.23/include/linux/spi/flash.h
 @@ -24,6 +24,7 @@ struct flash_platform_data {
  	unsigned int	nr_parts;
  

@@ -1,5 +1,7 @@
---- a/drivers/bcma/Kconfig
-+++ b/drivers/bcma/Kconfig
+Index: linux-3.10.23/drivers/bcma/Kconfig
+===================================================================
+--- linux-3.10.23.orig/drivers/bcma/Kconfig
++++ linux-3.10.23/drivers/bcma/Kconfig
 @@ -26,6 +26,7 @@ config BCMA_HOST_PCI_POSSIBLE
  config BCMA_HOST_PCI
  	bool "Support for BCMA on PCI-host bus"
@@ -25,8 +27,10 @@
  
  config BCMA_DRIVER_MIPS
  	bool "BCMA Broadcom MIPS core driver"
---- a/drivers/bcma/bcma_private.h
-+++ b/drivers/bcma/bcma_private.h
+Index: linux-3.10.23/drivers/bcma/bcma_private.h
+===================================================================
+--- linux-3.10.23.orig/drivers/bcma/bcma_private.h
++++ linux-3.10.23/drivers/bcma/bcma_private.h
 @@ -22,6 +22,8 @@
  struct bcma_bus;
  
@@ -36,8 +40,10 @@
  int bcma_bus_register(struct bcma_bus *bus);
  void bcma_bus_unregister(struct bcma_bus *bus);
  int __init bcma_bus_early_register(struct bcma_bus *bus,
---- a/drivers/bcma/core.c
-+++ b/drivers/bcma/core.c
+Index: linux-3.10.23/drivers/bcma/core.c
+===================================================================
+--- linux-3.10.23.orig/drivers/bcma/core.c
++++ linux-3.10.23/drivers/bcma/core.c
 @@ -9,6 +9,25 @@
  #include <linux/export.h>
  #include <linux/bcma/bcma.h>
@@ -91,8 +97,10 @@
  	udelay(1);
  
  	bcma_awrite32(core, BCMA_IOCTL, (BCMA_IOCTL_CLK | flags));
---- a/drivers/bcma/driver_chipcommon.c
-+++ b/drivers/bcma/driver_chipcommon.c
+Index: linux-3.10.23/drivers/bcma/driver_chipcommon.c
+===================================================================
+--- linux-3.10.23.orig/drivers/bcma/driver_chipcommon.c
++++ linux-3.10.23/drivers/bcma/driver_chipcommon.c
 @@ -140,8 +140,15 @@ void bcma_core_chipcommon_init(struct bc
  	bcma_core_chipcommon_early_init(cc);
  
@@ -111,8 +119,10 @@
  	}
  
  	if (cc->capabilities & BCMA_CC_CAP_PMU)
---- a/drivers/bcma/driver_chipcommon_pmu.c
-+++ b/drivers/bcma/driver_chipcommon_pmu.c
+Index: linux-3.10.23/drivers/bcma/driver_chipcommon_pmu.c
+===================================================================
+--- linux-3.10.23.orig/drivers/bcma/driver_chipcommon_pmu.c
++++ linux-3.10.23/drivers/bcma/driver_chipcommon_pmu.c
 @@ -56,6 +56,109 @@ void bcma_chipco_regctl_maskset(struct b
  }
  EXPORT_SYMBOL_GPL(bcma_chipco_regctl_maskset);
@@ -257,8 +267,10 @@
  	bcma_pmu_resources_init(cc);
  	bcma_pmu_workarounds(cc);
  }
---- a/drivers/bcma/driver_chipcommon_sflash.c
-+++ b/drivers/bcma/driver_chipcommon_sflash.c
+Index: linux-3.10.23/drivers/bcma/driver_chipcommon_sflash.c
+===================================================================
+--- linux-3.10.23.orig/drivers/bcma/driver_chipcommon_sflash.c
++++ linux-3.10.23/drivers/bcma/driver_chipcommon_sflash.c
 @@ -30,7 +30,7 @@ struct bcma_sflash_tbl_e {
  	u16 numblocks;
  };
@@ -295,8 +307,10 @@
  	u32 id, id2;
  
  	switch (cc->capabilities & BCMA_CC_CAP_FLASHT) {
---- a/drivers/bcma/host_pci.c
-+++ b/drivers/bcma/host_pci.c
+Index: linux-3.10.23/drivers/bcma/host_pci.c
+===================================================================
+--- linux-3.10.23.orig/drivers/bcma/host_pci.c
++++ linux-3.10.23/drivers/bcma/host_pci.c
 @@ -188,8 +188,11 @@ static int bcma_host_pci_probe(struct pc
  		pci_write_config_dword(dev, 0x40, val & 0xffff00ff);
  
@@ -326,8 +340,10 @@
  	{ PCI_DEVICE(PCI_VENDOR_ID_BROADCOM, 0x4727) },
  	{ 0, },
  };
---- a/drivers/bcma/main.c
-+++ b/drivers/bcma/main.c
+Index: linux-3.10.23/drivers/bcma/main.c
+===================================================================
+--- linux-3.10.23.orig/drivers/bcma/main.c
++++ linux-3.10.23/drivers/bcma/main.c
 @@ -93,6 +93,25 @@ struct bcma_device *bcma_find_core_unit(
  	return NULL;
  }
@@ -363,8 +379,10 @@
  	}
  
  	/* Early init CC core */
---- a/drivers/bcma/sprom.c
-+++ b/drivers/bcma/sprom.c
+Index: linux-3.10.23/drivers/bcma/sprom.c
+===================================================================
+--- linux-3.10.23.orig/drivers/bcma/sprom.c
++++ linux-3.10.23/drivers/bcma/sprom.c
 @@ -72,12 +72,12 @@ fail:
   * R/W ops.
   **************************************************/
@@ -529,8 +547,10 @@
 -	kfree(sprom);
  	return err;
  }
---- a/include/linux/bcma/bcma.h
-+++ b/include/linux/bcma/bcma.h
+Index: linux-3.10.23/include/linux/bcma/bcma.h
+===================================================================
+--- linux-3.10.23.orig/include/linux/bcma/bcma.h
++++ linux-3.10.23/include/linux/bcma/bcma.h
 @@ -72,7 +72,19 @@ struct bcma_host_ops {
  /* Core-ID values. */
  #define BCMA_CORE_OOB_ROUTER		0x367	/* Out of band */
@@ -571,8 +591,10 @@
  
  /* Board types (on PCI usually equals to the subsystem dev id) */
  /* BCM4313 */
---- a/include/linux/bcma/bcma_driver_chipcommon.h
-+++ b/include/linux/bcma/bcma_driver_chipcommon.h
+Index: linux-3.10.23/include/linux/bcma/bcma_driver_chipcommon.h
+===================================================================
+--- linux-3.10.23.orig/include/linux/bcma/bcma_driver_chipcommon.h
++++ linux-3.10.23/include/linux/bcma/bcma_driver_chipcommon.h
 @@ -330,6 +330,8 @@
  #define BCMA_CC_PMU_CAP			0x0604 /* PMU capabilities */
  #define  BCMA_CC_PMU_CAP_REVISION	0x000000FF /* Revision mask */
@@ -656,8 +678,10 @@
  /* Data for the PMU, if available.
   * Check availability with ((struct bcma_chipcommon)->capabilities & BCMA_CC_CAP_PMU)
   */
---- a/drivers/bcma/driver_pci.c
-+++ b/drivers/bcma/driver_pci.c
+Index: linux-3.10.23/drivers/bcma/driver_pci.c
+===================================================================
+--- linux-3.10.23.orig/drivers/bcma/driver_pci.c
++++ linux-3.10.23/drivers/bcma/driver_pci.c
 @@ -31,7 +31,7 @@ static void bcma_pcie_write(struct bcma_
  	pcicore_write32(pc, BCMA_CORE_PCI_PCIEIND_DATA, data);
  }
@@ -772,8 +796,10 @@
 +	bcma_core_pci_extend_L1timer(pc, false);
 +}
 +EXPORT_SYMBOL_GPL(bcma_core_pci_down);
---- a/drivers/bcma/driver_pci_host.c
-+++ b/drivers/bcma/driver_pci_host.c
+Index: linux-3.10.23/drivers/bcma/driver_pci_host.c
+===================================================================
+--- linux-3.10.23.orig/drivers/bcma/driver_pci_host.c
++++ linux-3.10.23/drivers/bcma/driver_pci_host.c
 @@ -581,6 +581,7 @@ DECLARE_PCI_FIXUP_HEADER(PCI_ANY_ID, PCI
  int bcma_core_pci_plat_dev_init(struct pci_dev *dev)
  {
@@ -794,8 +820,10 @@
  	return 0;
  }
  EXPORT_SYMBOL(bcma_core_pci_plat_dev_init);
---- a/drivers/bcma/scan.c
-+++ b/drivers/bcma/scan.c
+Index: linux-3.10.23/drivers/bcma/scan.c
+===================================================================
+--- linux-3.10.23.orig/drivers/bcma/scan.c
++++ linux-3.10.23/drivers/bcma/scan.c
 @@ -32,6 +32,18 @@ static const struct bcma_device_id_name
  	{ BCMA_CORE_4706_CHIPCOMMON, "BCM4706 ChipCommon" },
  	{ BCMA_CORE_4706_SOC_RAM, "BCM4706 SOC RAM" },
@@ -889,8 +917,10 @@
  				/* no more entries for port _i_ */
  				/* pr_debug("erom: master wrapper %d "
  				 * has %d descriptors\n", i, j); */
---- a/include/linux/bcma/bcma_driver_pci.h
-+++ b/include/linux/bcma/bcma_driver_pci.h
+Index: linux-3.10.23/include/linux/bcma/bcma_driver_pci.h
+===================================================================
+--- linux-3.10.23.orig/include/linux/bcma/bcma_driver_pci.h
++++ linux-3.10.23/include/linux/bcma/bcma_driver_pci.h
 @@ -181,10 +181,31 @@ struct pci_dev;
  
  #define BCMA_CORE_PCI_CFG_DEVCTRL		0xd8
@@ -934,8 +964,10 @@
  
  extern int bcma_core_pci_pcibios_map_irq(const struct pci_dev *dev);
  extern int bcma_core_pci_plat_dev_init(struct pci_dev *dev);
---- a/drivers/net/wireless/brcm80211/brcmsmac/aiutils.c
-+++ b/drivers/net/wireless/brcm80211/brcmsmac/aiutils.c
+Index: linux-3.10.23/drivers/net/wireless/brcm80211/brcmsmac/aiutils.c
+===================================================================
+--- linux-3.10.23.orig/drivers/net/wireless/brcm80211/brcmsmac/aiutils.c
++++ linux-3.10.23/drivers/net/wireless/brcm80211/brcmsmac/aiutils.c
 @@ -679,27 +679,6 @@ bool ai_clkctl_cc(struct si_pub *sih, en
  	return mode == BCMA_CLKMODE_FAST;
  }
@@ -964,8 +996,10 @@
  /* Enable BT-COEX & Ex-PA for 4313 */
  void ai_epa_4313war(struct si_pub *sih)
  {
---- a/drivers/net/wireless/brcm80211/brcmsmac/aiutils.h
-+++ b/drivers/net/wireless/brcm80211/brcmsmac/aiutils.h
+Index: linux-3.10.23/drivers/net/wireless/brcm80211/brcmsmac/aiutils.h
+===================================================================
+--- linux-3.10.23.orig/drivers/net/wireless/brcm80211/brcmsmac/aiutils.h
++++ linux-3.10.23/drivers/net/wireless/brcm80211/brcmsmac/aiutils.h
 @@ -183,9 +183,6 @@ extern u16 ai_clkctl_fast_pwrup_delay(st
  extern bool ai_clkctl_cc(struct si_pub *sih, enum bcma_clkmode mode);
  extern bool ai_deviceremoved(struct si_pub *sih);
@@ -976,8 +1010,10 @@
  /* Enable Ex-PA for 4313 */
  extern void ai_epa_4313war(struct si_pub *sih);
  
---- a/drivers/net/wireless/brcm80211/brcmsmac/main.c
-+++ b/drivers/net/wireless/brcm80211/brcmsmac/main.c
+Index: linux-3.10.23/drivers/net/wireless/brcm80211/brcmsmac/main.c
+===================================================================
+--- linux-3.10.23.orig/drivers/net/wireless/brcm80211/brcmsmac/main.c
++++ linux-3.10.23/drivers/net/wireless/brcm80211/brcmsmac/main.c
 @@ -4667,7 +4667,7 @@ static int brcms_b_attach(struct brcms_c
  	brcms_c_coredisable(wlc_hw);
  

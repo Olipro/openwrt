@@ -1,5 +1,7 @@
---- a/include/uapi/linux/netfilter_ipv4/ip_tables.h
-+++ b/include/uapi/linux/netfilter_ipv4/ip_tables.h
+Index: linux-3.10.23/include/uapi/linux/netfilter_ipv4/ip_tables.h
+===================================================================
+--- linux-3.10.23.orig/include/uapi/linux/netfilter_ipv4/ip_tables.h
++++ linux-3.10.23/include/uapi/linux/netfilter_ipv4/ip_tables.h
 @@ -87,6 +87,7 @@ struct ipt_ip {
  #define IPT_F_FRAG		0x01	/* Set if rule is a fragment rule */
  #define IPT_F_GOTO		0x02	/* Set if jump is a goto */
@@ -8,8 +10,10 @@
  
  /* Values for "inv" field in struct ipt_ip. */
  #define IPT_INV_VIA_IN		0x01	/* Invert the sense of IN IFACE. */
---- a/net/ipv4/netfilter/ip_tables.c
-+++ b/net/ipv4/netfilter/ip_tables.c
+Index: linux-3.10.23/net/ipv4/netfilter/ip_tables.c
+===================================================================
+--- linux-3.10.23.orig/net/ipv4/netfilter/ip_tables.c
++++ linux-3.10.23/net/ipv4/netfilter/ip_tables.c
 @@ -82,6 +82,9 @@ ip_packet_match(const struct iphdr *ip,
  
  #define FWINV(bool, invflg) ((bool) ^ !!(ipinfo->invflags & (invflg)))

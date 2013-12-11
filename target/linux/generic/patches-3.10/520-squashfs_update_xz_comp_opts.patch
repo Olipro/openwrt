@@ -9,8 +9,10 @@ one.
  fs/squashfs/xz_wrapper.c |    4 +++-
  1 files changed, 3 insertions(+), 1 deletions(-)
 
---- a/fs/squashfs/xz_wrapper.c
-+++ b/fs/squashfs/xz_wrapper.c
+Index: linux-3.10.23/fs/squashfs/xz_wrapper.c
+===================================================================
+--- linux-3.10.23.orig/fs/squashfs/xz_wrapper.c
++++ linux-3.10.23/fs/squashfs/xz_wrapper.c
 @@ -39,8 +39,10 @@ struct squashfs_xz {
  };
  

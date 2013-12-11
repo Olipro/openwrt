@@ -1,5 +1,7 @@
---- a/drivers/leds/Kconfig
-+++ b/drivers/leds/Kconfig
+Index: linux-3.10.23/drivers/leds/Kconfig
+===================================================================
+--- linux-3.10.23.orig/drivers/leds/Kconfig
++++ linux-3.10.23/drivers/leds/Kconfig
 @@ -479,6 +479,13 @@ config LEDS_BLINKM
  	  This option enables support for the BlinkM RGB LED connected
  	  through I2C. Say Y to enable support for the BlinkM LED.
@@ -14,8 +16,10 @@
  comment "LED Triggers"
  source "drivers/leds/trigger/Kconfig"
  
---- a/drivers/leds/Makefile
-+++ b/drivers/leds/Makefile
+Index: linux-3.10.23/drivers/leds/Makefile
+===================================================================
+--- linux-3.10.23.orig/drivers/leds/Makefile
++++ linux-3.10.23/drivers/leds/Makefile
 @@ -40,6 +40,7 @@ obj-$(CONFIG_LEDS_DA9052)		+= leds-da905
  obj-$(CONFIG_LEDS_WM831X_STATUS)	+= leds-wm831x-status.o
  obj-$(CONFIG_LEDS_WM8350)		+= leds-wm8350.o

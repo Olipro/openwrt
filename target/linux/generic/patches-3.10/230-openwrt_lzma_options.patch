@@ -1,5 +1,7 @@
---- a/scripts/Makefile.lib
-+++ b/scripts/Makefile.lib
+Index: linux-3.10.23/scripts/Makefile.lib
+===================================================================
+--- linux-3.10.23.orig/scripts/Makefile.lib
++++ linux-3.10.23/scripts/Makefile.lib
 @@ -303,7 +303,7 @@ cmd_bzip2 = (cat $(filter-out FORCE,$^)
  
  quiet_cmd_lzma = LZMA    $@
@@ -9,8 +11,10 @@
  	(rm -f $@ ; false)
  
  quiet_cmd_lzo = LZO     $@
---- a/scripts/gen_initramfs_list.sh
-+++ b/scripts/gen_initramfs_list.sh
+Index: linux-3.10.23/scripts/gen_initramfs_list.sh
+===================================================================
+--- linux-3.10.23.orig/scripts/gen_initramfs_list.sh
++++ linux-3.10.23/scripts/gen_initramfs_list.sh
 @@ -226,7 +226,7 @@ cpio_list=
  output="/dev/stdout"
  output_file=""
@@ -42,8 +46,10 @@
  		|| (rm -f ${output_file} ; false)
  	fi
  	[ -z ${cpio_file} ] && rm ${cpio_tfile}
---- a/lib/decompress.c
-+++ b/lib/decompress.c
+Index: linux-3.10.23/lib/decompress.c
+===================================================================
+--- linux-3.10.23.orig/lib/decompress.c
++++ linux-3.10.23/lib/decompress.c
 @@ -43,6 +43,7 @@ static const struct compress_format comp
  	{ {037, 0236}, "gzip", gunzip },
  	{ {0x42, 0x5a}, "bzip2", bunzip2 },

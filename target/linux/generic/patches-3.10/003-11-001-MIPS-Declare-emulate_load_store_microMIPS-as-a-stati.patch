@@ -18,8 +18,10 @@ Signed-off-by: Ralf Baechle <ralf@linux-mips.org>
  arch/mips/kernel/unaligned.c |    3 ++-
  1 file changed, 2 insertions(+), 1 deletion(-)
 
---- a/arch/mips/kernel/unaligned.c
-+++ b/arch/mips/kernel/unaligned.c
+Index: linux-3.10.23/arch/mips/kernel/unaligned.c
+===================================================================
+--- linux-3.10.23.orig/arch/mips/kernel/unaligned.c
++++ linux-3.10.23/arch/mips/kernel/unaligned.c
 @@ -684,7 +684,8 @@ const int reg16to32[] = { 16, 17, 2, 3,
  /* Recode table from 16-bit STORE register notation to 32-bit GPR. */
  const int reg16to32st[] = { 0, 17, 2, 3, 4, 5, 6, 7 };

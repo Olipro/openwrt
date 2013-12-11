@@ -15,8 +15,10 @@ Signed-off-by: Gabor Juhos <juhosg@openwrt.org>
  drivers/spi/spi-ath79.c                            |   67 +++++++++++++-------
  8 files changed, 88 insertions(+), 23 deletions(-)
 
---- a/arch/mips/ath79/mach-ap121.c
-+++ b/arch/mips/ath79/mach-ap121.c
+Index: linux-3.10.23/arch/mips/ath79/mach-ap121.c
+===================================================================
+--- linux-3.10.23.orig/arch/mips/ath79/mach-ap121.c
++++ linux-3.10.23/arch/mips/ath79/mach-ap121.c
 @@ -58,12 +58,18 @@ static struct gpio_keys_button ap121_gpi
  	}
  };
@@ -36,8 +38,10 @@ Signed-off-by: Gabor Juhos <juhosg@openwrt.org>
  	}
  };
  
---- a/arch/mips/ath79/mach-ap136.c
-+++ b/arch/mips/ath79/mach-ap136.c
+Index: linux-3.10.23/arch/mips/ath79/mach-ap136.c
+===================================================================
+--- linux-3.10.23.orig/arch/mips/ath79/mach-ap136.c
++++ linux-3.10.23/arch/mips/ath79/mach-ap136.c
 @@ -98,12 +98,18 @@ static struct gpio_keys_button ap136_gpi
  	},
  };
@@ -57,8 +61,10 @@ Signed-off-by: Gabor Juhos <juhosg@openwrt.org>
  	}
  };
  
---- a/arch/mips/ath79/mach-ap81.c
-+++ b/arch/mips/ath79/mach-ap81.c
+Index: linux-3.10.23/arch/mips/ath79/mach-ap81.c
+===================================================================
+--- linux-3.10.23.orig/arch/mips/ath79/mach-ap81.c
++++ linux-3.10.23/arch/mips/ath79/mach-ap81.c
 @@ -67,12 +67,18 @@ static struct gpio_keys_button ap81_gpio
  	}
  };
@@ -78,8 +84,10 @@ Signed-off-by: Gabor Juhos <juhosg@openwrt.org>
  	}
  };
  
---- a/arch/mips/ath79/mach-db120.c
-+++ b/arch/mips/ath79/mach-db120.c
+Index: linux-3.10.23/arch/mips/ath79/mach-db120.c
+===================================================================
+--- linux-3.10.23.orig/arch/mips/ath79/mach-db120.c
++++ linux-3.10.23/arch/mips/ath79/mach-db120.c
 @@ -76,12 +76,18 @@ static struct gpio_keys_button db120_gpi
  	},
  };
@@ -99,8 +107,10 @@ Signed-off-by: Gabor Juhos <juhosg@openwrt.org>
  	}
  };
  
---- a/arch/mips/ath79/mach-pb44.c
-+++ b/arch/mips/ath79/mach-pb44.c
+Index: linux-3.10.23/arch/mips/ath79/mach-pb44.c
+===================================================================
+--- linux-3.10.23.orig/arch/mips/ath79/mach-pb44.c
++++ linux-3.10.23/arch/mips/ath79/mach-pb44.c
 @@ -87,12 +87,18 @@ static struct gpio_keys_button pb44_gpio
  	}
  };
@@ -120,8 +130,10 @@ Signed-off-by: Gabor Juhos <juhosg@openwrt.org>
  	},
  };
  
---- a/arch/mips/ath79/mach-ubnt-xm.c
-+++ b/arch/mips/ath79/mach-ubnt-xm.c
+Index: linux-3.10.23/arch/mips/ath79/mach-ubnt-xm.c
+===================================================================
+--- linux-3.10.23.orig/arch/mips/ath79/mach-ubnt-xm.c
++++ linux-3.10.23/arch/mips/ath79/mach-ubnt-xm.c
 @@ -65,12 +65,18 @@ static struct gpio_keys_button ubnt_xm_g
  	}
  };
@@ -141,8 +153,10 @@ Signed-off-by: Gabor Juhos <juhosg@openwrt.org>
  	}
  };
  
---- a/arch/mips/include/asm/mach-ath79/ath79_spi_platform.h
-+++ b/arch/mips/include/asm/mach-ath79/ath79_spi_platform.h
+Index: linux-3.10.23/arch/mips/include/asm/mach-ath79/ath79_spi_platform.h
+===================================================================
+--- linux-3.10.23.orig/arch/mips/include/asm/mach-ath79/ath79_spi_platform.h
++++ linux-3.10.23/arch/mips/include/asm/mach-ath79/ath79_spi_platform.h
 @@ -16,8 +16,14 @@ struct ath79_spi_platform_data {
  	unsigned	num_chipselect;
  };
@@ -159,8 +173,10 @@ Signed-off-by: Gabor Juhos <juhosg@openwrt.org>
  };
  
  #endif /* _ATH79_SPI_PLATFORM_H */
---- a/drivers/spi/spi-ath79.c
-+++ b/drivers/spi/spi-ath79.c
+Index: linux-3.10.23/drivers/spi/spi-ath79.c
+===================================================================
+--- linux-3.10.23.orig/drivers/spi/spi-ath79.c
++++ linux-3.10.23/drivers/spi/spi-ath79.c
 @@ -35,6 +35,8 @@
  #define ATH79_SPI_RRW_DELAY_FACTOR	12000
  #define MHZ				(1000 * 1000)

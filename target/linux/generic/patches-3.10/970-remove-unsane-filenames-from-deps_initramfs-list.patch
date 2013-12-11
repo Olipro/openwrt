@@ -1,5 +1,7 @@
---- a/usr/Makefile
-+++ b/usr/Makefile
+Index: linux-3.10.23/usr/Makefile
+===================================================================
+--- linux-3.10.23.orig/usr/Makefile
++++ linux-3.10.23/usr/Makefile
 @@ -50,20 +50,22 @@ ifneq ($(wildcard $(obj)/.initramfs_data
  	include $(obj)/.initramfs_data.cpio.d
  endif

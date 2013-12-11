@@ -1,5 +1,7 @@
---- a/fs/yaffs2/yaffs_vfs_glue.c
-+++ b/fs/yaffs2/yaffs_vfs_glue.c
+Index: linux-3.10.23/fs/yaffs2/yaffs_vfs_glue.c
+===================================================================
+--- linux-3.10.23.orig/fs/yaffs2/yaffs_vfs_glue.c
++++ linux-3.10.23/fs/yaffs2/yaffs_vfs_glue.c
 @@ -3385,6 +3385,7 @@ static DECLARE_FSTYPE(yaffs2_fs_type, "y
  
  #endif				/* CONFIG_YAFFS_YAFFS2 */

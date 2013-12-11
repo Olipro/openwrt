@@ -1,5 +1,7 @@
---- a/drivers/usb/host/ehci-hcd.c
-+++ b/drivers/usb/host/ehci-hcd.c
+Index: linux-3.10.23/drivers/usb/host/ehci-hcd.c
+===================================================================
+--- linux-3.10.23.orig/drivers/usb/host/ehci-hcd.c
++++ linux-3.10.23/drivers/usb/host/ehci-hcd.c
 @@ -249,6 +249,37 @@ static int ehci_reset (struct ehci_hcd *
  	command |= CMD_RESET;
  	dbg_cmd (ehci, "reset", command);
@@ -38,8 +40,10 @@
  	ehci->rh_state = EHCI_RH_HALTED;
  	ehci->next_statechange = jiffies;
  	retval = handshake (ehci, &ehci->regs->command,
---- a/drivers/usb/host/ehci.h
-+++ b/drivers/usb/host/ehci.h
+Index: linux-3.10.23/drivers/usb/host/ehci.h
+===================================================================
+--- linux-3.10.23.orig/drivers/usb/host/ehci.h
++++ linux-3.10.23/drivers/usb/host/ehci.h
 @@ -201,6 +201,10 @@ struct ehci_hcd {			/* one per controlle
  	unsigned		frame_index_bug:1; /* MosChip (AKA NetMos) */
  	unsigned		need_oc_pp_cycle:1; /* MPC834X port power */
@@ -51,8 +55,10 @@
  
  	/* required for usb32 quirk */
  	#define OHCI_CTRL_HCFS          (3 << 6)
---- a/include/linux/usb/ehci_pdriver.h
-+++ b/include/linux/usb/ehci_pdriver.h
+Index: linux-3.10.23/include/linux/usb/ehci_pdriver.h
+===================================================================
+--- linux-3.10.23.orig/include/linux/usb/ehci_pdriver.h
++++ linux-3.10.23/include/linux/usb/ehci_pdriver.h
 @@ -43,6 +43,8 @@ struct usb_ehci_pdata {
  	unsigned	big_endian_mmio:1;
  	unsigned	no_io_watchdog:1;
@@ -70,8 +76,10 @@
  };
  
  #endif /* __USB_CORE_EHCI_PDRIVER_H */
---- a/drivers/usb/host/ehci-platform.c
-+++ b/drivers/usb/host/ehci-platform.c
+Index: linux-3.10.23/drivers/usb/host/ehci-platform.c
+===================================================================
+--- linux-3.10.23.orig/drivers/usb/host/ehci-platform.c
++++ linux-3.10.23/drivers/usb/host/ehci-platform.c
 @@ -36,6 +36,14 @@
  
  static const char hcd_name[] = "ehci-platform";

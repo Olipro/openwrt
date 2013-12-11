@@ -27,8 +27,10 @@ Signed-off-by: Vitaly Kuzmichev <vkuzmichev@mvista.com>
  drivers/watchdog/mpcore_wdt.c  |    4 +---
  3 files changed, 9 insertions(+), 3 deletions(-)
 
---- a/arch/arm/include/asm/smp_twd.h
-+++ b/arch/arm/include/asm/smp_twd.h
+Index: linux-3.10.23/arch/arm/include/asm/smp_twd.h
+===================================================================
+--- linux-3.10.23.orig/arch/arm/include/asm/smp_twd.h
++++ linux-3.10.23/arch/arm/include/asm/smp_twd.h
 @@ -33,5 +33,6 @@ struct twd_local_timer name __initdata =
  };
  
@@ -36,8 +38,10 @@ Signed-off-by: Vitaly Kuzmichev <vkuzmichev@mvista.com>
 +unsigned long twd_timer_get_rate(void);
  
  #endif
---- a/arch/arm/kernel/smp_twd.c
-+++ b/arch/arm/kernel/smp_twd.c
+Index: linux-3.10.23/arch/arm/kernel/smp_twd.c
+===================================================================
+--- linux-3.10.23.orig/arch/arm/kernel/smp_twd.c
++++ linux-3.10.23/arch/arm/kernel/smp_twd.c
 @@ -10,6 +10,7 @@
   */
  #include <linux/init.h>
@@ -60,8 +64,10 @@ Signed-off-by: Vitaly Kuzmichev <vkuzmichev@mvista.com>
  #ifdef CONFIG_OF
  static void __init twd_local_timer_of_register(struct device_node *np)
  {
---- a/drivers/watchdog/mpcore_wdt.c
-+++ b/drivers/watchdog/mpcore_wdt.c
+Index: linux-3.10.23/drivers/watchdog/mpcore_wdt.c
+===================================================================
+--- linux-3.10.23.orig/drivers/watchdog/mpcore_wdt.c
++++ linux-3.10.23/drivers/watchdog/mpcore_wdt.c
 @@ -101,9 +101,7 @@ static void mpcore_wdt_keepalive(struct
  
  	spin_lock(&wdt_lock);

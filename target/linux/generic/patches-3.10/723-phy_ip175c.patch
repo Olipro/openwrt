@@ -1,5 +1,7 @@
---- a/drivers/net/phy/Kconfig
-+++ b/drivers/net/phy/Kconfig
+Index: linux-3.10.23/drivers/net/phy/Kconfig
+===================================================================
+--- linux-3.10.23.orig/drivers/net/phy/Kconfig
++++ linux-3.10.23/drivers/net/phy/Kconfig
 @@ -131,6 +131,10 @@ config MVSWITCH_PHY
  	tristate "Driver for Marvell 88E6060 switches"
  	select ETHERNET_PACKET_MANGLE
@@ -11,8 +13,10 @@
  config FIXED_PHY
  	bool "Driver for MDIO Bus/PHY emulation with fixed speed/link PHYs"
  	depends on PHYLIB=y
---- a/drivers/net/phy/Makefile
-+++ b/drivers/net/phy/Makefile
+Index: linux-3.10.23/drivers/net/phy/Makefile
+===================================================================
+--- linux-3.10.23.orig/drivers/net/phy/Makefile
++++ linux-3.10.23/drivers/net/phy/Makefile
 @@ -19,6 +19,7 @@ obj-$(CONFIG_BCM87XX_PHY)	+= bcm87xx.o
  obj-$(CONFIG_ICPLUS_PHY)	+= icplus.o
  obj-$(CONFIG_ADM6996_PHY)	+= adm6996.o

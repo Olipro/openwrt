@@ -1,5 +1,7 @@
---- a/drivers/ssb/Kconfig
-+++ b/drivers/ssb/Kconfig
+Index: linux-3.10.23/drivers/ssb/Kconfig
+===================================================================
+--- linux-3.10.23.orig/drivers/ssb/Kconfig
++++ linux-3.10.23/drivers/ssb/Kconfig
 @@ -29,6 +29,7 @@ config SSB_SPROM
  config SSB_BLOCKIO
  	bool
@@ -17,8 +19,10 @@
  
  config SSB_PCMCIAHOST_POSSIBLE
  	bool
---- a/drivers/bcma/Kconfig
-+++ b/drivers/bcma/Kconfig
+Index: linux-3.10.23/drivers/bcma/Kconfig
+===================================================================
+--- linux-3.10.23.orig/drivers/bcma/Kconfig
++++ linux-3.10.23/drivers/bcma/Kconfig
 @@ -17,6 +17,7 @@ config BCMA
  config BCMA_BLOCKIO
  	bool

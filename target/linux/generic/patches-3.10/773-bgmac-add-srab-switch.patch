@@ -2,8 +2,10 @@ Register switch connected to srab
 
 Signed-off-by: Hauke Mehrtens <hauke@hauke-m.de>
 
---- a/drivers/net/ethernet/broadcom/bgmac.c
-+++ b/drivers/net/ethernet/broadcom/bgmac.c
+Index: linux-3.10.23/drivers/net/ethernet/broadcom/bgmac.c
+===================================================================
+--- linux-3.10.23.orig/drivers/net/ethernet/broadcom/bgmac.c
++++ linux-3.10.23/drivers/net/ethernet/broadcom/bgmac.c
 @@ -16,6 +16,7 @@
  #include <linux/phy.h>
  #include <linux/interrupt.h>
@@ -58,8 +60,10 @@ Signed-off-by: Hauke Mehrtens <hauke@hauke-m.de>
  	netif_napi_del(&bgmac->napi);
  	unregister_netdev(bgmac->net_dev);
  	bgmac_mii_unregister(bgmac);
---- a/drivers/net/ethernet/broadcom/bgmac.h
-+++ b/drivers/net/ethernet/broadcom/bgmac.h
+Index: linux-3.10.23/drivers/net/ethernet/broadcom/bgmac.h
+===================================================================
+--- linux-3.10.23.orig/drivers/net/ethernet/broadcom/bgmac.h
++++ linux-3.10.23/drivers/net/ethernet/broadcom/bgmac.h
 @@ -430,6 +430,9 @@ struct bgmac {
  	bool has_robosw;
  

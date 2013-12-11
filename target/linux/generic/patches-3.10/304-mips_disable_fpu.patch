@@ -6,8 +6,10 @@ precious blocks on an embedded system.
 
 Signed-off-by: Florian Fainelli <florian@openwrt.org>
 --
---- a/arch/mips/Kconfig
-+++ b/arch/mips/Kconfig
+Index: linux-3.10.23/arch/mips/Kconfig
+===================================================================
+--- linux-3.10.23.orig/arch/mips/Kconfig
++++ linux-3.10.23/arch/mips/Kconfig
 @@ -981,6 +981,17 @@ config I8259
  config MIPS_BONITO64
  	bool
@@ -26,8 +28,10 @@ Signed-off-by: Florian Fainelli <florian@openwrt.org>
  config MIPS_MSC
  	bool
  
---- a/arch/mips/math-emu/Makefile
-+++ b/arch/mips/math-emu/Makefile
+Index: linux-3.10.23/arch/mips/math-emu/Makefile
+===================================================================
+--- linux-3.10.23.orig/arch/mips/math-emu/Makefile
++++ linux-3.10.23/arch/mips/math-emu/Makefile
 @@ -2,10 +2,12 @@
  # Makefile for the Linux/MIPS kernel FPU emulation.
  #
@@ -43,8 +47,10 @@ Signed-off-by: Florian Fainelli <florian@openwrt.org>
  	   sp_scalb.o sp_simple.o sp_tint.o sp_fint.o sp_tlong.o sp_flong.o \
 -	   dp_sqrt.o sp_sqrt.o kernel_linkage.o dsemul.o
 +	   dp_sqrt.o sp_sqrt.o dsemul.o cp1emu.o
---- a/arch/mips/math-emu/kernel_linkage.c
-+++ b/arch/mips/math-emu/kernel_linkage.c
+Index: linux-3.10.23/arch/mips/math-emu/kernel_linkage.c
+===================================================================
+--- linux-3.10.23.orig/arch/mips/math-emu/kernel_linkage.c
++++ linux-3.10.23/arch/mips/math-emu/kernel_linkage.c
 @@ -29,6 +29,7 @@
  
  #define SIGNALLING_NAN 0x7ff800007ff80000LL
@@ -90,8 +96,10 @@ Signed-off-by: Florian Fainelli <florian@openwrt.org>
 +#endif /* CONFIG_64BIT */
 +
 +#endif /* CONFIG_MIPS_FPU_EMU */
---- a/arch/mips/include/asm/fpu_emulator.h
-+++ b/arch/mips/include/asm/fpu_emulator.h
+Index: linux-3.10.23/arch/mips/include/asm/fpu_emulator.h
+===================================================================
+--- linux-3.10.23.orig/arch/mips/include/asm/fpu_emulator.h
++++ linux-3.10.23/arch/mips/include/asm/fpu_emulator.h
 @@ -27,6 +27,8 @@
  #include <asm/inst.h>
  #include <asm/local.h>
@@ -140,8 +148,10 @@ Signed-off-by: Florian Fainelli <florian@openwrt.org>
  
  /*
   * Instruction inserted following the badinst to further tag the sequence
---- a/arch/mips/kernel/traps.c
-+++ b/arch/mips/kernel/traps.c
+Index: linux-3.10.23/arch/mips/kernel/traps.c
+===================================================================
+--- linux-3.10.23.orig/arch/mips/kernel/traps.c
++++ linux-3.10.23/arch/mips/kernel/traps.c
 @@ -684,6 +684,7 @@ asmlinkage void do_ov(struct pt_regs *re
  	force_sig_info(SIGFPE, &info, current);
  }

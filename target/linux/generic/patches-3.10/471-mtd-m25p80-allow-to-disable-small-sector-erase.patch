@@ -1,5 +1,7 @@
---- a/drivers/mtd/devices/Kconfig
-+++ b/drivers/mtd/devices/Kconfig
+Index: linux-3.10.23/drivers/mtd/devices/Kconfig
+===================================================================
+--- linux-3.10.23.orig/drivers/mtd/devices/Kconfig
++++ linux-3.10.23/drivers/mtd/devices/Kconfig
 @@ -109,6 +109,14 @@ config MTD_SPEAR_SMI
  	help
  	  This enable SNOR support on SPEAR platforms using SMI controller
@@ -15,8 +17,10 @@
  config MTD_SST25L
  	tristate "Support SST25L (non JEDEC) SPI Flash chips"
  	depends on SPI_MASTER
---- a/drivers/mtd/devices/m25p80.c
-+++ b/drivers/mtd/devices/m25p80.c
+Index: linux-3.10.23/drivers/mtd/devices/m25p80.c
+===================================================================
+--- linux-3.10.23.orig/drivers/mtd/devices/m25p80.c
++++ linux-3.10.23/drivers/mtd/devices/m25p80.c
 @@ -76,6 +76,12 @@
  
  #define JEDEC_MFR(_jedec_id)	((_jedec_id) >> 16)

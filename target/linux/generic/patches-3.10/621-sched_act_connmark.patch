@@ -1,5 +1,7 @@
+Index: linux-3.10.23/net/sched/act_connmark.c
+===================================================================
 --- /dev/null
-+++ b/net/sched/act_connmark.c
++++ linux-3.10.23/net/sched/act_connmark.c
 @@ -0,0 +1,148 @@
 +/*
 + * Copyright (c) 2011 Felix Fietkau <nbd@openwrt.org>
@@ -149,8 +151,10 @@
 +
 +module_init(connmark_init_module);
 +module_exit(connmark_cleanup_module);
---- a/net/sched/Kconfig
-+++ b/net/sched/Kconfig
+Index: linux-3.10.23/net/sched/Kconfig
+===================================================================
+--- linux-3.10.23.orig/net/sched/Kconfig
++++ linux-3.10.23/net/sched/Kconfig
 @@ -670,6 +670,19 @@ config NET_ACT_CSUM
  	  To compile this code as a module, choose M here: the
  	  module will be called act_csum.
@@ -171,8 +175,10 @@
  config NET_CLS_IND
  	bool "Incoming device classification"
  	depends on NET_CLS_U32 || NET_CLS_FW
---- a/net/sched/Makefile
-+++ b/net/sched/Makefile
+Index: linux-3.10.23/net/sched/Makefile
+===================================================================
+--- linux-3.10.23.orig/net/sched/Makefile
++++ linux-3.10.23/net/sched/Makefile
 @@ -16,6 +16,7 @@ obj-$(CONFIG_NET_ACT_PEDIT)	+= act_pedit
  obj-$(CONFIG_NET_ACT_SIMP)	+= act_simple.o
  obj-$(CONFIG_NET_ACT_SKBEDIT)	+= act_skbedit.o

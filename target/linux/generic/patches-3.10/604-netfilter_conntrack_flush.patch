@@ -1,5 +1,7 @@
---- a/net/netfilter/nf_conntrack_standalone.c
-+++ b/net/netfilter/nf_conntrack_standalone.c
+Index: linux-3.10.23/net/netfilter/nf_conntrack_standalone.c
+===================================================================
+--- linux-3.10.23.orig/net/netfilter/nf_conntrack_standalone.c
++++ linux-3.10.23/net/netfilter/nf_conntrack_standalone.c
 @@ -268,10 +268,34 @@ static int ct_open(struct inode *inode,
  			sizeof(struct ct_iter_state));
  }

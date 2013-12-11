@@ -1,5 +1,7 @@
---- a/arch/mips/ath79/gpio.c
-+++ b/arch/mips/ath79/gpio.c
+Index: linux-3.10.23/arch/mips/ath79/gpio.c
+===================================================================
+--- linux-3.10.23.orig/arch/mips/ath79/gpio.c
++++ linux-3.10.23/arch/mips/ath79/gpio.c
 @@ -25,7 +25,9 @@
  #include <asm/mach-ath79/ath79.h>
  #include "common.h"
@@ -11,8 +13,10 @@
  static unsigned long ath79_gpio_count;
  static DEFINE_SPINLOCK(ath79_gpio_lock);
  
---- a/arch/mips/include/asm/mach-ath79/ath79.h
-+++ b/arch/mips/include/asm/mach-ath79/ath79.h
+Index: linux-3.10.23/arch/mips/include/asm/mach-ath79/ath79.h
+===================================================================
+--- linux-3.10.23.orig/arch/mips/include/asm/mach-ath79/ath79.h
++++ linux-3.10.23/arch/mips/include/asm/mach-ath79/ath79.h
 @@ -116,6 +116,7 @@ static inline int soc_is_qca955x(void)
  }
  

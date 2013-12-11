@@ -1,5 +1,7 @@
---- a/arch/mips/Makefile
-+++ b/arch/mips/Makefile
+Index: linux-3.10.23/arch/mips/Makefile
+===================================================================
+--- linux-3.10.23.orig/arch/mips/Makefile
++++ linux-3.10.23/arch/mips/Makefile
 @@ -90,8 +90,13 @@ all-$(CONFIG_SYS_SUPPORTS_ZBOOT)+= vmlin
  cflags-y			+= -G 0 -mno-abicalls -fno-pic -pipe -mno-branch-likely
  cflags-y			+= -msoft-float
@@ -14,8 +16,10 @@
  
  ifndef CONFIG_FUNCTION_TRACER
  KBUILD_CFLAGS_KERNEL		+= -ffunction-sections -fdata-sections
---- a/arch/mips/include/asm/module.h
-+++ b/arch/mips/include/asm/module.h
+Index: linux-3.10.23/arch/mips/include/asm/module.h
+===================================================================
+--- linux-3.10.23.orig/arch/mips/include/asm/module.h
++++ linux-3.10.23/arch/mips/include/asm/module.h
 @@ -11,6 +11,11 @@ struct mod_arch_specific {
  	const struct exception_table_entry *dbe_start;
  	const struct exception_table_entry *dbe_end;
@@ -28,8 +32,10 @@
  };
  
  typedef uint8_t Elf64_Byte;		/* Type for a 8-bit quantity.  */
---- a/arch/mips/kernel/module.c
-+++ b/arch/mips/kernel/module.c
+Index: linux-3.10.23/arch/mips/kernel/module.c
+===================================================================
+--- linux-3.10.23.orig/arch/mips/kernel/module.c
++++ linux-3.10.23/arch/mips/kernel/module.c
 @@ -42,14 +42,222 @@ struct mips_hi16 {
  static LIST_HEAD(dbe_list);
  static DEFINE_SPINLOCK(dbe_lock);

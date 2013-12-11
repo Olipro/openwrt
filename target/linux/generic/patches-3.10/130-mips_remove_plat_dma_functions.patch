@@ -15,8 +15,10 @@ Signed-off-by: Felix Fietkau <nbd@openwrt.org>
  arch/mips/mm/dma-default.c                               |  4 +---
  8 files changed, 1 insertion(+), 76 deletions(-)
 
---- a/arch/mips/include/asm/mach-cavium-octeon/dma-coherence.h
-+++ b/arch/mips/include/asm/mach-cavium-octeon/dma-coherence.h
+Index: linux-3.10.23/arch/mips/include/asm/mach-cavium-octeon/dma-coherence.h
+===================================================================
+--- linux-3.10.23.orig/arch/mips/include/asm/mach-cavium-octeon/dma-coherence.h
++++ linux-3.10.23/arch/mips/include/asm/mach-cavium-octeon/dma-coherence.h
 @@ -46,22 +46,11 @@ static inline int plat_dma_supported(str
  	BUG();
  }
@@ -40,8 +42,10 @@ Signed-off-by: Felix Fietkau <nbd@openwrt.org>
  dma_addr_t phys_to_dma(struct device *dev, phys_addr_t paddr);
  phys_addr_t dma_to_phys(struct device *dev, dma_addr_t daddr);
  
---- a/arch/mips/include/asm/mach-generic/dma-coherence.h
-+++ b/arch/mips/include/asm/mach-generic/dma-coherence.h
+Index: linux-3.10.23/arch/mips/include/asm/mach-generic/dma-coherence.h
+===================================================================
+--- linux-3.10.23.orig/arch/mips/include/asm/mach-generic/dma-coherence.h
++++ linux-3.10.23/arch/mips/include/asm/mach-generic/dma-coherence.h
 @@ -47,16 +47,6 @@ static inline int plat_dma_supported(str
  	return 1;
  }
@@ -59,8 +63,10 @@ Signed-off-by: Felix Fietkau <nbd@openwrt.org>
  static inline int plat_device_is_coherent(struct device *dev)
  {
  #ifdef CONFIG_DMA_COHERENT
---- a/arch/mips/include/asm/mach-ip27/dma-coherence.h
-+++ b/arch/mips/include/asm/mach-ip27/dma-coherence.h
+Index: linux-3.10.23/arch/mips/include/asm/mach-ip27/dma-coherence.h
+===================================================================
+--- linux-3.10.23.orig/arch/mips/include/asm/mach-ip27/dma-coherence.h
++++ linux-3.10.23/arch/mips/include/asm/mach-ip27/dma-coherence.h
 @@ -58,16 +58,6 @@ static inline int plat_dma_supported(str
  	return 1;
  }
@@ -78,8 +84,10 @@ Signed-off-by: Felix Fietkau <nbd@openwrt.org>
  static inline int plat_device_is_coherent(struct device *dev)
  {
  	return 1;		/* IP27 non-cohernet mode is unsupported */
---- a/arch/mips/include/asm/mach-ip32/dma-coherence.h
-+++ b/arch/mips/include/asm/mach-ip32/dma-coherence.h
+Index: linux-3.10.23/arch/mips/include/asm/mach-ip32/dma-coherence.h
+===================================================================
+--- linux-3.10.23.orig/arch/mips/include/asm/mach-ip32/dma-coherence.h
++++ linux-3.10.23/arch/mips/include/asm/mach-ip32/dma-coherence.h
 @@ -80,17 +80,6 @@ static inline int plat_dma_supported(str
  	return 1;
  }
@@ -98,8 +106,10 @@ Signed-off-by: Felix Fietkau <nbd@openwrt.org>
  static inline int plat_device_is_coherent(struct device *dev)
  {
  	return 0;		/* IP32 is non-cohernet */
---- a/arch/mips/include/asm/mach-jazz/dma-coherence.h
-+++ b/arch/mips/include/asm/mach-jazz/dma-coherence.h
+Index: linux-3.10.23/arch/mips/include/asm/mach-jazz/dma-coherence.h
+===================================================================
+--- linux-3.10.23.orig/arch/mips/include/asm/mach-jazz/dma-coherence.h
++++ linux-3.10.23/arch/mips/include/asm/mach-jazz/dma-coherence.h
 @@ -48,16 +48,6 @@ static inline int plat_dma_supported(str
  	return 1;
  }
@@ -117,8 +127,10 @@ Signed-off-by: Felix Fietkau <nbd@openwrt.org>
  static inline int plat_device_is_coherent(struct device *dev)
  {
  	return 0;
---- a/arch/mips/include/asm/mach-loongson/dma-coherence.h
-+++ b/arch/mips/include/asm/mach-loongson/dma-coherence.h
+Index: linux-3.10.23/arch/mips/include/asm/mach-loongson/dma-coherence.h
+===================================================================
+--- linux-3.10.23.orig/arch/mips/include/asm/mach-loongson/dma-coherence.h
++++ linux-3.10.23/arch/mips/include/asm/mach-loongson/dma-coherence.h
 @@ -53,16 +53,6 @@ static inline int plat_dma_supported(str
  	return 1;
  }
@@ -136,8 +148,10 @@ Signed-off-by: Felix Fietkau <nbd@openwrt.org>
  static inline int plat_device_is_coherent(struct device *dev)
  {
  	return 0;
---- a/arch/mips/include/asm/mach-powertv/dma-coherence.h
-+++ b/arch/mips/include/asm/mach-powertv/dma-coherence.h
+Index: linux-3.10.23/arch/mips/include/asm/mach-powertv/dma-coherence.h
+===================================================================
+--- linux-3.10.23.orig/arch/mips/include/asm/mach-powertv/dma-coherence.h
++++ linux-3.10.23/arch/mips/include/asm/mach-powertv/dma-coherence.h
 @@ -99,16 +99,6 @@ static inline int plat_dma_supported(str
  	return 1;
  }
@@ -155,8 +169,10 @@ Signed-off-by: Felix Fietkau <nbd@openwrt.org>
  static inline int plat_device_is_coherent(struct device *dev)
  {
  	return 0;
---- a/arch/mips/mm/dma-default.c
-+++ b/arch/mips/mm/dma-default.c
+Index: linux-3.10.23/arch/mips/mm/dma-default.c
+===================================================================
+--- linux-3.10.23.orig/arch/mips/mm/dma-default.c
++++ linux-3.10.23/arch/mips/mm/dma-default.c
 @@ -289,7 +289,6 @@ static void mips_dma_sync_single_for_cpu
  static void mips_dma_sync_single_for_device(struct device *dev,
  	dma_addr_t dma_handle, size_t size, enum dma_data_direction direction)

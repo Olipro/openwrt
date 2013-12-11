@@ -1,5 +1,7 @@
---- a/net/sched/sch_generic.c
-+++ b/net/sched/sch_generic.c
+Index: linux-3.10.23/net/sched/sch_generic.c
+===================================================================
+--- linux-3.10.23.orig/net/sched/sch_generic.c
++++ linux-3.10.23/net/sched/sch_generic.c
 @@ -392,141 +392,6 @@ static struct Qdisc noqueue_qdisc = {
  	.busylock	=	__SPIN_LOCK_UNLOCKED(noqueue_qdisc.busylock),
  };

@@ -1,5 +1,7 @@
---- a/drivers/mtd/Kconfig
-+++ b/drivers/mtd/Kconfig
+Index: linux-3.10.23/drivers/mtd/Kconfig
+===================================================================
+--- linux-3.10.23.orig/drivers/mtd/Kconfig
++++ linux-3.10.23/drivers/mtd/Kconfig
 @@ -48,6 +48,12 @@ config MTD_SPLIT_SQUASHFS_ROOT
  	  offset and size of the unused portion of a rootfs partition
  	  containing a squashfs.
@@ -13,8 +15,10 @@
  config MTD_SPLIT
  	def_bool n
  	help 
---- a/drivers/mtd/Makefile
-+++ b/drivers/mtd/Makefile
+Index: linux-3.10.23/drivers/mtd/Makefile
+===================================================================
+--- linux-3.10.23.orig/drivers/mtd/Makefile
++++ linux-3.10.23/drivers/mtd/Makefile
 @@ -8,6 +8,7 @@ mtd-y				:= mtdcore.o mtdsuper.o mtdconc
  
  mtd-$(CONFIG_MTD_SPLIT)		+= mtdsplit.o

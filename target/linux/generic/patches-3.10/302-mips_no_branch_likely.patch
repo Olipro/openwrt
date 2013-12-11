@@ -1,5 +1,7 @@
---- a/arch/mips/Makefile
-+++ b/arch/mips/Makefile
+Index: linux-3.10.23/arch/mips/Makefile
+===================================================================
+--- linux-3.10.23.orig/arch/mips/Makefile
++++ linux-3.10.23/arch/mips/Makefile
 @@ -87,7 +87,7 @@ all-$(CONFIG_SYS_SUPPORTS_ZBOOT)+= vmlin
  # machines may also.  Since BFD is incredibly buggy with respect to
  # crossformat linking we rely on the elf2ecoff tool for format conversion.

@@ -1,5 +1,7 @@
---- a/arch/mips/ath79/dev-wmac.c
-+++ b/arch/mips/ath79/dev-wmac.c
+Index: linux-3.10.23/arch/mips/ath79/dev-wmac.c
+===================================================================
+--- linux-3.10.23.orig/arch/mips/ath79/dev-wmac.c
++++ linux-3.10.23/arch/mips/ath79/dev-wmac.c
 @@ -44,7 +44,7 @@ static struct platform_device ath79_wmac
  	},
  };

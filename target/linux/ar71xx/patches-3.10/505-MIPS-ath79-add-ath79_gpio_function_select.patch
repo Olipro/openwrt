@@ -1,5 +1,7 @@
---- a/arch/mips/ath79/common.h
-+++ b/arch/mips/ath79/common.h
+Index: linux-3.10.23/arch/mips/ath79/common.h
+===================================================================
+--- linux-3.10.23.orig/arch/mips/ath79/common.h
++++ linux-3.10.23/arch/mips/ath79/common.h
 @@ -26,6 +26,7 @@ void ath79_ddr_wb_flush(unsigned int reg
  void ath79_gpio_function_enable(u32 mask);
  void ath79_gpio_function_disable(u32 mask);
@@ -8,8 +10,10 @@
  void ath79_gpio_init(void);
  
  #endif /* __ATH79_COMMON_H */
---- a/arch/mips/ath79/gpio.c
-+++ b/arch/mips/ath79/gpio.c
+Index: linux-3.10.23/arch/mips/ath79/gpio.c
+===================================================================
+--- linux-3.10.23.orig/arch/mips/ath79/gpio.c
++++ linux-3.10.23/arch/mips/ath79/gpio.c
 @@ -180,6 +180,34 @@ void ath79_gpio_function_disable(u32 mas
  	ath79_gpio_function_setup(0, mask);
  }

@@ -28,8 +28,10 @@ Signed-off-by: Ralf Baechle <ralf@linux-mips.org>
  arch/mips/include/asm/cpu-features.h |    6 +++++-
  1 file changed, 5 insertions(+), 1 deletion(-)
 
---- a/arch/mips/include/asm/cpu-features.h
-+++ b/arch/mips/include/asm/cpu-features.h
+Index: linux-3.10.23/arch/mips/include/asm/cpu-features.h
+===================================================================
+--- linux-3.10.23.orig/arch/mips/include/asm/cpu-features.h
++++ linux-3.10.23/arch/mips/include/asm/cpu-features.h
 @@ -99,7 +99,11 @@
  #define cpu_has_rixi		(cpu_data[0].options & MIPS_CPU_RIXI)
  #endif

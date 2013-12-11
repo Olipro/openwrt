@@ -1,5 +1,7 @@
---- a/arch/mips/Makefile
-+++ b/arch/mips/Makefile
+Index: linux-3.10.23/arch/mips/Makefile
+===================================================================
+--- linux-3.10.23.orig/arch/mips/Makefile
++++ linux-3.10.23/arch/mips/Makefile
 @@ -183,6 +183,7 @@ endif
  #
  libs-$(CONFIG_FW_ARC)		+= arch/mips/fw/arc/
@@ -8,8 +10,10 @@
  libs-$(CONFIG_FW_SNIPROM)	+= arch/mips/fw/sni/
  libs-y				+= arch/mips/fw/lib/
  
---- a/arch/mips/Kconfig
-+++ b/arch/mips/Kconfig
+Index: linux-3.10.23/arch/mips/Kconfig
+===================================================================
+--- linux-3.10.23.orig/arch/mips/Kconfig
++++ linux-3.10.23/arch/mips/Kconfig
 @@ -998,6 +998,9 @@ config MIPS_MSC
  config MIPS_NILE4
  	bool

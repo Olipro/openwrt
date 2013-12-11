@@ -1,5 +1,7 @@
---- a/net/netlink/af_netlink.c
-+++ b/net/netlink/af_netlink.c
+Index: linux-3.10.23/net/netlink/af_netlink.c
+===================================================================
+--- linux-3.10.23.orig/net/netlink/af_netlink.c
++++ linux-3.10.23/net/netlink/af_netlink.c
 @@ -1503,27 +1503,7 @@ void netlink_detachskb(struct sock *sk,
  
  static struct sk_buff *netlink_trim(struct sk_buff *skb, gfp_t allocation)

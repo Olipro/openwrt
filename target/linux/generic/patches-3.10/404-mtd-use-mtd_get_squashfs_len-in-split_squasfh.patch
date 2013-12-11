@@ -1,5 +1,7 @@
---- a/drivers/mtd/mtdpart.c
-+++ b/drivers/mtd/mtdpart.c
+Index: linux-3.10.23/drivers/mtd/mtdpart.c
+===================================================================
+--- linux-3.10.23.orig/drivers/mtd/mtdpart.c
++++ linux-3.10.23/drivers/mtd/mtdpart.c
 @@ -33,6 +33,7 @@
  #include <linux/err.h>
  
@@ -57,8 +59,10 @@
  	*split_offset = offset + len;
  
  	return 0;
---- a/drivers/mtd/Kconfig
-+++ b/drivers/mtd/Kconfig
+Index: linux-3.10.23/drivers/mtd/Kconfig
+===================================================================
+--- linux-3.10.23.orig/drivers/mtd/Kconfig
++++ linux-3.10.23/drivers/mtd/Kconfig
 @@ -20,6 +20,7 @@ config MTD_ROOTFS_ROOT_DEV
  
  config MTD_ROOTFS_SPLIT

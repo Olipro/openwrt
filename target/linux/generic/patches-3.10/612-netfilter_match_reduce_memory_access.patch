@@ -1,5 +1,7 @@
---- a/net/ipv4/netfilter/ip_tables.c
-+++ b/net/ipv4/netfilter/ip_tables.c
+Index: linux-3.10.23/net/ipv4/netfilter/ip_tables.c
+===================================================================
+--- linux-3.10.23.orig/net/ipv4/netfilter/ip_tables.c
++++ linux-3.10.23/net/ipv4/netfilter/ip_tables.c
 @@ -85,9 +85,11 @@ ip_packet_match(const struct iphdr *ip,
  	if (ipinfo->flags & IPT_F_NO_DEF_MATCH)
  		return true;

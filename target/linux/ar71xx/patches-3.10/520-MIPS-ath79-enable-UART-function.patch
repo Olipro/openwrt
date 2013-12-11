@@ -1,5 +1,7 @@
---- a/arch/mips/ath79/dev-common.c
-+++ b/arch/mips/ath79/dev-common.c
+Index: linux-3.10.23/arch/mips/ath79/dev-common.c
+===================================================================
+--- linux-3.10.23.orig/arch/mips/ath79/dev-common.c
++++ linux-3.10.23/arch/mips/ath79/dev-common.c
 @@ -87,6 +87,15 @@ void __init ath79_register_uart(void)
  	if (IS_ERR(clk))
  		panic("unable to get UART clock, err=%ld", PTR_ERR(clk));

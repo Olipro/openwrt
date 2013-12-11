@@ -1,5 +1,7 @@
---- a/arch/mips/include/asm/string.h
-+++ b/arch/mips/include/asm/string.h
+Index: linux-3.10.23/arch/mips/include/asm/string.h
+===================================================================
+--- linux-3.10.23.orig/arch/mips/include/asm/string.h
++++ linux-3.10.23/arch/mips/include/asm/string.h
 @@ -133,11 +133,44 @@ strncmp(__const__ char *__cs, __const__
  
  #define __HAVE_ARCH_MEMSET
@@ -45,8 +47,10 @@
 +#define memcmp(src1, src2, len) __builtin_memcmp((src1), (src2), (len))
  
  #endif /* _ASM_STRING_H */
---- a/arch/mips/lib/Makefile
-+++ b/arch/mips/lib/Makefile
+Index: linux-3.10.23/arch/mips/lib/Makefile
+===================================================================
+--- linux-3.10.23.orig/arch/mips/lib/Makefile
++++ linux-3.10.23/arch/mips/lib/Makefile
 @@ -4,7 +4,7 @@
  
  lib-y	+= bitops.o csum_partial.o delay.o memcpy.o memset.o \
@@ -56,8 +60,10 @@
  
  obj-y			+= iomap.o
  obj-$(CONFIG_PCI)	+= iomap-pci.o
+Index: linux-3.10.23/arch/mips/lib/memcmp.c
+===================================================================
 --- /dev/null
-+++ b/arch/mips/lib/memcmp.c
++++ linux-3.10.23/arch/mips/lib/memcmp.c
 @@ -0,0 +1,22 @@
 +/*
 + *  copied from linux/lib/string.c

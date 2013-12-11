@@ -18,8 +18,10 @@ Signed-off-by: Florian Fainelli <florian@openwrt.org>
  include/linux/usb/ehci_pdriver.h |    1 +
  5 files changed, 6 insertions(+), 3 deletions(-)
 
---- a/drivers/usb/host/ehci-hcd.c
-+++ b/drivers/usb/host/ehci-hcd.c
+Index: linux-3.10.23/drivers/usb/host/ehci-hcd.c
+===================================================================
+--- linux-3.10.23.orig/drivers/usb/host/ehci-hcd.c
++++ linux-3.10.23/drivers/usb/host/ehci-hcd.c
 @@ -634,7 +634,7 @@ static int ehci_run (struct usb_hcd *hcd
  		"USB %x.%x started, EHCI %x.%02x%s\n",
  		((ehci->sbrn & 0xf0)>>4), (ehci->sbrn & 0x0f),
@@ -29,8 +31,10 @@ Signed-off-by: Florian Fainelli <florian@openwrt.org>
  
  	ehci_writel(ehci, INTR_MASK,
  		    &ehci->regs->intr_enable); /* Turn On Interrupts */
---- a/drivers/usb/host/ehci-hub.c
-+++ b/drivers/usb/host/ehci-hub.c
+Index: linux-3.10.23/drivers/usb/host/ehci-hub.c
+===================================================================
+--- linux-3.10.23.orig/drivers/usb/host/ehci-hub.c
++++ linux-3.10.23/drivers/usb/host/ehci-hub.c
 @@ -611,7 +611,7 @@ ehci_hub_status_data (struct usb_hcd *hc
  	 * always set, seem to clear PORT_OCC and PORT_CSC when writing to
  	 * PORT_POWER; that's surprising, but maybe within-spec.
@@ -49,8 +53,10 @@ Signed-off-by: Florian Fainelli <florian@openwrt.org>
  			status |= USB_PORT_STAT_C_OVERCURRENT << 16;
  
  			/*
---- a/drivers/usb/host/ehci-platform.c
-+++ b/drivers/usb/host/ehci-platform.c
+Index: linux-3.10.23/drivers/usb/host/ehci-platform.c
+===================================================================
+--- linux-3.10.23.orig/drivers/usb/host/ehci-platform.c
++++ linux-3.10.23/drivers/usb/host/ehci-platform.c
 @@ -47,6 +47,7 @@ static int ehci_platform_reset(struct us
  	ehci->has_synopsys_hc_bug = pdata->has_synopsys_hc_bug;
  	ehci->big_endian_desc = pdata->big_endian_desc;
@@ -59,8 +65,10 @@ Signed-off-by: Florian Fainelli <florian@openwrt.org>
  
  	ehci->caps = hcd->regs + pdata->caps_offset;
  	retval = ehci_setup(hcd);
---- a/drivers/usb/host/ehci.h
-+++ b/drivers/usb/host/ehci.h
+Index: linux-3.10.23/drivers/usb/host/ehci.h
+===================================================================
+--- linux-3.10.23.orig/drivers/usb/host/ehci.h
++++ linux-3.10.23/drivers/usb/host/ehci.h
 @@ -200,6 +200,7 @@ struct ehci_hcd {			/* one per controlle
  	unsigned		has_synopsys_hc_bug:1; /* Synopsys HC */
  	unsigned		frame_index_bug:1; /* MosChip (AKA NetMos) */
@@ -69,8 +77,10 @@ Signed-off-by: Florian Fainelli <florian@openwrt.org>
  
  	/* required for usb32 quirk */
  	#define OHCI_CTRL_HCFS          (3 << 6)
---- a/include/linux/usb/ehci_pdriver.h
-+++ b/include/linux/usb/ehci_pdriver.h
+Index: linux-3.10.23/include/linux/usb/ehci_pdriver.h
+===================================================================
+--- linux-3.10.23.orig/include/linux/usb/ehci_pdriver.h
++++ linux-3.10.23/include/linux/usb/ehci_pdriver.h
 @@ -42,6 +42,7 @@ struct usb_ehci_pdata {
  	unsigned	big_endian_desc:1;
  	unsigned	big_endian_mmio:1;

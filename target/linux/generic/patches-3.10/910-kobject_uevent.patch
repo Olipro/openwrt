@@ -1,5 +1,7 @@
---- a/lib/kobject_uevent.c
-+++ b/lib/kobject_uevent.c
+Index: linux-3.10.23/lib/kobject_uevent.c
+===================================================================
+--- linux-3.10.23.orig/lib/kobject_uevent.c
++++ linux-3.10.23/lib/kobject_uevent.c
 @@ -51,6 +51,18 @@ static const char *kobject_actions[] = {
  	[KOBJ_OFFLINE] =	"offline",
  };

@@ -1,5 +1,7 @@
---- a/arch/mips/ath79/prom.c
-+++ b/arch/mips/ath79/prom.c
+Index: linux-3.10.23/arch/mips/ath79/prom.c
+===================================================================
+--- linux-3.10.23.orig/arch/mips/ath79/prom.c
++++ linux-3.10.23/arch/mips/ath79/prom.c
 @@ -19,6 +19,8 @@
  
  #include "common.h"

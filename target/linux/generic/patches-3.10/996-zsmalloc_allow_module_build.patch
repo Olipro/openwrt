@@ -1,5 +1,7 @@
---- a/drivers/staging/zsmalloc/Kconfig
-+++ b/drivers/staging/zsmalloc/Kconfig
+Index: linux-3.10.23/drivers/staging/zsmalloc/Kconfig
+===================================================================
+--- linux-3.10.23.orig/drivers/staging/zsmalloc/Kconfig
++++ linux-3.10.23/drivers/staging/zsmalloc/Kconfig
 @@ -1,5 +1,5 @@
  config ZSMALLOC
 -	bool "Memory allocator for compressed pages"

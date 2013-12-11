@@ -1,5 +1,7 @@
---- a/fs/ubifs/Kconfig
-+++ b/fs/ubifs/Kconfig
+Index: linux-3.10.23/fs/ubifs/Kconfig
+===================================================================
+--- linux-3.10.23.orig/fs/ubifs/Kconfig
++++ linux-3.10.23/fs/ubifs/Kconfig
 @@ -5,8 +5,10 @@ config UBIFS_FS
  	select CRYPTO if UBIFS_FS_ADVANCED_COMPR
  	select CRYPTO if UBIFS_FS_LZO
@@ -24,8 +26,10 @@
 +	  XZ compresses better the ZLIB but it is slower..
 +	  Say 'Y' if unsure.
 +
---- a/fs/ubifs/compress.c
-+++ b/fs/ubifs/compress.c
+Index: linux-3.10.23/fs/ubifs/compress.c
+===================================================================
+--- linux-3.10.23.orig/fs/ubifs/compress.c
++++ linux-3.10.23/fs/ubifs/compress.c
 @@ -71,6 +71,24 @@ static struct ubifs_compressor zlib_comp
  };
  #endif
@@ -73,8 +77,10 @@
  	compr_exit(&zlib_compr);
 +	compr_exit(&xz_compr);
  }
---- a/fs/ubifs/ubifs-media.h
-+++ b/fs/ubifs/ubifs-media.h
+Index: linux-3.10.23/fs/ubifs/ubifs-media.h
+===================================================================
+--- linux-3.10.23.orig/fs/ubifs/ubifs-media.h
++++ linux-3.10.23/fs/ubifs/ubifs-media.h
 @@ -332,12 +332,14 @@ enum {
   * UBIFS_COMPR_NONE: no compression
   * UBIFS_COMPR_LZO: LZO compression

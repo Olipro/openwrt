@@ -1,5 +1,7 @@
---- a/include/asm-generic/vmlinux.lds.h
-+++ b/include/asm-generic/vmlinux.lds.h
+Index: linux-3.10.23/include/asm-generic/vmlinux.lds.h
+===================================================================
+--- linux-3.10.23.orig/include/asm-generic/vmlinux.lds.h
++++ linux-3.10.23/include/asm-generic/vmlinux.lds.h
 @@ -52,6 +52,16 @@
  #define LOAD_OFFSET 0
  #endif
@@ -52,8 +54,10 @@
  	*(.discard)							\
  	*(.discard.*)							\
  	}
---- a/scripts/Makefile.build
-+++ b/scripts/Makefile.build
+Index: linux-3.10.23/scripts/Makefile.build
+===================================================================
+--- linux-3.10.23.orig/scripts/Makefile.build
++++ linux-3.10.23/scripts/Makefile.build
 @@ -349,7 +349,7 @@ targets += $(extra-y) $(MAKECMDGOALS) $(
  # Linker scripts preprocessor (.lds.S -> .lds)
  # ---------------------------------------------------------------------------
@@ -63,8 +67,10 @@
  	                     -D__ASSEMBLY__ -DLINKER_SCRIPT -o $@ $<
  
  $(obj)/%.lds: $(src)/%.lds.S FORCE
---- a/include/linux/export.h
-+++ b/include/linux/export.h
+Index: linux-3.10.23/include/linux/export.h
+===================================================================
+--- linux-3.10.23.orig/include/linux/export.h
++++ linux-3.10.23/include/linux/export.h
 @@ -52,12 +52,19 @@ extern struct module __this_module;
  #define __CRC_SYMBOL(sym, sec)
  #endif

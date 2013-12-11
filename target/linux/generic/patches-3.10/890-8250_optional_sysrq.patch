@@ -1,5 +1,7 @@
---- a/drivers/tty/serial/8250/8250_core.c
-+++ b/drivers/tty/serial/8250/8250_core.c
+Index: linux-3.10.23/drivers/tty/serial/8250/8250_core.c
+===================================================================
+--- linux-3.10.23.orig/drivers/tty/serial/8250/8250_core.c
++++ linux-3.10.23/drivers/tty/serial/8250/8250_core.c
 @@ -16,7 +16,7 @@
   *  membase is an 'ioremapped' cookie.
   */
@@ -9,8 +11,10 @@
  #define SUPPORT_SYSRQ
  #endif
  
---- a/drivers/tty/serial/8250/Kconfig
-+++ b/drivers/tty/serial/8250/Kconfig
+Index: linux-3.10.23/drivers/tty/serial/8250/Kconfig
+===================================================================
+--- linux-3.10.23.orig/drivers/tty/serial/8250/Kconfig
++++ linux-3.10.23/drivers/tty/serial/8250/Kconfig
 @@ -91,6 +91,10 @@ config SERIAL_8250_CONSOLE
  
  	  If unsure, say N.

@@ -1,5 +1,7 @@
---- a/net/wireless/Kconfig
-+++ b/net/wireless/Kconfig
+Index: linux-3.10.23/net/wireless/Kconfig
+===================================================================
+--- linux-3.10.23.orig/net/wireless/Kconfig
++++ linux-3.10.23/net/wireless/Kconfig
 @@ -1,5 +1,5 @@
  config WIRELESS_EXT
 -	bool

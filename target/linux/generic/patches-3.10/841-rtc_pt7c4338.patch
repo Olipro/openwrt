@@ -1,5 +1,7 @@
---- a/drivers/rtc/Kconfig
-+++ b/drivers/rtc/Kconfig
+Index: linux-3.10.23/drivers/rtc/Kconfig
+===================================================================
+--- linux-3.10.23.orig/drivers/rtc/Kconfig
++++ linux-3.10.23/drivers/rtc/Kconfig
 @@ -488,6 +488,15 @@ config RTC_DRV_RV3029C2
  	  This driver can also be built as a module. If so, the module
  	  will be called rtc-rv3029c2.
@@ -16,8 +18,10 @@
  endif # I2C
  
  comment "SPI RTC drivers"
---- a/drivers/rtc/Makefile
-+++ b/drivers/rtc/Makefile
+Index: linux-3.10.23/drivers/rtc/Makefile
+===================================================================
+--- linux-3.10.23.orig/drivers/rtc/Makefile
++++ linux-3.10.23/drivers/rtc/Makefile
 @@ -92,6 +92,7 @@ obj-$(CONFIG_RTC_DRV_PL030)	+= rtc-pl030
  obj-$(CONFIG_RTC_DRV_PL031)	+= rtc-pl031.o
  obj-$(CONFIG_RTC_DRV_PM8XXX)	+= rtc-pm8xxx.o
@@ -26,8 +30,10 @@
  obj-$(CONFIG_RTC_DRV_PUV3)	+= rtc-puv3.o
  obj-$(CONFIG_RTC_DRV_PXA)	+= rtc-pxa.o
  obj-$(CONFIG_RTC_DRV_R9701)	+= rtc-r9701.o
+Index: linux-3.10.23/drivers/rtc/rtc-pt7c4338.c
+===================================================================
 --- /dev/null
-+++ b/drivers/rtc/rtc-pt7c4338.c
++++ linux-3.10.23/drivers/rtc/rtc-pt7c4338.c
 @@ -0,0 +1,216 @@
 +/*
 + * Copyright 2010 Freescale Semiconductor, Inc.

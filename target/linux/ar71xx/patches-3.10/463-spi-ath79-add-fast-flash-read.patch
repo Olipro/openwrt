@@ -1,5 +1,7 @@
---- a/drivers/spi/spi-ath79.c
-+++ b/drivers/spi/spi-ath79.c
+Index: linux-3.10.23/drivers/spi/spi-ath79.c
+===================================================================
+--- linux-3.10.23.orig/drivers/spi/spi-ath79.c
++++ linux-3.10.23/drivers/spi/spi-ath79.c
 @@ -37,6 +37,11 @@
  
  #define ATH79_SPI_CS_LINE_MAX		2
@@ -173,8 +175,10 @@
  	if (!rate) {
  		ret = -EINVAL;
  		goto err_clk_disable;
---- a/arch/mips/include/asm/mach-ath79/ath79_spi_platform.h
-+++ b/arch/mips/include/asm/mach-ath79/ath79_spi_platform.h
+Index: linux-3.10.23/arch/mips/include/asm/mach-ath79/ath79_spi_platform.h
+===================================================================
+--- linux-3.10.23.orig/arch/mips/include/asm/mach-ath79/ath79_spi_platform.h
++++ linux-3.10.23/arch/mips/include/asm/mach-ath79/ath79_spi_platform.h
 @@ -24,6 +24,7 @@ enum ath79_spi_cs_type {
  struct ath79_spi_controller_data {
  	enum ath79_spi_cs_type cs_type;

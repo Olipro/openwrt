@@ -15,8 +15,10 @@ Signed-off-by: Charles Manning <cdhmanning@gmail.com>
  yaffs_vfs_multi.c |   26 +++++++++++++-------------
  3 files changed, 26 insertions(+), 26 deletions(-)
 
---- a/fs/yaffs2/yaffs_linux.h
-+++ b/fs/yaffs2/yaffs_linux.h
+Index: linux-3.10.23/fs/yaffs2/yaffs_linux.h
+===================================================================
+--- linux-3.10.23.orig/fs/yaffs2/yaffs_linux.h
++++ linux-3.10.23/fs/yaffs2/yaffs_linux.h
 @@ -25,7 +25,7 @@ struct yaffs_LinuxContext {
  	struct super_block * superBlock;
  	struct task_struct *bgThread; /* Background thread for this device */
@@ -26,8 +28,10 @@ Signed-off-by: Charles Manning <cdhmanning@gmail.com>
  	__u8 *spareBuffer;      /* For mtdif2 use. Don't know the size of the buffer
  				 * at compile time so we have to allocate it.
  				 */
---- a/fs/yaffs2/yaffs_vfs_glue.c
-+++ b/fs/yaffs2/yaffs_vfs_glue.c
+Index: linux-3.10.23/fs/yaffs2/yaffs_vfs_glue.c
+===================================================================
+--- linux-3.10.23.orig/fs/yaffs2/yaffs_vfs_glue.c
++++ linux-3.10.23/fs/yaffs2/yaffs_vfs_glue.c
 @@ -515,14 +515,14 @@ static unsigned yaffs_gc_control_callbac
  static void yaffs_gross_lock(yaffs_dev_t *dev)
  {

@@ -1,5 +1,7 @@
---- a/drivers/mtd/redboot.c
-+++ b/drivers/mtd/redboot.c
+Index: linux-3.10.23/drivers/mtd/redboot.c
+===================================================================
+--- linux-3.10.23.orig/drivers/mtd/redboot.c
++++ linux-3.10.23/drivers/mtd/redboot.c
 @@ -76,12 +76,18 @@ static int parse_redboot_partitions(stru
  	static char nullstring[] = "unallocated";
  #endif

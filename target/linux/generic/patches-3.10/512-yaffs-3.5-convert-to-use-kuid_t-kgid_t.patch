@@ -1,5 +1,7 @@
---- a/fs/yaffs2/yaffs_vfs_glue.c
-+++ b/fs/yaffs2/yaffs_vfs_glue.c
+Index: linux-3.10.23/fs/yaffs2/yaffs_vfs_glue.c
+===================================================================
+--- linux-3.10.23.orig/fs/yaffs2/yaffs_vfs_glue.c
++++ linux-3.10.23/fs/yaffs2/yaffs_vfs_glue.c
 @@ -243,11 +243,10 @@ static inline void yaffs_dec_link_count(
  }
  #endif
@@ -205,8 +207,10 @@
  		buf += sprintf(buf,"%d, %d, %d, %u, %u, %u, %u\n",
  				n, dev->n_free_chunks, erasedChunks,
  				dev->bg_gcs, dev->oldest_dirty_gc_count,
---- a/fs/yaffs2/yaffs_guts.c
-+++ b/fs/yaffs2/yaffs_guts.c
+Index: linux-3.10.23/fs/yaffs2/yaffs_guts.c
+===================================================================
+--- linux-3.10.23.orig/fs/yaffs2/yaffs_guts.c
++++ linux-3.10.23/fs/yaffs2/yaffs_guts.c
 @@ -370,7 +370,7 @@ static int yaffs_verify_chunk_written(ya
  	yaffs_ext_tags tempTags;
  	__u8 *buffer = yaffs_get_temp_buffer(dev,__LINE__);
@@ -479,8 +483,10 @@
  	valid |= ATTR_GID;
  
  	Y_TIME_CONVERT(attr->ia_atime) = obj->yst_atime;
---- a/fs/yaffs2/yportenv.h
-+++ b/fs/yaffs2/yportenv.h
+Index: linux-3.10.23/fs/yaffs2/yportenv.h
+===================================================================
+--- linux-3.10.23.orig/fs/yaffs2/yportenv.h
++++ linux-3.10.23/fs/yaffs2/yportenv.h
 @@ -170,7 +170,7 @@
  #define O_RDWR		02
  #endif
@@ -508,8 +514,10 @@
  #define S_IREAD		0000400
  #endif
  
---- a/fs/yaffs2/devextras.h
-+++ b/fs/yaffs2/devextras.h
+Index: linux-3.10.23/fs/yaffs2/devextras.h
+===================================================================
+--- linux-3.10.23.orig/fs/yaffs2/devextras.h
++++ linux-3.10.23/fs/yaffs2/devextras.h
 @@ -87,6 +87,8 @@ struct iattr {
  	unsigned int ia_attr_flags;
  };

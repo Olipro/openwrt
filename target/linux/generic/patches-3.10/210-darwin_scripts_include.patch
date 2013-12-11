@@ -1,5 +1,7 @@
---- a/scripts/kallsyms.c
-+++ b/scripts/kallsyms.c
+Index: linux-3.10.23/scripts/kallsyms.c
+===================================================================
+--- linux-3.10.23.orig/scripts/kallsyms.c
++++ linux-3.10.23/scripts/kallsyms.c
 @@ -22,6 +22,35 @@
  #include <stdlib.h>
  #include <string.h>
@@ -36,8 +38,10 @@
  
  #ifndef ARRAY_SIZE
  #define ARRAY_SIZE(arr) (sizeof(arr) / sizeof(arr[0]))
---- a/scripts/kconfig/Makefile
-+++ b/scripts/kconfig/Makefile
+Index: linux-3.10.23/scripts/kconfig/Makefile
+===================================================================
+--- linux-3.10.23.orig/scripts/kconfig/Makefile
++++ linux-3.10.23/scripts/kconfig/Makefile
 @@ -132,6 +132,9 @@ check-lxdialog  := $(srctree)/$(src)/lxd
  # we really need to do so. (Do not call gcc as part of make mrproper)
  HOST_EXTRACFLAGS += $(shell $(CONFIG_SHELL) $(check-lxdialog) -ccflags) \
@@ -48,8 +52,10 @@
  
  # ===========================================================================
  # Shared Makefile for the various kconfig executables:
---- a/scripts/mod/mk_elfconfig.c
-+++ b/scripts/mod/mk_elfconfig.c
+Index: linux-3.10.23/scripts/mod/mk_elfconfig.c
+===================================================================
+--- linux-3.10.23.orig/scripts/mod/mk_elfconfig.c
++++ linux-3.10.23/scripts/mod/mk_elfconfig.c
 @@ -1,7 +1,11 @@
  #include <stdio.h>
  #include <stdlib.h>
@@ -62,8 +68,10 @@
  
  int
  main(int argc, char **argv)
---- a/scripts/mod/modpost.h
-+++ b/scripts/mod/modpost.h
+Index: linux-3.10.23/scripts/mod/modpost.h
+===================================================================
+--- linux-3.10.23.orig/scripts/mod/modpost.h
++++ linux-3.10.23/scripts/mod/modpost.h
 @@ -7,7 +7,11 @@
  #include <sys/mman.h>
  #include <fcntl.h>
@@ -76,8 +84,10 @@
  
  #include "elfconfig.h"
  
+Index: linux-3.10.23/scripts/mod/elf.h
+===================================================================
 --- /dev/null
-+++ b/scripts/mod/elf.h
++++ linux-3.10.23/scripts/mod/elf.h
 @@ -0,0 +1,3007 @@
 +/* This file defines standard ELF types, structures, and macros.
 +   Copyright (C) 1995-2012 Free Software Foundation, Inc.

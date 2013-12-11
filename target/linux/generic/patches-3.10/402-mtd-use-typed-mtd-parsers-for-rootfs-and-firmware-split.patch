@@ -1,5 +1,7 @@
---- a/drivers/mtd/mtdpart.c
-+++ b/drivers/mtd/mtdpart.c
+Index: linux-3.10.23/drivers/mtd/mtdpart.c
+===================================================================
+--- linux-3.10.23.orig/drivers/mtd/mtdpart.c
++++ linux-3.10.23/drivers/mtd/mtdpart.c
 @@ -626,6 +626,37 @@ int mtd_del_partition(struct mtd_info *m
  }
  EXPORT_SYMBOL_GPL(mtd_del_partition);
@@ -62,8 +64,10 @@
  	if (config_enabled(CONFIG_MTD_UIMAGE_SPLIT))
  		split_uimage(master, part);
  }
---- a/include/linux/mtd/partitions.h
-+++ b/include/linux/mtd/partitions.h
+Index: linux-3.10.23/include/linux/mtd/partitions.h
+===================================================================
+--- linux-3.10.23.orig/include/linux/mtd/partitions.h
++++ linux-3.10.23/include/linux/mtd/partitions.h
 @@ -70,6 +70,8 @@ struct mtd_part_parser_data {
  
  enum mtd_parser_type {

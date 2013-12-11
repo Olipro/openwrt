@@ -10,8 +10,10 @@ Signed-off-by: Jonas Gorski <jogo@openwrt.org>
 Signed-off-by: Gabor Juhos <juhosg@openwrt.org>
 ---
 
---- a/arch/mips/Makefile
-+++ b/arch/mips/Makefile
+Index: linux-3.10.23/arch/mips/Makefile
+===================================================================
+--- linux-3.10.23.orig/arch/mips/Makefile
++++ linux-3.10.23/arch/mips/Makefile
 @@ -89,10 +89,14 @@ all-$(CONFIG_SYS_SUPPORTS_ZBOOT)+= vmlin
  #
  cflags-y			+= -G 0 -mno-abicalls -fno-pic -pipe
@@ -28,8 +30,10 @@ Signed-off-by: Gabor Juhos <juhosg@openwrt.org>
  cflags-y += -ffreestanding
  
  #
---- a/arch/mips/kernel/vmlinux.lds.S
-+++ b/arch/mips/kernel/vmlinux.lds.S
+Index: linux-3.10.23/arch/mips/kernel/vmlinux.lds.S
+===================================================================
+--- linux-3.10.23.orig/arch/mips/kernel/vmlinux.lds.S
++++ linux-3.10.23/arch/mips/kernel/vmlinux.lds.S
 @@ -67,7 +67,7 @@ SECTIONS
  	/* Exception table for data bus errors */
  	__dbe_table : {
@@ -48,8 +52,10 @@ Signed-off-by: Gabor Juhos <juhosg@openwrt.org>
  		__mips_machines_end = .;
  	}
  
---- a/include/asm-generic/vmlinux.lds.h
-+++ b/include/asm-generic/vmlinux.lds.h
+Index: linux-3.10.23/include/asm-generic/vmlinux.lds.h
+===================================================================
+--- linux-3.10.23.orig/include/asm-generic/vmlinux.lds.h
++++ linux-3.10.23/include/asm-generic/vmlinux.lds.h
 @@ -95,7 +95,7 @@
  #ifdef CONFIG_FTRACE_MCOUNT_RECORD
  #define MCOUNT_REC()	. = ALIGN(8);				\
@@ -417,8 +423,10 @@ Signed-off-by: Gabor Juhos <juhosg@openwrt.org>
  #else
  #define INIT_RAM_FS
  #endif
---- a/arch/arm/Makefile
-+++ b/arch/arm/Makefile
+Index: linux-3.10.23/arch/arm/Makefile
+===================================================================
+--- linux-3.10.23.orig/arch/arm/Makefile
++++ linux-3.10.23/arch/arm/Makefile
 @@ -17,11 +17,16 @@ LDFLAGS_vmlinux	:=-p --no-undefined -X
  ifeq ($(CONFIG_CPU_ENDIAN_BE8),y)
  LDFLAGS_vmlinux	+= --be8
@@ -436,8 +444,10 @@ Signed-off-by: Gabor Juhos <juhosg@openwrt.org>
  # Never generate .eh_frame
  KBUILD_CFLAGS	+= $(call cc-option,-fno-dwarf2-cfi-asm)
  
---- a/arch/arm/kernel/vmlinux.lds.S
-+++ b/arch/arm/kernel/vmlinux.lds.S
+Index: linux-3.10.23/arch/arm/kernel/vmlinux.lds.S
+===================================================================
+--- linux-3.10.23.orig/arch/arm/kernel/vmlinux.lds.S
++++ linux-3.10.23/arch/arm/kernel/vmlinux.lds.S
 @@ -12,13 +12,13 @@
  #define PROC_INFO							\
  	. = ALIGN(4);							\
@@ -533,8 +543,10 @@ Signed-off-by: Gabor Juhos <juhosg@openwrt.org>
  		__pv_table_end = .;
  	}
  	.init.data : {
---- a/arch/arm/boot/compressed/Makefile
-+++ b/arch/arm/boot/compressed/Makefile
+Index: linux-3.10.23/arch/arm/boot/compressed/Makefile
+===================================================================
+--- linux-3.10.23.orig/arch/arm/boot/compressed/Makefile
++++ linux-3.10.23/arch/arm/boot/compressed/Makefile
 @@ -123,6 +123,7 @@ ifeq ($(CONFIG_FUNCTION_TRACER),y)
  ORIG_CFLAGS := $(KBUILD_CFLAGS)
  KBUILD_CFLAGS = $(subst -pg, , $(ORIG_CFLAGS))

@@ -1,5 +1,7 @@
---- a/drivers/hwmon/Kconfig
-+++ b/drivers/hwmon/Kconfig
+Index: linux-3.10.23/drivers/hwmon/Kconfig
+===================================================================
+--- linux-3.10.23.orig/drivers/hwmon/Kconfig
++++ linux-3.10.23/drivers/hwmon/Kconfig
 @@ -477,6 +477,15 @@ config SENSORS_GL520SM
  	  This driver can also be built as a module.  If so, the module
  	  will be called gl520sm.
@@ -16,8 +18,10 @@
  config SENSORS_GPIO_FAN
  	tristate "GPIO fan"
  	depends on GPIOLIB
---- a/drivers/hwmon/Makefile
-+++ b/drivers/hwmon/Makefile
+Index: linux-3.10.23/drivers/hwmon/Makefile
+===================================================================
+--- linux-3.10.23.orig/drivers/hwmon/Makefile
++++ linux-3.10.23/drivers/hwmon/Makefile
 @@ -140,6 +140,7 @@ obj-$(CONFIG_SENSORS_W83L785TS)	+= w83l7
  obj-$(CONFIG_SENSORS_W83L786NG)	+= w83l786ng.o
  obj-$(CONFIG_SENSORS_WM831X)	+= wm831x-hwmon.o
@@ -26,8 +30,10 @@
  
  obj-$(CONFIG_PMBUS)		+= pmbus/
  
+Index: linux-3.10.23/drivers/hwmon/gsc.c
+===================================================================
 --- /dev/null
-+++ b/drivers/hwmon/gsc.c
++++ linux-3.10.23/drivers/hwmon/gsc.c
 @@ -0,0 +1,308 @@
 +/*
 + * A hwmon driver for the Gateworks System Controller 

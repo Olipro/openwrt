@@ -1,5 +1,7 @@
---- a/arch/mips/mm/cache.c
-+++ b/arch/mips/mm/cache.c
+Index: linux-3.10.23/arch/mips/mm/cache.c
+===================================================================
+--- linux-3.10.23.orig/arch/mips/mm/cache.c
++++ linux-3.10.23/arch/mips/mm/cache.c
 @@ -39,6 +39,7 @@ void (*__flush_kernel_vmap_range)(unsign
  void (*__invalidate_kernel_vmap_range)(unsigned long vaddr, int size);
  
@@ -8,8 +10,10 @@
  
  /* MIPS specific cache operations */
  void (*flush_cache_sigtramp)(unsigned long addr);
---- a/fs/fuse/dev.c
-+++ b/fs/fuse/dev.c
+Index: linux-3.10.23/fs/fuse/dev.c
+===================================================================
+--- linux-3.10.23.orig/fs/fuse/dev.c
++++ linux-3.10.23/fs/fuse/dev.c
 @@ -20,6 +20,9 @@
  #include <linux/swap.h>
  #include <linux/splice.h>

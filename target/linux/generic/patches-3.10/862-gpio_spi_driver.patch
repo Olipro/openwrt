@@ -13,8 +13,10 @@ Please use the new mainline SPI-GPIO driver, as of 2.6.29.
  include/linux/spi/spi_gpio_old.h |   73 +++++++++++
  4 files changed, 334 insertions(+)
 
+Index: linux-3.10.23/include/linux/spi/spi_gpio_old.h
+===================================================================
 --- /dev/null
-+++ b/include/linux/spi/spi_gpio_old.h
++++ linux-3.10.23/include/linux/spi/spi_gpio_old.h
 @@ -0,0 +1,73 @@
 +/*
 + * spi_gpio interface to platform code
@@ -89,8 +91,10 @@ Please use the new mainline SPI-GPIO driver, as of 2.6.29.
 +int spi_gpio_next_id(void);
 +
 +#endif /* _LINUX_SPI_SPI_GPIO */
+Index: linux-3.10.23/drivers/spi/spi_gpio_old.c
+===================================================================
 --- /dev/null
-+++ b/drivers/spi/spi_gpio_old.c
++++ linux-3.10.23/drivers/spi/spi_gpio_old.c
 @@ -0,0 +1,251 @@
 +/*
 + * Bitbanging SPI bus driver using GPIO API
@@ -343,8 +347,10 @@ Please use the new mainline SPI-GPIO driver, as of 2.6.29.
 +MODULE_AUTHOR("Michael Buesch");
 +MODULE_DESCRIPTION("Platform independent GPIO bitbanging SPI driver");
 +MODULE_LICENSE("GPL v2");
---- a/drivers/spi/Kconfig
-+++ b/drivers/spi/Kconfig
+Index: linux-3.10.23/drivers/spi/Kconfig
+===================================================================
+--- linux-3.10.23.orig/drivers/spi/Kconfig
++++ linux-3.10.23/drivers/spi/Kconfig
 @@ -189,6 +189,15 @@ config SPI_GPIO
  	  GPIO operations, you should be able to leverage that for better
  	  speed with a custom version of this driver; see the source code.
@@ -361,8 +367,10 @@ Please use the new mainline SPI-GPIO driver, as of 2.6.29.
  config SPI_IMX
  	tristate "Freescale i.MX SPI controllers"
  	depends on ARCH_MXC
---- a/drivers/spi/Makefile
-+++ b/drivers/spi/Makefile
+Index: linux-3.10.23/drivers/spi/Makefile
+===================================================================
+--- linux-3.10.23.orig/drivers/spi/Makefile
++++ linux-3.10.23/drivers/spi/Makefile
 @@ -34,6 +34,7 @@ obj-$(CONFIG_SPI_FSL_LIB)		+= spi-fsl-li
  obj-$(CONFIG_SPI_FSL_ESPI)		+= spi-fsl-espi.o
  obj-$(CONFIG_SPI_FSL_SPI)		+= spi-fsl-spi.o

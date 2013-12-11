@@ -1,5 +1,7 @@
---- a/arch/arm/tools/mach-types
-+++ b/arch/arm/tools/mach-types
+Index: linux-3.10.23/arch/arm/tools/mach-types
+===================================================================
+--- linux-3.10.23.orig/arch/arm/tools/mach-types
++++ linux-3.10.23/arch/arm/tools/mach-types
 @@ -1007,3 +1007,29 @@ eco5_bx2		MACH_ECO5_BX2		ECO5_BX2		4572
  eukrea_cpuimx28sd	MACH_EUKREA_CPUIMX28SD	EUKREA_CPUIMX28SD	4573
  domotab			MACH_DOMOTAB		DOMOTAB			4574

@@ -1,5 +1,7 @@
+Index: linux-3.10.23/include/linux/decompress/unlzo_mm.h
+===================================================================
 --- /dev/null
-+++ b/include/linux/decompress/unlzo_mm.h
++++ linux-3.10.23/include/linux/decompress/unlzo_mm.h
 @@ -0,0 +1,10 @@
 +#ifndef UNLZO_MM_H
 +#define UNLZO_MM_H
@@ -11,8 +13,10 @@
 +#endif
 +
 +#endif
---- a/lib/decompress_unlzo.c
-+++ b/lib/decompress_unlzo.c
+Index: linux-3.10.23/lib/decompress_unlzo.c
+===================================================================
+--- linux-3.10.23.orig/lib/decompress_unlzo.c
++++ linux-3.10.23/lib/decompress_unlzo.c
 @@ -38,6 +38,7 @@
  
  #include <linux/types.h>

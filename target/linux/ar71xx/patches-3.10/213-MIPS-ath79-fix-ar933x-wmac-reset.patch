@@ -1,5 +1,7 @@
---- a/arch/mips/ath79/dev-wmac.c
-+++ b/arch/mips/ath79/dev-wmac.c
+Index: linux-3.10.23/arch/mips/ath79/dev-wmac.c
+===================================================================
+--- linux-3.10.23.orig/arch/mips/ath79/dev-wmac.c
++++ linux-3.10.23/arch/mips/ath79/dev-wmac.c
 @@ -62,10 +62,27 @@ static void __init ar913x_wmac_setup(voi
  
  static int ar933x_wmac_reset(void)

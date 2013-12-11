@@ -1,5 +1,7 @@
---- a/arch/mips/Kconfig
-+++ b/arch/mips/Kconfig
+Index: linux-3.10.23/arch/mips/Kconfig
+===================================================================
+--- linux-3.10.23.orig/arch/mips/Kconfig
++++ linux-3.10.23/arch/mips/Kconfig
 @@ -993,6 +993,10 @@ config SYNC_R4K
  config MIPS_MACHINE
  	def_bool n
@@ -11,8 +13,10 @@
  config NO_IOPORT
  	def_bool n
  
---- a/arch/mips/kernel/head.S
-+++ b/arch/mips/kernel/head.S
+Index: linux-3.10.23/arch/mips/kernel/head.S
+===================================================================
+--- linux-3.10.23.orig/arch/mips/kernel/head.S
++++ linux-3.10.23/arch/mips/kernel/head.S
 @@ -140,6 +140,12 @@ FEXPORT(__kernel_entry)
  	j	kernel_entry
  #endif

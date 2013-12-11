@@ -1,5 +1,7 @@
---- a/drivers/net/phy/mdio_bus.c
-+++ b/drivers/net/phy/mdio_bus.c
+Index: linux-3.10.23/drivers/net/phy/mdio_bus.c
+===================================================================
+--- linux-3.10.23.orig/drivers/net/phy/mdio_bus.c
++++ linux-3.10.23/drivers/net/phy/mdio_bus.c
 @@ -41,6 +41,8 @@
  #include <asm/irq.h>
  #include <asm/uaccess.h>
@@ -43,8 +45,10 @@
  	err = phy_device_register(phydev);
  	if (err) {
  		phy_device_free(phydev);
---- a/include/linux/phy.h
-+++ b/include/linux/phy.h
+Index: linux-3.10.23/include/linux/phy.h
+===================================================================
+--- linux-3.10.23.orig/include/linux/phy.h
++++ linux-3.10.23/include/linux/phy.h
 @@ -591,4 +591,22 @@ int __init mdio_bus_init(void);
  void mdio_bus_exit(void);
  
@@ -68,8 +72,10 @@
 +#endif
 +
  #endif /* __PHY_H */
---- a/drivers/net/phy/Kconfig
-+++ b/drivers/net/phy/Kconfig
+Index: linux-3.10.23/drivers/net/phy/Kconfig
+===================================================================
+--- linux-3.10.23.orig/drivers/net/phy/Kconfig
++++ linux-3.10.23/drivers/net/phy/Kconfig
 @@ -12,6 +12,10 @@ menuconfig PHYLIB
  
  if PHYLIB
@@ -81,8 +87,10 @@
  config SWCONFIG
  	tristate "Switch configuration API"
  	---help---
---- a/drivers/net/phy/Makefile
-+++ b/drivers/net/phy/Makefile
+Index: linux-3.10.23/drivers/net/phy/Makefile
+===================================================================
+--- linux-3.10.23.orig/drivers/net/phy/Makefile
++++ linux-3.10.23/drivers/net/phy/Makefile
 @@ -2,6 +2,8 @@
  
  libphy-objs			:= phy.o phy_device.o mdio_bus.o
@@ -92,8 +100,10 @@
  obj-$(CONFIG_PHYLIB)		+= libphy.o
  obj-$(CONFIG_SWCONFIG)		+= swconfig.o
  obj-$(CONFIG_MARVELL_PHY)	+= marvell.o
+Index: linux-3.10.23/drivers/net/phy/mdio-boardinfo.c
+===================================================================
 --- /dev/null
-+++ b/drivers/net/phy/mdio-boardinfo.c
++++ linux-3.10.23/drivers/net/phy/mdio-boardinfo.c
 @@ -0,0 +1,58 @@
 +/*
 + * mdio-boardinfo.c - collect pre-declarations of PHY devices
@@ -153,8 +163,10 @@
 +
 +	return 0;
 +}
+Index: linux-3.10.23/drivers/net/phy/mdio-boardinfo.h
+===================================================================
 --- /dev/null
-+++ b/drivers/net/phy/mdio-boardinfo.h
++++ linux-3.10.23/drivers/net/phy/mdio-boardinfo.h
 @@ -0,0 +1,22 @@
 +/*
 + * mdio-boardinfo.h - boardinfo interface internal to the mdio_bus component
@@ -178,8 +190,10 @@
 + */
 +extern struct mutex __mdio_board_lock;
 +extern struct list_head __mdio_board_list;
---- a/drivers/net/Makefile
-+++ b/drivers/net/Makefile
+Index: linux-3.10.23/drivers/net/Makefile
+===================================================================
+--- linux-3.10.23.orig/drivers/net/Makefile
++++ linux-3.10.23/drivers/net/Makefile
 @@ -15,7 +15,7 @@ obj-$(CONFIG_MII) += mii.o
  obj-$(CONFIG_MDIO) += mdio.o
  obj-$(CONFIG_NET) += Space.o loopback.o

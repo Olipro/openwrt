@@ -1,5 +1,7 @@
---- a/drivers/mtd/devices/m25p80.c
-+++ b/drivers/mtd/devices/m25p80.c
+Index: linux-3.10.23/drivers/mtd/devices/m25p80.c
+===================================================================
+--- linux-3.10.23.orig/drivers/mtd/devices/m25p80.c
++++ linux-3.10.23/drivers/mtd/devices/m25p80.c
 @@ -93,6 +93,7 @@ struct m25p {
  	u8			erase_opcode;
  	u8			*command;
@@ -97,8 +99,10 @@
  	/* sst flash chips use AAI word program */
  	if (info->flags & SST_WRITE)
  		flash->mtd._write = sst_write;
---- a/include/linux/spi/flash.h
-+++ b/include/linux/spi/flash.h
+Index: linux-3.10.23/include/linux/spi/flash.h
+===================================================================
+--- linux-3.10.23.orig/include/linux/spi/flash.h
++++ linux-3.10.23/include/linux/spi/flash.h
 @@ -25,6 +25,7 @@ struct flash_platform_data {
  
  	char		*type;

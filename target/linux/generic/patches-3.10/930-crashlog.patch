@@ -1,5 +1,7 @@
+Index: linux-3.10.23/include/linux/crashlog.h
+===================================================================
 --- /dev/null
-+++ b/include/linux/crashlog.h
++++ linux-3.10.23/include/linux/crashlog.h
 @@ -0,0 +1,17 @@
 +#ifndef __CRASHLOG_H
 +#define __CRASHLOG_H
@@ -18,8 +20,10 @@
 +#endif
 +
 +#endif
---- a/init/Kconfig
-+++ b/init/Kconfig
+Index: linux-3.10.23/init/Kconfig
+===================================================================
+--- linux-3.10.23.orig/init/Kconfig
++++ linux-3.10.23/init/Kconfig
 @@ -1186,6 +1186,10 @@ config RELAY
  
  	  If unsure, say N.
@@ -31,8 +35,10 @@
  config BLK_DEV_INITRD
  	bool "Initial RAM filesystem and RAM disk (initramfs/initrd) support"
  	depends on BROKEN || !FRV
---- a/kernel/Makefile
-+++ b/kernel/Makefile
+Index: linux-3.10.23/kernel/Makefile
+===================================================================
+--- linux-3.10.23.orig/kernel/Makefile
++++ linux-3.10.23/kernel/Makefile
 @@ -110,6 +110,7 @@ obj-$(CONFIG_PADATA) += padata.o
  obj-$(CONFIG_CRASH_DUMP) += crash_dump.o
  obj-$(CONFIG_JUMP_LABEL) += jump_label.o
@@ -41,8 +47,10 @@
  
  $(obj)/configs.o: $(obj)/config_data.h
  
+Index: linux-3.10.23/kernel/crashlog.c
+===================================================================
 --- /dev/null
-+++ b/kernel/crashlog.c
++++ linux-3.10.23/kernel/crashlog.c
 @@ -0,0 +1,181 @@
 +/*
 + * Crash information logger
@@ -225,8 +233,10 @@
 +	return 0;
 +}
 +module_init(crashlog_init_fs);
---- a/mm/bootmem.c
-+++ b/mm/bootmem.c
+Index: linux-3.10.23/mm/bootmem.c
+===================================================================
+--- linux-3.10.23.orig/mm/bootmem.c
++++ linux-3.10.23/mm/bootmem.c
 @@ -15,6 +15,7 @@
  #include <linux/export.h>
  #include <linux/kmemleak.h>
@@ -243,8 +253,10 @@
  	start = bdata->node_min_pfn;
  	end = bdata->node_low_pfn;
  
---- a/kernel/module.c
-+++ b/kernel/module.c
+Index: linux-3.10.23/kernel/module.c
+===================================================================
+--- linux-3.10.23.orig/kernel/module.c
++++ linux-3.10.23/kernel/module.c
 @@ -106,6 +106,9 @@ static LIST_HEAD(modules);
  #ifdef CONFIG_KGDB_KDB
  struct list_head *kdb_modules = &modules; /* kdb needs the list of modules */
@@ -255,8 +267,10 @@
  
  #ifdef CONFIG_MODULE_SIG
  #ifdef CONFIG_MODULE_SIG_FORCE
---- a/mm/memblock.c
-+++ b/mm/memblock.c
+Index: linux-3.10.23/mm/memblock.c
+===================================================================
+--- linux-3.10.23.orig/mm/memblock.c
++++ linux-3.10.23/mm/memblock.c
 @@ -19,6 +19,7 @@
  #include <linux/debugfs.h>
  #include <linux/seq_file.h>

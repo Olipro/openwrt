@@ -1,5 +1,7 @@
---- a/arch/mips/include/asm/checksum.h
-+++ b/arch/mips/include/asm/checksum.h
+Index: linux-3.10.23/arch/mips/include/asm/checksum.h
+===================================================================
+--- linux-3.10.23.orig/arch/mips/include/asm/checksum.h
++++ linux-3.10.23/arch/mips/include/asm/checksum.h
 @@ -104,26 +104,30 @@ static inline __sum16 ip_fast_csum(const
  	const unsigned int *stop = word + ihl;
  	unsigned int csum;
@@ -112,8 +114,10 @@
 -}
 -
  #endif /* _ASM_CHECKSUM_H */
---- a/include/uapi/linux/ip.h
-+++ b/include/uapi/linux/ip.h
+Index: linux-3.10.23/include/uapi/linux/ip.h
+===================================================================
+--- linux-3.10.23.orig/include/uapi/linux/ip.h
++++ linux-3.10.23/include/uapi/linux/ip.h
 @@ -102,7 +102,7 @@ struct iphdr {
  	__be32	saddr;
  	__be32	daddr;
@@ -123,8 +127,10 @@
  
  
  struct ip_auth_hdr {
---- a/include/uapi/linux/ipv6.h
-+++ b/include/uapi/linux/ipv6.h
+Index: linux-3.10.23/include/uapi/linux/ipv6.h
+===================================================================
+--- linux-3.10.23.orig/include/uapi/linux/ipv6.h
++++ linux-3.10.23/include/uapi/linux/ipv6.h
 @@ -125,7 +125,7 @@ struct ipv6hdr {
  
  	struct	in6_addr	saddr;
@@ -134,8 +140,10 @@
  
  
  /* index values for the variables in ipv6_devconf */
---- a/include/uapi/linux/tcp.h
-+++ b/include/uapi/linux/tcp.h
+Index: linux-3.10.23/include/uapi/linux/tcp.h
+===================================================================
+--- linux-3.10.23.orig/include/uapi/linux/tcp.h
++++ linux-3.10.23/include/uapi/linux/tcp.h
 @@ -54,7 +54,7 @@ struct tcphdr {
  	__be16	window;
  	__sum16	check;
@@ -154,8 +162,10 @@
  
  #define tcp_flag_word(tp) ( ((union tcp_word_hdr *)(tp))->words [3]) 
  
---- a/include/uapi/linux/udp.h
-+++ b/include/uapi/linux/udp.h
+Index: linux-3.10.23/include/uapi/linux/udp.h
+===================================================================
+--- linux-3.10.23.orig/include/uapi/linux/udp.h
++++ linux-3.10.23/include/uapi/linux/udp.h
 @@ -24,7 +24,7 @@ struct udphdr {
  	__be16	dest;
  	__be16	len;
@@ -165,8 +175,10 @@
  
  /* UDP socket options */
  #define UDP_CORK	1	/* Never send partially complete segments */
---- a/net/ipv4/netfilter/nf_conntrack_l3proto_ipv4.c
-+++ b/net/ipv4/netfilter/nf_conntrack_l3proto_ipv4.c
+Index: linux-3.10.23/net/ipv4/netfilter/nf_conntrack_l3proto_ipv4.c
+===================================================================
+--- linux-3.10.23.orig/net/ipv4/netfilter/nf_conntrack_l3proto_ipv4.c
++++ linux-3.10.23/net/ipv4/netfilter/nf_conntrack_l3proto_ipv4.c
 @@ -40,8 +40,8 @@ static bool ipv4_pkt_to_tuple(const stru
  	if (ap == NULL)
  		return false;
@@ -178,8 +190,10 @@
  
  	return true;
  }
---- a/include/uapi/linux/icmp.h
-+++ b/include/uapi/linux/icmp.h
+Index: linux-3.10.23/include/uapi/linux/icmp.h
+===================================================================
+--- linux-3.10.23.orig/include/uapi/linux/icmp.h
++++ linux-3.10.23/include/uapi/linux/icmp.h
 @@ -80,7 +80,7 @@ struct icmphdr {
  		__be16	mtu;
  	} frag;
@@ -189,8 +203,10 @@
  
  
  /*
---- a/include/uapi/linux/in6.h
-+++ b/include/uapi/linux/in6.h
+Index: linux-3.10.23/include/uapi/linux/in6.h
+===================================================================
+--- linux-3.10.23.orig/include/uapi/linux/in6.h
++++ linux-3.10.23/include/uapi/linux/in6.h
 @@ -36,7 +36,7 @@ struct in6_addr {
  #define s6_addr			in6_u.u6_addr8
  #define s6_addr16		in6_u.u6_addr16
@@ -200,8 +216,10 @@
  
  struct sockaddr_in6 {
  	unsigned short int	sin6_family;    /* AF_INET6 */
---- a/net/ipv6/af_inet6.c
-+++ b/net/ipv6/af_inet6.c
+Index: linux-3.10.23/net/ipv6/af_inet6.c
+===================================================================
+--- linux-3.10.23.orig/net/ipv6/af_inet6.c
++++ linux-3.10.23/net/ipv6/af_inet6.c
 @@ -60,6 +60,7 @@
  #endif
  
@@ -219,8 +237,10 @@
  		     np->rxopt.bits.rxflow) ||
  		    (opt->srcrt && (np->rxopt.bits.srcrt ||
  		     np->rxopt.bits.osrcrt)) ||
---- a/net/ipv6/tcp_ipv6.c
-+++ b/net/ipv6/tcp_ipv6.c
+Index: linux-3.10.23/net/ipv6/tcp_ipv6.c
+===================================================================
+--- linux-3.10.23.orig/net/ipv6/tcp_ipv6.c
++++ linux-3.10.23/net/ipv6/tcp_ipv6.c
 @@ -64,6 +64,7 @@
  #include <net/secure_seq.h>
  #include <net/tcp_memcontrol.h>
@@ -244,8 +264,10 @@
  	}
  
  #ifdef CONFIG_TCP_MD5SIG
---- a/include/linux/ipv6.h
-+++ b/include/linux/ipv6.h
+Index: linux-3.10.23/include/linux/ipv6.h
+===================================================================
+--- linux-3.10.23.orig/include/linux/ipv6.h
++++ linux-3.10.23/include/linux/ipv6.h
 @@ -4,6 +4,7 @@
  #include <uapi/linux/ipv6.h>
  
@@ -254,8 +276,10 @@
  /*
   * This structure contains configuration options per IPv6 link.
   */
---- a/net/ipv6/datagram.c
-+++ b/net/ipv6/datagram.c
+Index: linux-3.10.23/net/ipv6/datagram.c
+===================================================================
+--- linux-3.10.23.orig/net/ipv6/datagram.c
++++ linux-3.10.23/net/ipv6/datagram.c
 @@ -365,7 +365,7 @@ int ipv6_recv_error(struct sock *sk, str
  				ipv6_iface_scope_id(&sin->sin6_addr,
  						    IP6CB(skb)->iif);
@@ -265,7 +289,7 @@
  					       &sin->sin6_addr);
  			sin->sin6_scope_id = 0;
  		}
-@@ -687,12 +687,12 @@ int ip6_datagram_send_ctl(struct net *ne
+@@ -691,12 +691,12 @@ int ip6_datagram_send_ctl(struct net *ne
  			}
  
  			if (fl6->flowlabel&IPV6_FLOWINFO_MASK) {
@@ -280,8 +304,10 @@
  			break;
  
  		case IPV6_2292HOPOPTS:
---- a/net/ipv6/ip6_gre.c
-+++ b/net/ipv6/ip6_gre.c
+Index: linux-3.10.23/net/ipv6/ip6_gre.c
+===================================================================
+--- linux-3.10.23.orig/net/ipv6/ip6_gre.c
++++ linux-3.10.23/net/ipv6/ip6_gre.c
 @@ -391,7 +391,7 @@ static void ip6gre_err(struct sk_buff *s
  
  	t = ip6gre_tunnel_lookup(skb->dev, &ipv6h->daddr, &ipv6h->saddr,
@@ -326,8 +352,10 @@
  	if (t->parms.flags & IP6_TNL_F_USE_ORIG_FWMARK)
  		fl6.flowi6_mark = skb->mark;
  
---- a/net/ipv6/ip6_tunnel.c
-+++ b/net/ipv6/ip6_tunnel.c
+Index: linux-3.10.23/net/ipv6/ip6_tunnel.c
+===================================================================
+--- linux-3.10.23.orig/net/ipv6/ip6_tunnel.c
++++ linux-3.10.23/net/ipv6/ip6_tunnel.c
 @@ -1122,9 +1122,9 @@ ip6ip6_tnl_xmit(struct sk_buff *skb, str
  
  	dsfield = ipv6_get_dsfield(ipv6h);
@@ -340,8 +368,10 @@
  	if (t->parms.flags & IP6_TNL_F_USE_ORIG_FWMARK)
  		fl6.flowi6_mark = skb->mark;
  
---- a/net/ipv6/exthdrs.c
-+++ b/net/ipv6/exthdrs.c
+Index: linux-3.10.23/net/ipv6/exthdrs.c
+===================================================================
+--- linux-3.10.23.orig/net/ipv6/exthdrs.c
++++ linux-3.10.23/net/ipv6/exthdrs.c
 @@ -573,7 +573,7 @@ static bool ipv6_hop_jumbo(struct sk_buf
  		goto drop;
  	}
@@ -351,8 +381,10 @@
  	if (pkt_len <= IPV6_MAXPLEN) {
  		IP6_INC_STATS_BH(net, ipv6_skb_idev(skb),
  				 IPSTATS_MIB_INHDRERRORS);
---- a/include/linux/types.h
-+++ b/include/linux/types.h
+Index: linux-3.10.23/include/linux/types.h
+===================================================================
+--- linux-3.10.23.orig/include/linux/types.h
++++ linux-3.10.23/include/linux/types.h
 @@ -212,5 +212,11 @@ struct callback_head {
  };
  #define rcu_head callback_head
@@ -365,8 +397,10 @@
 +
  #endif /*  __ASSEMBLY__ */
  #endif /* _LINUX_TYPES_H */
---- a/net/ipv4/af_inet.c
-+++ b/net/ipv4/af_inet.c
+Index: linux-3.10.23/net/ipv4/af_inet.c
+===================================================================
+--- linux-3.10.23.orig/net/ipv4/af_inet.c
++++ linux-3.10.23/net/ipv4/af_inet.c
 @@ -1381,8 +1381,8 @@ static struct sk_buff **inet_gro_receive
  	if (unlikely(ip_fast_csum((u8 *)iph, 5)))
  		goto out_unlock;
@@ -378,8 +412,10 @@
  	id >>= 16;
  
  	for (p = *head; p; p = p->next) {
---- a/net/ipv4/route.c
-+++ b/net/ipv4/route.c
+Index: linux-3.10.23/net/ipv4/route.c
+===================================================================
+--- linux-3.10.23.orig/net/ipv4/route.c
++++ linux-3.10.23/net/ipv4/route.c
 @@ -461,7 +461,7 @@ static struct neighbour *ipv4_neigh_look
  	else if (skb)
  		pkey = &ip_hdr(skb)->daddr;
@@ -389,8 +425,10 @@
  	if (n)
  		return n;
  	return neigh_create(&arp_tbl, pkey, dev);
---- a/net/ipv4/tcp_output.c
-+++ b/net/ipv4/tcp_output.c
+Index: linux-3.10.23/net/ipv4/tcp_output.c
+===================================================================
+--- linux-3.10.23.orig/net/ipv4/tcp_output.c
++++ linux-3.10.23/net/ipv4/tcp_output.c
 @@ -412,48 +412,53 @@ static void tcp_options_write(__be32 *pt
  	u16 options = opts->options;	/* mungable copy */
  
@@ -506,8 +544,10 @@
  
  		memcpy(ptr, foc->val, foc->len);
  		if ((foc->len & 3) == 2) {
---- a/net/ipv4/igmp.c
-+++ b/net/ipv4/igmp.c
+Index: linux-3.10.23/net/ipv4/igmp.c
+===================================================================
+--- linux-3.10.23.orig/net/ipv4/igmp.c
++++ linux-3.10.23/net/ipv4/igmp.c
 @@ -470,7 +470,7 @@ static struct sk_buff *add_grec(struct s
  		if (!skb)
  			return NULL;
@@ -517,8 +557,10 @@
  		scount++; stotal++;
  		if ((type == IGMPV3_ALLOW_NEW_SOURCES ||
  		     type == IGMPV3_BLOCK_OLD_SOURCES) && psf->sf_crcount) {
---- a/include/uapi/linux/igmp.h
-+++ b/include/uapi/linux/igmp.h
+Index: linux-3.10.23/include/uapi/linux/igmp.h
+===================================================================
+--- linux-3.10.23.orig/include/uapi/linux/igmp.h
++++ linux-3.10.23/include/uapi/linux/igmp.h
 @@ -32,7 +32,7 @@ struct igmphdr {
  	__u8 code;		/* For newer IGMP */
  	__sum16 csum;
@@ -555,8 +597,10 @@
  
  #define IGMP_HOST_MEMBERSHIP_QUERY	0x11	/* From RFC1112 */
  #define IGMP_HOST_MEMBERSHIP_REPORT	0x12	/* Ditto */
---- a/net/core/flow_dissector.c
-+++ b/net/core/flow_dissector.c
+Index: linux-3.10.23/net/core/flow_dissector.c
+===================================================================
+--- linux-3.10.23.orig/net/core/flow_dissector.c
++++ linux-3.10.23/net/core/flow_dissector.c
 @@ -152,7 +152,7 @@ ipv6:
  		ports = skb_header_pointer(skb, nhoff + poff,
  					   sizeof(_ports), &_ports);
@@ -566,8 +610,10 @@
  	}
  
  	flow->thoff = (u16) nhoff;
---- a/include/uapi/linux/icmpv6.h
-+++ b/include/uapi/linux/icmpv6.h
+Index: linux-3.10.23/include/uapi/linux/icmpv6.h
+===================================================================
+--- linux-3.10.23.orig/include/uapi/linux/icmpv6.h
++++ linux-3.10.23/include/uapi/linux/icmpv6.h
 @@ -76,7 +76,7 @@ struct icmp6hdr {
  #define icmp6_addrconf_other	icmp6_dataun.u_nd_ra.other
  #define icmp6_rt_lifetime	icmp6_dataun.u_nd_ra.rt_lifetime
@@ -577,8 +623,10 @@
  
  
  #define ICMPV6_ROUTER_PREF_LOW		0x3
---- a/include/net/ndisc.h
-+++ b/include/net/ndisc.h
+Index: linux-3.10.23/include/net/ndisc.h
+===================================================================
+--- linux-3.10.23.orig/include/net/ndisc.h
++++ linux-3.10.23/include/net/ndisc.h
 @@ -76,7 +76,7 @@ struct ra_msg {
          struct icmp6hdr		icmph;
  	__be32			reachable_time;
@@ -616,8 +664,10 @@
  			return n;
  	}
  
---- a/net/sched/cls_u32.c
-+++ b/net/sched/cls_u32.c
+Index: linux-3.10.23/net/sched/cls_u32.c
+===================================================================
+--- linux-3.10.23.orig/net/sched/cls_u32.c
++++ linux-3.10.23/net/sched/cls_u32.c
 @@ -142,7 +142,7 @@ next_knode:
  			data = skb_header_pointer(skb, toff, 4, &hdata);
  			if (!data)
@@ -638,8 +688,10 @@
  		}
  		if (!(n->sel.flags & (TC_U32_VAROFFSET | TC_U32_OFFSET | TC_U32_EAT)))
  			goto next_ht;
---- a/net/ipv6/ip6_offload.c
-+++ b/net/ipv6/ip6_offload.c
+Index: linux-3.10.23/net/ipv6/ip6_offload.c
+===================================================================
+--- linux-3.10.23.orig/net/ipv6/ip6_offload.c
++++ linux-3.10.23/net/ipv6/ip6_offload.c
 @@ -199,7 +199,7 @@ static struct sk_buff **ipv6_gro_receive
  			continue;
  
@@ -649,8 +701,10 @@
  
  		/* All fields must match except length and Traffic Class. */
  		if (nlen != skb_network_header_len(p) ||
---- a/include/net/addrconf.h
-+++ b/include/net/addrconf.h
+Index: linux-3.10.23/include/net/addrconf.h
+===================================================================
+--- linux-3.10.23.orig/include/net/addrconf.h
++++ linux-3.10.23/include/net/addrconf.h
 @@ -43,7 +43,7 @@ struct prefix_info {
  	__be32			reserved2;
  
@@ -660,8 +714,10 @@
  
  
  #include <linux/netdevice.h>
---- a/include/net/inet_ecn.h
-+++ b/include/net/inet_ecn.h
+Index: linux-3.10.23/include/net/inet_ecn.h
+===================================================================
+--- linux-3.10.23.orig/include/net/inet_ecn.h
++++ linux-3.10.23/include/net/inet_ecn.h
 @@ -115,13 +115,13 @@ static inline int IP6_ECN_set_ce(struct
  {
  	if (INET_ECN_is_not_ect(ipv6_get_dsfield(iph)))
@@ -678,8 +734,10 @@
  }
  
  static inline void ipv6_copy_dscp(unsigned int dscp, struct ipv6hdr *inner)
---- a/include/net/ipv6.h
-+++ b/include/net/ipv6.h
+Index: linux-3.10.23/include/net/ipv6.h
+===================================================================
+--- linux-3.10.23.orig/include/net/ipv6.h
++++ linux-3.10.23/include/net/ipv6.h
 @@ -107,7 +107,7 @@ struct frag_hdr {
  	__u8	reserved;
  	__be16	frag_off;
@@ -752,8 +810,10 @@
  }
  
  /*
---- a/include/net/secure_seq.h
-+++ b/include/net/secure_seq.h
+Index: linux-3.10.23/include/net/secure_seq.h
+===================================================================
+--- linux-3.10.23.orig/include/net/secure_seq.h
++++ linux-3.10.23/include/net/secure_seq.h
 @@ -2,6 +2,7 @@
  #define _NET_SECURE_SEQ
  
@@ -762,8 +822,10 @@
  
  extern __u32 secure_ip_id(__be32 daddr);
  extern __u32 secure_ipv6_id(const __be32 daddr[4]);
---- a/include/uapi/linux/in.h
-+++ b/include/uapi/linux/in.h
+Index: linux-3.10.23/include/uapi/linux/in.h
+===================================================================
+--- linux-3.10.23.orig/include/uapi/linux/in.h
++++ linux-3.10.23/include/uapi/linux/in.h
 @@ -55,7 +55,7 @@ enum {
  /* Internet address. */
  struct in_addr {
@@ -773,8 +835,10 @@
  
  #define IP_TOS		1
  #define IP_TTL		2
---- a/net/core/secure_seq.c
-+++ b/net/core/secure_seq.c
+Index: linux-3.10.23/net/core/secure_seq.c
+===================================================================
+--- linux-3.10.23.orig/net/core/secure_seq.c
++++ linux-3.10.23/net/core/secure_seq.c
 @@ -56,11 +56,12 @@ __u32 secure_tcpv6_sequence_number(const
  	u32 secret[MD5_MESSAGE_BYTES / 4];
  	u32 hash[MD5_DIGEST_WORDS];
@@ -817,8 +881,10 @@
  	secret[4] = net_secret[4] +
  		(((__force u16)sport << 16) + (__force u16)dport);
  	for (i = 5; i < MD5_MESSAGE_BYTES / 4; i++)
---- a/net/ipv6/ip6_fib.c
-+++ b/net/ipv6/ip6_fib.c
+Index: linux-3.10.23/net/ipv6/ip6_fib.c
+===================================================================
+--- linux-3.10.23.orig/net/ipv6/ip6_fib.c
++++ linux-3.10.23/net/ipv6/ip6_fib.c
 @@ -144,7 +144,7 @@ static __inline__ __be32 addr_bit_set(co
  	 * See include/asm-generic/bitops/le.h.
  	 */
@@ -828,8 +894,10 @@
  }
  
  static __inline__ struct fib6_node * node_alloc(void)
---- a/net/netfilter/nf_conntrack_proto_tcp.c
-+++ b/net/netfilter/nf_conntrack_proto_tcp.c
+Index: linux-3.10.23/net/netfilter/nf_conntrack_proto_tcp.c
+===================================================================
+--- linux-3.10.23.orig/net/netfilter/nf_conntrack_proto_tcp.c
++++ linux-3.10.23/net/netfilter/nf_conntrack_proto_tcp.c
 @@ -454,7 +454,7 @@ static void tcp_sack(const struct sk_buf
  
  	/* Fast path for timestamp-only option */
@@ -839,8 +907,10 @@
  				       | (TCPOPT_NOP << 16)
  				       | (TCPOPT_TIMESTAMP << 8)
  				       | TCPOLEN_TIMESTAMP))
---- a/net/netfilter/xt_LOG.c
-+++ b/net/netfilter/xt_LOG.c
+Index: linux-3.10.23/net/netfilter/xt_LOG.c
+===================================================================
+--- linux-3.10.23.orig/net/netfilter/xt_LOG.c
++++ linux-3.10.23/net/netfilter/xt_LOG.c
 @@ -528,9 +528,9 @@ static void dump_ipv6_packet(struct sbuf
  	/* Max length: 44 "LEN=65535 TC=255 HOPLIMIT=255 FLOWLBL=FFFFF " */
  	sb_add(m, "LEN=%Zu TC=%u HOPLIMIT=%u FLOWLBL=%u ",
@@ -853,8 +923,10 @@
  
  	fragment = 0;
  	ptr = ip6hoff + sizeof(struct ipv6hdr);
---- a/net/xfrm/xfrm_input.c
-+++ b/net/xfrm/xfrm_input.c
+Index: linux-3.10.23/net/xfrm/xfrm_input.c
+===================================================================
+--- linux-3.10.23.orig/net/xfrm/xfrm_input.c
++++ linux-3.10.23/net/xfrm/xfrm_input.c
 @@ -77,8 +77,8 @@ int xfrm_parse_spi(struct sk_buff *skb,
  	if (!pskb_may_pull(skb, hlen))
  		return -EINVAL;
@@ -866,8 +938,10 @@
  	return 0;
  }
  
---- a/net/ipv4/ip_gre.c
-+++ b/net/ipv4/ip_gre.c
+Index: linux-3.10.23/net/ipv4/ip_gre.c
+===================================================================
+--- linux-3.10.23.orig/net/ipv4/ip_gre.c
++++ linux-3.10.23/net/ipv4/ip_gre.c
 @@ -190,13 +190,13 @@ static int parse_gre_header(struct sk_bu
  	}
  
@@ -884,8 +958,10 @@
  		options++;
  	} else
  		tpi->seq = 0;
---- a/net/ipv4/tcp_input.c
-+++ b/net/ipv4/tcp_input.c
+Index: linux-3.10.23/net/ipv4/tcp_input.c
+===================================================================
+--- linux-3.10.23.orig/net/ipv4/tcp_input.c
++++ linux-3.10.23/net/ipv4/tcp_input.c
 @@ -3625,14 +3625,16 @@ static bool tcp_parse_aligned_timestamp(
  {
  	const __be32 *ptr = (const __be32 *)(th + 1);
@@ -907,8 +983,10 @@
  		else
  			tp->rx_opt.rcv_tsecr = 0;
  		return true;
---- a/include/uapi/linux/if_pppox.h
-+++ b/include/uapi/linux/if_pppox.h
+Index: linux-3.10.23/include/uapi/linux/if_pppox.h
+===================================================================
+--- linux-3.10.23.orig/include/uapi/linux/if_pppox.h
++++ linux-3.10.23/include/uapi/linux/if_pppox.h
 @@ -47,6 +47,7 @@ struct pppoe_addr {
   */
  struct pptp_addr {

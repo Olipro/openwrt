@@ -1,5 +1,7 @@
---- a/net/dsa/tag_trailer.c
-+++ b/net/dsa/tag_trailer.c
+Index: linux-3.10.23/net/dsa/tag_trailer.c
+===================================================================
+--- linux-3.10.23.orig/net/dsa/tag_trailer.c
++++ linux-3.10.23/net/dsa/tag_trailer.c
 @@ -87,7 +87,7 @@ static int trailer_rcv(struct sk_buff *s
  
  	trailer = skb_tail_pointer(skb) - 4;

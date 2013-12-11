@@ -1,5 +1,7 @@
---- a/drivers/mtd/devices/block2mtd.c
-+++ b/drivers/mtd/devices/block2mtd.c
+Index: linux-3.10.23/drivers/mtd/devices/block2mtd.c
+===================================================================
+--- linux-3.10.23.orig/drivers/mtd/devices/block2mtd.c
++++ linux-3.10.23/drivers/mtd/devices/block2mtd.c
 @@ -234,6 +234,7 @@ static struct block2mtd_dev *add_device(
  		/* We might not have rootfs mounted at this point. Try
  		   to resolve the device name by other means. */

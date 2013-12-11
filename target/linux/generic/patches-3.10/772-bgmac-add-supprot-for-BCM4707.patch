@@ -2,8 +2,10 @@ bgmac: add supprot for BCM4707
 
 Signed-off-by: Hauke Mehrtens <hauke@hauke-m.de>
 
---- a/drivers/net/ethernet/broadcom/bgmac.c
-+++ b/drivers/net/ethernet/broadcom/bgmac.c
+Index: linux-3.10.23/drivers/net/ethernet/broadcom/bgmac.c
+===================================================================
+--- linux-3.10.23.orig/drivers/net/ethernet/broadcom/bgmac.c
++++ linux-3.10.23/drivers/net/ethernet/broadcom/bgmac.c
 @@ -887,6 +887,8 @@ static void bgmac_speed(struct bgmac *bg
  		set |= BGMAC_CMDCFG_ES_100;
  	if (speed & BGMAC_SPEED_1000)
@@ -123,8 +125,10 @@ Signed-off-by: Hauke Mehrtens <hauke@hauke-m.de>
  	bgmac_chip_reset(bgmac);
  
  	err = bgmac_dma_alloc(bgmac);
---- a/drivers/net/ethernet/broadcom/bgmac.h
-+++ b/drivers/net/ethernet/broadcom/bgmac.h
+Index: linux-3.10.23/drivers/net/ethernet/broadcom/bgmac.h
+===================================================================
+--- linux-3.10.23.orig/drivers/net/ethernet/broadcom/bgmac.h
++++ linux-3.10.23/drivers/net/ethernet/broadcom/bgmac.h
 @@ -185,6 +185,7 @@
  #define   BGMAC_CMDCFG_ES_10			0x00000000
  #define   BGMAC_CMDCFG_ES_100			0x00000004

@@ -1,5 +1,7 @@
---- a/drivers/of/fdt.c
-+++ b/drivers/of/fdt.c
+Index: linux-3.10.23/drivers/of/fdt.c
+===================================================================
+--- linux-3.10.23.orig/drivers/of/fdt.c
++++ linux-3.10.23/drivers/of/fdt.c
 @@ -679,6 +679,9 @@ int __init early_init_dt_scan_chosen(uns
  	p = of_get_flat_dt_prop(node, "bootargs", &l);
  	if (p != NULL && l > 0)

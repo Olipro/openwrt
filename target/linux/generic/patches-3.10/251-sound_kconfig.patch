@@ -1,5 +1,7 @@
---- a/sound/core/Kconfig
-+++ b/sound/core/Kconfig
+Index: linux-3.10.23/sound/core/Kconfig
+===================================================================
+--- linux-3.10.23.orig/sound/core/Kconfig
++++ linux-3.10.23/sound/core/Kconfig
 @@ -7,13 +7,13 @@ config SND_PCM
  	select SND_TIMER
  

@@ -52,8 +52,10 @@ Signed-off-by: David Woodhouse <David.Woodhouse@intel.com>
  drivers/mtd/devices/m25p80.c |   10 ++++++++++
  1 file changed, 10 insertions(+)
 
---- a/drivers/mtd/devices/m25p80.c
-+++ b/drivers/mtd/devices/m25p80.c
+Index: linux-3.10.23/drivers/mtd/devices/m25p80.c
+===================================================================
+--- linux-3.10.23.orig/drivers/mtd/devices/m25p80.c
++++ linux-3.10.23/drivers/mtd/devices/m25p80.c
 @@ -43,6 +43,7 @@
  #define	OPCODE_FAST_READ	0x0b	/* Read data bytes (high frequency) */
  #define	OPCODE_PP		0x02	/* Page program (up to 256 bytes) */

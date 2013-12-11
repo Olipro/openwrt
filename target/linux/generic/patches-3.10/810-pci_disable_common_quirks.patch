@@ -1,5 +1,7 @@
---- a/drivers/pci/Kconfig
-+++ b/drivers/pci/Kconfig
+Index: linux-3.10.23/drivers/pci/Kconfig
+===================================================================
+--- linux-3.10.23.orig/drivers/pci/Kconfig
++++ linux-3.10.23/drivers/pci/Kconfig
 @@ -63,6 +63,12 @@ config XEN_PCIDEV_FRONTEND
            The PCI device frontend driver allows the kernel to import arbitrary
            PCI devices from a PCI backend to support PCI driver domains.
@@ -13,8 +15,10 @@
  config HT_IRQ
  	bool "Interrupts on hypertransport devices"
  	default y
---- a/drivers/pci/quirks.c
-+++ b/drivers/pci/quirks.c
+Index: linux-3.10.23/drivers/pci/quirks.c
+===================================================================
+--- linux-3.10.23.orig/drivers/pci/quirks.c
++++ linux-3.10.23/drivers/pci/quirks.c
 @@ -44,6 +44,7 @@ static void quirk_mmio_always_on(struct
  DECLARE_PCI_FIXUP_CLASS_EARLY(PCI_ANY_ID, PCI_ANY_ID,
  				PCI_CLASS_BRIDGE_HOST, 8, quirk_mmio_always_on);

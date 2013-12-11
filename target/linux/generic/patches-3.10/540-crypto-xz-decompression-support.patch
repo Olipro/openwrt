@@ -1,5 +1,7 @@
---- a/crypto/Kconfig
-+++ b/crypto/Kconfig
+Index: linux-3.10.23/crypto/Kconfig
+===================================================================
+--- linux-3.10.23.orig/crypto/Kconfig
++++ linux-3.10.23/crypto/Kconfig
 @@ -1361,6 +1361,13 @@ config CRYPTO_842
  	help
  	  This is the 842 algorithm.
@@ -14,8 +16,10 @@
  comment "Random Number Generation"
  
  config CRYPTO_ANSI_CPRNG
---- a/crypto/Makefile
-+++ b/crypto/Makefile
+Index: linux-3.10.23/crypto/Makefile
+===================================================================
+--- linux-3.10.23.orig/crypto/Makefile
++++ linux-3.10.23/crypto/Makefile
 @@ -85,6 +85,7 @@ obj-$(CONFIG_CRYPTO_CRC32C) += crc32c.o
  obj-$(CONFIG_CRYPTO_CRC32) += crc32.o
  obj-$(CONFIG_CRYPTO_AUTHENC) += authenc.o authencesn.o
@@ -24,8 +28,10 @@
  obj-$(CONFIG_CRYPTO_842) += 842.o
  obj-$(CONFIG_CRYPTO_RNG2) += rng.o
  obj-$(CONFIG_CRYPTO_RNG2) += krng.o
+Index: linux-3.10.23/crypto/xz.c
+===================================================================
 --- /dev/null
-+++ b/crypto/xz.c
++++ linux-3.10.23/crypto/xz.c
 @@ -0,0 +1,117 @@
 +/*
 + * Cryptographic API.

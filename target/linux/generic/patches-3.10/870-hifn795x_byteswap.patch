@@ -1,5 +1,7 @@
---- a/drivers/crypto/hifn_795x.c
-+++ b/drivers/crypto/hifn_795x.c
+Index: linux-3.10.23/drivers/crypto/hifn_795x.c
+===================================================================
+--- linux-3.10.23.orig/drivers/crypto/hifn_795x.c
++++ linux-3.10.23/drivers/crypto/hifn_795x.c
 @@ -682,12 +682,12 @@ static inline u32 hifn_read_1(struct hif
  
  static inline void hifn_write_0(struct hifn_device *dev, u32 reg, u32 val)

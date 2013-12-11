@@ -1,5 +1,7 @@
---- a/drivers/net/phy/phy_device.c
-+++ b/drivers/net/phy/phy_device.c
+Index: linux-3.10.23/drivers/net/phy/phy_device.c
+===================================================================
+--- linux-3.10.23.orig/drivers/net/phy/phy_device.c
++++ linux-3.10.23/drivers/net/phy/phy_device.c
 @@ -612,6 +612,9 @@ EXPORT_SYMBOL(phy_attach);
   */
  void phy_detach(struct phy_device *phydev)
@@ -10,8 +12,10 @@
  	phydev->attached_dev->phydev = NULL;
  	phydev->attached_dev = NULL;
  
---- a/include/linux/phy.h
-+++ b/include/linux/phy.h
+Index: linux-3.10.23/include/linux/phy.h
+===================================================================
+--- linux-3.10.23.orig/include/linux/phy.h
++++ linux-3.10.23/include/linux/phy.h
 @@ -432,6 +432,12 @@ struct phy_driver {
  	 */
  	int (*did_interrupt)(struct phy_device *phydev);

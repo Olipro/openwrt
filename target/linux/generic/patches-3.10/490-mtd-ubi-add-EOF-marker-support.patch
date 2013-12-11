@@ -1,5 +1,7 @@
---- a/drivers/mtd/ubi/attach.c
-+++ b/drivers/mtd/ubi/attach.c
+Index: linux-3.10.23/drivers/mtd/ubi/attach.c
+===================================================================
+--- linux-3.10.23.orig/drivers/mtd/ubi/attach.c
++++ linux-3.10.23/drivers/mtd/ubi/attach.c
 @@ -800,6 +800,13 @@ out_unlock:
  	return err;
  }
@@ -39,8 +41,10 @@
  	switch (err) {
  	case 0:
  		break;
---- a/drivers/mtd/ubi/ubi.h
-+++ b/drivers/mtd/ubi/ubi.h
+Index: linux-3.10.23/drivers/mtd/ubi/ubi.h
+===================================================================
+--- linux-3.10.23.orig/drivers/mtd/ubi/ubi.h
++++ linux-3.10.23/drivers/mtd/ubi/ubi.h
 @@ -701,6 +701,7 @@ struct ubi_attach_info {
  	int mean_ec;
  	uint64_t ec_sum;

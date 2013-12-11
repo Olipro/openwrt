@@ -1,5 +1,7 @@
---- a/arch/mips/ath79/dev-wmac.c
-+++ b/arch/mips/ath79/dev-wmac.c
+Index: linux-3.10.23/arch/mips/ath79/dev-wmac.c
+===================================================================
+--- linux-3.10.23.orig/arch/mips/ath79/dev-wmac.c
++++ linux-3.10.23/arch/mips/ath79/dev-wmac.c
 @@ -15,6 +15,7 @@
  #include <linux/init.h>
  #include <linux/delay.h>
@@ -36,8 +38,10 @@
 +
  	platform_device_register(&ath79_wmac_device);
  }
---- a/arch/mips/ath79/dev-wmac.h
-+++ b/arch/mips/ath79/dev-wmac.h
+Index: linux-3.10.23/arch/mips/ath79/dev-wmac.h
+===================================================================
+--- linux-3.10.23.orig/arch/mips/ath79/dev-wmac.h
++++ linux-3.10.23/arch/mips/ath79/dev-wmac.h
 @@ -12,6 +12,6 @@
  #ifndef _ATH79_DEV_WMAC_H
  #define _ATH79_DEV_WMAC_H
@@ -46,8 +50,10 @@
 +void ath79_register_wmac(u8 *cal_data, u8 *mac_addr);
  
  #endif /* _ATH79_DEV_WMAC_H */
---- a/arch/mips/ath79/mach-ap81.c
-+++ b/arch/mips/ath79/mach-ap81.c
+Index: linux-3.10.23/arch/mips/ath79/mach-ap81.c
+===================================================================
+--- linux-3.10.23.orig/arch/mips/ath79/mach-ap81.c
++++ linux-3.10.23/arch/mips/ath79/mach-ap81.c
 @@ -98,7 +98,7 @@ static void __init ap81_setup(void)
  					ap81_gpio_keys);
  	ath79_register_spi(&ap81_spi_data, ap81_spi_info,
@@ -57,8 +63,10 @@
  	ath79_register_usb();
  }
  
---- a/arch/mips/ath79/mach-db120.c
-+++ b/arch/mips/ath79/mach-db120.c
+Index: linux-3.10.23/arch/mips/ath79/mach-db120.c
+===================================================================
+--- linux-3.10.23.orig/arch/mips/ath79/mach-db120.c
++++ linux-3.10.23/arch/mips/ath79/mach-db120.c
 @@ -134,7 +134,7 @@ static void __init db120_setup(void)
  	ath79_register_spi(&db120_spi_data, db120_spi_info,
  			   ARRAY_SIZE(db120_spi_info));
@@ -68,8 +76,10 @@
  	db120_pci_init(art + DB120_PCIE_CALDATA_OFFSET);
  }
  
---- a/arch/mips/ath79/mach-ap121.c
-+++ b/arch/mips/ath79/mach-ap121.c
+Index: linux-3.10.23/arch/mips/ath79/mach-ap121.c
+===================================================================
+--- linux-3.10.23.orig/arch/mips/ath79/mach-ap121.c
++++ linux-3.10.23/arch/mips/ath79/mach-ap121.c
 @@ -91,7 +91,7 @@ static void __init ap121_setup(void)
  	ath79_register_spi(&ap121_spi_data, ap121_spi_info,
  			   ARRAY_SIZE(ap121_spi_info));

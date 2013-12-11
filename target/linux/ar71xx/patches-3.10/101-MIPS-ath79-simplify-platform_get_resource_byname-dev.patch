@@ -28,8 +28,10 @@ Acked-by: Gabor Juhos <juhosg@openwrt.org>
  arch/mips/pci/pci-ar724x.c |    9 ---------
  2 files changed, 12 deletions(-)
 
---- a/arch/mips/pci/pci-ar71xx.c
-+++ b/arch/mips/pci/pci-ar71xx.c
+Index: linux-3.10.23/arch/mips/pci/pci-ar71xx.c
+===================================================================
+--- linux-3.10.23.orig/arch/mips/pci/pci-ar71xx.c
++++ linux-3.10.23/arch/mips/pci/pci-ar71xx.c
 @@ -363,9 +363,6 @@ static int ar71xx_pci_probe(struct platf
  	spin_lock_init(&apc->lock);
  
@@ -40,8 +42,10 @@ Acked-by: Gabor Juhos <juhosg@openwrt.org>
  	apc->cfg_base = devm_ioremap_resource(&pdev->dev, res);
  	if (IS_ERR(apc->cfg_base))
  		return PTR_ERR(apc->cfg_base);
---- a/arch/mips/pci/pci-ar724x.c
-+++ b/arch/mips/pci/pci-ar724x.c
+Index: linux-3.10.23/arch/mips/pci/pci-ar724x.c
+===================================================================
+--- linux-3.10.23.orig/arch/mips/pci/pci-ar724x.c
++++ linux-3.10.23/arch/mips/pci/pci-ar724x.c
 @@ -362,25 +362,16 @@ static int ar724x_pci_probe(struct platf
  		return -ENOMEM;
  

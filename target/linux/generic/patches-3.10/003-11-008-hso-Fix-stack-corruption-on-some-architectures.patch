@@ -20,8 +20,10 @@ Signed-off-by: David S. Miller <davem@davemloft.net>
  drivers/net/usb/hso.c |    6 +++++-
  1 file changed, 5 insertions(+), 1 deletion(-)
 
---- a/drivers/net/usb/hso.c
-+++ b/drivers/net/usb/hso.c
+Index: linux-3.10.23/drivers/net/usb/hso.c
+===================================================================
+--- linux-3.10.23.orig/drivers/net/usb/hso.c
++++ linux-3.10.23/drivers/net/usb/hso.c
 @@ -2816,13 +2816,16 @@ exit:
  static int hso_get_config_data(struct usb_interface *interface)
  {

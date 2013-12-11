@@ -1,5 +1,7 @@
---- a/net/netfilter/Kconfig
-+++ b/net/netfilter/Kconfig
+Index: linux-3.10.23/net/netfilter/Kconfig
+===================================================================
+--- linux-3.10.23.orig/net/netfilter/Kconfig
++++ linux-3.10.23/net/netfilter/Kconfig
 @@ -2,7 +2,7 @@ menu "Core Netfilter Configuration"
  	depends on NET && INET && NETFILTER
  

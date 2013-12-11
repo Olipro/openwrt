@@ -1,5 +1,7 @@
---- a/drivers/net/phy/Kconfig
-+++ b/drivers/net/phy/Kconfig
+Index: linux-3.10.23/drivers/net/phy/Kconfig
+===================================================================
+--- linux-3.10.23.orig/drivers/net/phy/Kconfig
++++ linux-3.10.23/drivers/net/phy/Kconfig
 @@ -256,3 +256,8 @@ endif # PHYLIB
  config MICREL_KS8995MA
  	tristate "Micrel KS8995MA 5-ports 10/100 managed Ethernet switch"
@@ -9,8 +11,10 @@
 +	tristate "Lantiq XWAY Tantos (PSB6970) Ethernet switch"
 +	select SWCONFIG
 +	select ETHERNET_PACKET_MANGLE
---- a/drivers/net/phy/Makefile
-+++ b/drivers/net/phy/Makefile
+Index: linux-3.10.23/drivers/net/phy/Makefile
+===================================================================
+--- linux-3.10.23.orig/drivers/net/phy/Makefile
++++ linux-3.10.23/drivers/net/phy/Makefile
 @@ -30,6 +30,7 @@ obj-$(CONFIG_RTL8367_PHY)	+= rtl8367.o
  obj-$(CONFIG_RTL8367B_PHY)	+= rtl8367b.o
  obj-$(CONFIG_LSI_ET1011C_PHY)	+= et1011c.o

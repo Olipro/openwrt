@@ -1,5 +1,7 @@
---- a/drivers/mtd/maps/physmap.c
-+++ b/drivers/mtd/maps/physmap.c
+Index: linux-3.10.23/drivers/mtd/maps/physmap.c
+===================================================================
+--- linux-3.10.23.orig/drivers/mtd/maps/physmap.c
++++ linux-3.10.23/drivers/mtd/maps/physmap.c
 @@ -31,6 +31,66 @@ struct physmap_flash_info {
  	int			vpp_refcnt;
  };
@@ -81,8 +83,10 @@
  		probe_type = rom_probe_types;
  		if (physmap_data->probe_type == NULL) {
  			for (; info->mtd[i] == NULL && *probe_type != NULL; probe_type++)
---- a/include/linux/mtd/physmap.h
-+++ b/include/linux/mtd/physmap.h
+Index: linux-3.10.23/include/linux/mtd/physmap.h
+===================================================================
+--- linux-3.10.23.orig/include/linux/mtd/physmap.h
++++ linux-3.10.23/include/linux/mtd/physmap.h
 @@ -25,6 +25,8 @@ struct physmap_flash_data {
  	unsigned int		width;
  	int			(*init)(struct platform_device *);

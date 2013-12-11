@@ -1,5 +1,7 @@
---- a/arch/mips/ath79/dev-usb.c
-+++ b/arch/mips/ath79/dev-usb.c
+Index: linux-3.10.23/arch/mips/ath79/dev-usb.c
+===================================================================
+--- linux-3.10.23.orig/arch/mips/ath79/dev-usb.c
++++ linux-3.10.23/arch/mips/ath79/dev-usb.c
 @@ -182,14 +182,34 @@ static void __init ar933x_usb_setup(void
  			   &ath79_ehci_pdata_v2, sizeof(ath79_ehci_pdata_v2));
  }

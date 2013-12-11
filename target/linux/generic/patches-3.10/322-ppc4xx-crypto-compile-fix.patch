@@ -1,5 +1,7 @@
---- a/drivers/crypto/amcc/crypto4xx_core.c
-+++ b/drivers/crypto/amcc/crypto4xx_core.c
+Index: linux-3.10.23/drivers/crypto/amcc/crypto4xx_core.c
+===================================================================
+--- linux-3.10.23.orig/drivers/crypto/amcc/crypto4xx_core.c
++++ linux-3.10.23/drivers/crypto/amcc/crypto4xx_core.c
 @@ -19,6 +19,7 @@
   */
  

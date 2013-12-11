@@ -11,8 +11,10 @@ Signed-off-by: Gabor Juhos <juhosg@openwrt.org>
  drivers/tty/serial/ar933x_uart.c |   26 ++++++++------------------
  1 file changed, 8 insertions(+), 18 deletions(-)
 
---- a/drivers/tty/serial/ar933x_uart.c
-+++ b/drivers/tty/serial/ar933x_uart.c
+Index: linux-3.10.23/drivers/tty/serial/ar933x_uart.c
+===================================================================
+--- linux-3.10.23.orig/drivers/tty/serial/ar933x_uart.c
++++ linux-3.10.23/drivers/tty/serial/ar933x_uart.c
 @@ -652,19 +652,18 @@ static int ar933x_uart_probe(struct plat
  		return -EINVAL;
  	}

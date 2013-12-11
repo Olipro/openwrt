@@ -1,5 +1,7 @@
---- a/net/netfilter/xt_layer7.c
-+++ b/net/netfilter/xt_layer7.c
+Index: linux-3.10.23/net/netfilter/xt_layer7.c
+===================================================================
+--- linux-3.10.23.orig/net/netfilter/xt_layer7.c
++++ linux-3.10.23/net/netfilter/xt_layer7.c
 @@ -415,7 +415,9 @@ static int layer7_write_proc(struct file
  }
  

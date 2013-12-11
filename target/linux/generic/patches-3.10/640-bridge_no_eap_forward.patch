@@ -1,5 +1,7 @@
---- a/net/bridge/br_input.c
-+++ b/net/bridge/br_input.c
+Index: linux-3.10.23/net/bridge/br_input.c
+===================================================================
+--- linux-3.10.23.orig/net/bridge/br_input.c
++++ linux-3.10.23/net/bridge/br_input.c
 @@ -94,7 +94,11 @@ int br_handle_frame_finish(struct sk_buf
  
  	dst = NULL;

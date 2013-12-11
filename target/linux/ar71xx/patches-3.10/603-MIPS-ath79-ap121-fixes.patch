@@ -1,5 +1,7 @@
---- a/arch/mips/ath79/mach-ap121.c
-+++ b/arch/mips/ath79/mach-ap121.c
+Index: linux-3.10.23/arch/mips/ath79/mach-ap121.c
+===================================================================
+--- linux-3.10.23.orig/arch/mips/ath79/mach-ap121.c
++++ linux-3.10.23/arch/mips/ath79/mach-ap121.c
 @@ -1,19 +1,21 @@
  /*
   *  Atheros AP121 board support
@@ -137,8 +139,10 @@
 +
 +MIPS_MACHINE(ATH79_MACH_AP121_MINI, "AP121-MINI", "Atheros AP121-MINI",
 +	     ap121_mini_setup);
---- a/arch/mips/ath79/Kconfig
-+++ b/arch/mips/ath79/Kconfig
+Index: linux-3.10.23/arch/mips/ath79/Kconfig
+===================================================================
+--- linux-3.10.23.orig/arch/mips/ath79/Kconfig
++++ linux-3.10.23/arch/mips/ath79/Kconfig
 @@ -5,9 +5,10 @@ menu "Atheros AR71XX/AR724X/AR913X machi
  config ATH79_MACH_AP121
  	bool "Atheros AP121 reference board"
@@ -151,8 +155,10 @@
  	select ATH79_DEV_USB
  	select ATH79_DEV_WMAC
  	help
---- a/arch/mips/ath79/machtypes.h
-+++ b/arch/mips/ath79/machtypes.h
+Index: linux-3.10.23/arch/mips/ath79/machtypes.h
+===================================================================
+--- linux-3.10.23.orig/arch/mips/ath79/machtypes.h
++++ linux-3.10.23/arch/mips/ath79/machtypes.h
 @@ -17,6 +17,7 @@
  enum ath79_mach_type {
  	ATH79_MACH_GENERIC = 0,

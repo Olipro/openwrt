@@ -1,5 +1,7 @@
---- a/fs/locks.c
-+++ b/fs/locks.c
+Index: linux-3.10.23/fs/locks.c
+===================================================================
+--- linux-3.10.23.orig/fs/locks.c
++++ linux-3.10.23/fs/locks.c
 @@ -2267,6 +2267,8 @@ static const struct file_operations proc
  
  static int __init proc_locks_init(void)
@@ -9,8 +11,10 @@
  	proc_create("locks", 0, NULL, &proc_locks_operations);
  	return 0;
  }
---- a/fs/proc/Kconfig
-+++ b/fs/proc/Kconfig
+Index: linux-3.10.23/fs/proc/Kconfig
+===================================================================
+--- linux-3.10.23.orig/fs/proc/Kconfig
++++ linux-3.10.23/fs/proc/Kconfig
 @@ -67,3 +67,8 @@ config PROC_PAGE_MONITOR
  	  /proc/pid/smaps, /proc/pid/clear_refs, /proc/pid/pagemap,
  	  /proc/kpagecount, and /proc/kpageflags. Disabling these
@@ -20,8 +24,10 @@
 +	default n
 +	depends on EXPERT
 +	bool "Strip non-essential /proc functionality to reduce code size"
---- a/fs/proc/consoles.c
-+++ b/fs/proc/consoles.c
+Index: linux-3.10.23/fs/proc/consoles.c
+===================================================================
+--- linux-3.10.23.orig/fs/proc/consoles.c
++++ linux-3.10.23/fs/proc/consoles.c
 @@ -108,6 +108,9 @@ static const struct file_operations proc
  
  static int __init proc_consoles_init(void)
@@ -32,8 +38,10 @@
  	proc_create("consoles", 0, NULL, &proc_consoles_operations);
  	return 0;
  }
---- a/fs/proc/proc_tty.c
-+++ b/fs/proc/proc_tty.c
+Index: linux-3.10.23/fs/proc/proc_tty.c
+===================================================================
+--- linux-3.10.23.orig/fs/proc/proc_tty.c
++++ linux-3.10.23/fs/proc/proc_tty.c
 @@ -143,7 +143,10 @@ static const struct file_operations proc
  void proc_tty_register_driver(struct tty_driver *driver)
  {
@@ -66,8 +74,10 @@
  	if (!proc_mkdir("tty", NULL))
  		return;
  	proc_tty_ldisc = proc_mkdir("tty/ldisc", NULL);
---- a/kernel/exec_domain.c
-+++ b/kernel/exec_domain.c
+Index: linux-3.10.23/kernel/exec_domain.c
+===================================================================
+--- linux-3.10.23.orig/kernel/exec_domain.c
++++ linux-3.10.23/kernel/exec_domain.c
 @@ -173,6 +173,8 @@ static const struct file_operations exec
  
  static int __init proc_execdomains_init(void)
@@ -77,8 +87,10 @@
  	proc_create("execdomains", 0, NULL, &execdomains_proc_fops);
  	return 0;
  }
---- a/kernel/irq/proc.c
-+++ b/kernel/irq/proc.c
+Index: linux-3.10.23/kernel/irq/proc.c
+===================================================================
+--- linux-3.10.23.orig/kernel/irq/proc.c
++++ linux-3.10.23/kernel/irq/proc.c
 @@ -311,6 +311,9 @@ void register_irq_proc(unsigned int irq,
  {
  	char name [MAX_NAMELEN];
@@ -109,8 +121,10 @@
  	/* create /proc/irq */
  	root_irq_dir = proc_mkdir("irq", NULL);
  	if (!root_irq_dir)
---- a/kernel/time/timer_list.c
-+++ b/kernel/time/timer_list.c
+Index: linux-3.10.23/kernel/time/timer_list.c
+===================================================================
+--- linux-3.10.23.orig/kernel/time/timer_list.c
++++ linux-3.10.23/kernel/time/timer_list.c
 @@ -362,6 +362,8 @@ static int __init init_timer_list_procfs
  {
  	struct proc_dir_entry *pe;
@@ -120,8 +134,10 @@
  	pe = proc_create("timer_list", 0444, NULL, &timer_list_fops);
  	if (!pe)
  		return -ENOMEM;
---- a/mm/vmalloc.c
-+++ b/mm/vmalloc.c
+Index: linux-3.10.23/mm/vmalloc.c
+===================================================================
+--- linux-3.10.23.orig/mm/vmalloc.c
++++ linux-3.10.23/mm/vmalloc.c
 @@ -2692,6 +2692,8 @@ static const struct file_operations proc
  
  static int __init proc_vmalloc_init(void)
@@ -131,9 +147,11 @@
  	proc_create("vmallocinfo", S_IRUSR, NULL, &proc_vmalloc_operations);
  	return 0;
  }
---- a/mm/vmstat.c
-+++ b/mm/vmstat.c
-@@ -1241,10 +1241,12 @@ static int __init setup_vmstat(void)
+Index: linux-3.10.23/mm/vmstat.c
+===================================================================
+--- linux-3.10.23.orig/mm/vmstat.c
++++ linux-3.10.23/mm/vmstat.c
+@@ -1242,10 +1242,12 @@ static int __init setup_vmstat(void)
  		start_cpu_timer(cpu);
  #endif
  #ifdef CONFIG_PROC_FS
@@ -149,8 +167,10 @@
  #endif
  	return 0;
  }
---- a/net/8021q/vlanproc.c
-+++ b/net/8021q/vlanproc.c
+Index: linux-3.10.23/net/8021q/vlanproc.c
+===================================================================
+--- linux-3.10.23.orig/net/8021q/vlanproc.c
++++ linux-3.10.23/net/8021q/vlanproc.c
 @@ -127,6 +127,9 @@ void vlan_proc_cleanup(struct net *net)
  {
  	struct vlan_net *vn = net_generic(net, vlan_net_id);
@@ -171,8 +191,10 @@
  	vn->proc_vlan_dir = proc_net_mkdir(net, name_root, net->proc_net);
  	if (!vn->proc_vlan_dir)
  		goto err;
---- a/net/core/sock.c
-+++ b/net/core/sock.c
+Index: linux-3.10.23/net/core/sock.c
+===================================================================
+--- linux-3.10.23.orig/net/core/sock.c
++++ linux-3.10.23/net/core/sock.c
 @@ -2839,6 +2839,8 @@ static __net_initdata struct pernet_oper
  
  static int __init proto_init(void)
@@ -182,8 +204,10 @@
  	return register_pernet_subsys(&proto_net_ops);
  }
  
---- a/net/ipv4/fib_trie.c
-+++ b/net/ipv4/fib_trie.c
+Index: linux-3.10.23/net/ipv4/fib_trie.c
+===================================================================
+--- linux-3.10.23.orig/net/ipv4/fib_trie.c
++++ linux-3.10.23/net/ipv4/fib_trie.c
 @@ -2587,10 +2587,12 @@ static const struct file_operations fib_
  
  int __net_init fib_proc_init(struct net *net)
@@ -225,8 +249,10 @@
  	remove_proc_entry("route", net->proc_net);
  }
  
---- a/net/ipv4/proc.c
-+++ b/net/ipv4/proc.c
+Index: linux-3.10.23/net/ipv4/proc.c
+===================================================================
+--- linux-3.10.23.orig/net/ipv4/proc.c
++++ linux-3.10.23/net/ipv4/proc.c
 @@ -510,6 +510,9 @@ static __net_initdata struct pernet_oper
  
  int __init ip_misc_proc_init(void)
@@ -237,8 +263,10 @@
  	return register_pernet_subsys(&ip_proc_ops);
  }
  
---- a/net/ipv4/route.c
-+++ b/net/ipv4/route.c
+Index: linux-3.10.23/net/ipv4/route.c
+===================================================================
+--- linux-3.10.23.orig/net/ipv4/route.c
++++ linux-3.10.23/net/ipv4/route.c
 @@ -423,6 +423,9 @@ static struct pernet_operations ip_rt_pr
  
  static int __init ip_rt_proc_init(void)
@@ -249,8 +277,10 @@
  	return register_pernet_subsys(&ip_rt_proc_ops);
  }
  
---- a/ipc/msg.c
-+++ b/ipc/msg.c
+Index: linux-3.10.23/ipc/msg.c
+===================================================================
+--- linux-3.10.23.orig/ipc/msg.c
++++ linux-3.10.23/ipc/msg.c
 @@ -134,6 +134,9 @@ void __init msg_init(void)
  	printk(KERN_INFO "msgmni has been set to %d\n",
  		init_ipc_ns.msg_ctlmni);
@@ -261,8 +291,10 @@
  	ipc_init_proc_interface("sysvipc/msg",
  				"       key      msqid perms      cbytes       qnum lspid lrpid   uid   gid  cuid  cgid      stime      rtime      ctime\n",
  				IPC_MSG_IDS, sysvipc_msg_proc_show);
---- a/ipc/sem.c
-+++ b/ipc/sem.c
+Index: linux-3.10.23/ipc/sem.c
+===================================================================
+--- linux-3.10.23.orig/ipc/sem.c
++++ linux-3.10.23/ipc/sem.c
 @@ -191,6 +191,8 @@ void sem_exit_ns(struct ipc_namespace *n
  void __init sem_init (void)
  {
@@ -272,8 +304,10 @@
  	ipc_init_proc_interface("sysvipc/sem",
  				"       key      semid perms      nsems   uid   gid  cuid  cgid      otime      ctime\n",
  				IPC_SEM_IDS, sysvipc_sem_proc_show);
---- a/ipc/shm.c
-+++ b/ipc/shm.c
+Index: linux-3.10.23/ipc/shm.c
+===================================================================
+--- linux-3.10.23.orig/ipc/shm.c
++++ linux-3.10.23/ipc/shm.c
 @@ -118,6 +118,8 @@ pure_initcall(ipc_ns_init);
  
  void __init shm_init (void)
@@ -283,9 +317,11 @@
  	ipc_init_proc_interface("sysvipc/shm",
  #if BITS_PER_LONG <= 32
  				"       key      shmid perms       size  cpid  lpid nattch   uid   gid  cuid  cgid      atime      dtime      ctime        rss       swap\n",
---- a/ipc/util.c
-+++ b/ipc/util.c
-@@ -158,6 +158,9 @@ void __init ipc_init_proc_interface(cons
+Index: linux-3.10.23/ipc/util.c
+===================================================================
+--- linux-3.10.23.orig/ipc/util.c
++++ linux-3.10.23/ipc/util.c
+@@ -173,6 +173,9 @@ void __init ipc_init_proc_interface(cons
  	struct proc_dir_entry *pde;
  	struct ipc_proc_iface *iface;
  
@@ -295,8 +331,10 @@
  	iface = kmalloc(sizeof(*iface), GFP_KERNEL);
  	if (!iface)
  		return;
---- a/net/core/net-procfs.c
-+++ b/net/core/net-procfs.c
+Index: linux-3.10.23/net/core/net-procfs.c
+===================================================================
+--- linux-3.10.23.orig/net/core/net-procfs.c
++++ linux-3.10.23/net/core/net-procfs.c
 @@ -306,10 +306,12 @@ static int __net_init dev_proc_net_init(
  
  	if (!proc_create("dev", S_IRUGO, net->proc_net, &dev_seq_fops))

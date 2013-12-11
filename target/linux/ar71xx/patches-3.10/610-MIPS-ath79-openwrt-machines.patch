@@ -1,5 +1,7 @@
---- a/arch/mips/ath79/machtypes.h
-+++ b/arch/mips/ath79/machtypes.h
+Index: linux-3.10.23/arch/mips/ath79/machtypes.h
+===================================================================
+--- linux-3.10.23.orig/arch/mips/ath79/machtypes.h
++++ linux-3.10.23/arch/mips/ath79/machtypes.h
 @@ -16,22 +16,142 @@
  
  enum ath79_mach_type {
@@ -143,8 +145,10 @@
  };
  
  #endif /* _ATH79_MACHTYPE_H */
---- a/arch/mips/ath79/Kconfig
-+++ b/arch/mips/ath79/Kconfig
+Index: linux-3.10.23/arch/mips/ath79/Kconfig
+===================================================================
+--- linux-3.10.23.orig/arch/mips/ath79/Kconfig
++++ linux-3.10.23/arch/mips/ath79/Kconfig
 @@ -2,6 +2,61 @@ if ATH79
  
  menu "Atheros AR71XX/AR724X/AR913X machine selection"
@@ -1056,8 +1060,10 @@
 +	def_bool n
 +
  endif
---- a/arch/mips/ath79/Makefile
-+++ b/arch/mips/ath79/Makefile
+Index: linux-3.10.23/arch/mips/ath79/Makefile
+===================================================================
+--- linux-3.10.23.orig/arch/mips/ath79/Makefile
++++ linux-3.10.23/arch/mips/ath79/Makefile
 @@ -38,9 +38,90 @@ obj-$(CONFIG_ATH79_ROUTERBOOT)		+= route
  #
  # Machines
@@ -1149,8 +1155,10 @@
 +obj-$(CONFIG_ATH79_MACH_WZR_HP_G450H)	+= mach-wzr-hp-g450h.o
 +obj-$(CONFIG_ATH79_MACH_ZCN_1523H)	+= mach-zcn-1523h.o
 +obj-$(CONFIG_ATH79_MACH_CARAMBOLA2)	+= mach-carambola2.o
---- a/arch/mips/ath79/prom.c
-+++ b/arch/mips/ath79/prom.c
+Index: linux-3.10.23/arch/mips/ath79/prom.c
+===================================================================
+--- linux-3.10.23.orig/arch/mips/ath79/prom.c
++++ linux-3.10.23/arch/mips/ath79/prom.c
 @@ -180,6 +180,11 @@ void __init prom_init(void)
  			ath79_prom_append_cmdline("board", env);
  		}

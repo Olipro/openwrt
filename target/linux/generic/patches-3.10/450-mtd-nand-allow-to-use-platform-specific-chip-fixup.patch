@@ -3,8 +3,10 @@
  include/linux/mtd/nand.h     |    1 +
  2 files changed, 13 insertions(+), 1 deletion(-)
 
---- a/include/linux/mtd/nand.h
-+++ b/include/linux/mtd/nand.h
+Index: linux-3.10.23/include/linux/mtd/nand.h
+===================================================================
+--- linux-3.10.23.orig/include/linux/mtd/nand.h
++++ linux-3.10.23/include/linux/mtd/nand.h
 @@ -655,6 +655,7 @@ struct platform_nand_chip {
  	unsigned int options;
  	unsigned int bbt_options;
@@ -13,8 +15,10 @@
  };
  
  /* Keep gcc happy */
---- a/drivers/mtd/nand/plat_nand.c
-+++ b/drivers/mtd/nand/plat_nand.c
+Index: linux-3.10.23/drivers/mtd/nand/plat_nand.c
+===================================================================
+--- linux-3.10.23.orig/drivers/mtd/nand/plat_nand.c
++++ linux-3.10.23/drivers/mtd/nand/plat_nand.c
 @@ -103,7 +103,18 @@ static int plat_nand_probe(struct platfo
  	}
  

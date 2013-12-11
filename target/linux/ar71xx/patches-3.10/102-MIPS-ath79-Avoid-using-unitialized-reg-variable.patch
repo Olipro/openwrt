@@ -20,8 +20,10 @@ Acked-by: Gabor Juhos <juhosg@openwrt.org>
  arch/mips/ath79/common.c |    4 ++--
  1 file changed, 2 insertions(+), 2 deletions(-)
 
---- a/arch/mips/ath79/common.c
-+++ b/arch/mips/ath79/common.c
+Index: linux-3.10.23/arch/mips/ath79/common.c
+===================================================================
+--- linux-3.10.23.orig/arch/mips/ath79/common.c
++++ linux-3.10.23/arch/mips/ath79/common.c
 @@ -75,7 +75,7 @@ void ath79_device_reset_set(u32 mask)
  	else if (soc_is_qca955x())
  		reg = QCA955X_RESET_REG_RESET_MODULE;

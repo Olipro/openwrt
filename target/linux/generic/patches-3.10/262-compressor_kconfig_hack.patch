@@ -1,5 +1,7 @@
---- a/lib/Kconfig
-+++ b/lib/Kconfig
+Index: linux-3.10.23/lib/Kconfig
+===================================================================
+--- linux-3.10.23.orig/lib/Kconfig
++++ linux-3.10.23/lib/Kconfig
 @@ -178,16 +178,16 @@ config AUDIT_GENERIC
  # compression support is select'ed if needed
  #

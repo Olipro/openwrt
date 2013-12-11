@@ -1,5 +1,7 @@
---- a/net/bridge/br_private.h
-+++ b/net/bridge/br_private.h
+Index: linux-3.10.23/net/bridge/br_private.h
+===================================================================
+--- linux-3.10.23.orig/net/bridge/br_private.h
++++ linux-3.10.23/net/bridge/br_private.h
 @@ -157,6 +157,7 @@ struct net_bridge_port
  #define BR_ROOT_BLOCK		0x00000004
  #define BR_MULTICAST_FAST_LEAVE	0x00000008
@@ -8,8 +10,10 @@
  
  #ifdef CONFIG_BRIDGE_IGMP_SNOOPING
  	u32				multicast_startup_queries_sent;
---- a/net/bridge/br_sysfs_if.c
-+++ b/net/bridge/br_sysfs_if.c
+Index: linux-3.10.23/net/bridge/br_sysfs_if.c
+===================================================================
+--- linux-3.10.23.orig/net/bridge/br_sysfs_if.c
++++ linux-3.10.23/net/bridge/br_sysfs_if.c
 @@ -159,6 +159,22 @@ BRPORT_ATTR_FLAG(hairpin_mode, BR_HAIRPI
  BRPORT_ATTR_FLAG(bpdu_guard, BR_BPDU_GUARD);
  BRPORT_ATTR_FLAG(root_block, BR_ROOT_BLOCK);
@@ -41,8 +45,10 @@
  	NULL
  };
  
---- a/net/bridge/br_input.c
-+++ b/net/bridge/br_input.c
+Index: linux-3.10.23/net/bridge/br_input.c
+===================================================================
+--- linux-3.10.23.orig/net/bridge/br_input.c
++++ linux-3.10.23/net/bridge/br_input.c
 @@ -114,8 +114,8 @@ int br_handle_frame_finish(struct sk_buf
  			skb2 = skb;
  
@@ -54,8 +60,10 @@
  		skb2 = skb;
  		/* Do not forward the packet since it's local. */
  		skb = NULL;
---- a/net/bridge/br_forward.c
-+++ b/net/bridge/br_forward.c
+Index: linux-3.10.23/net/bridge/br_forward.c
+===================================================================
+--- linux-3.10.23.orig/net/bridge/br_forward.c
++++ linux-3.10.23/net/bridge/br_forward.c
 @@ -119,7 +119,7 @@ void br_deliver(const struct net_bridge_
  /* called with rcu_read_lock */
  void br_forward(const struct net_bridge_port *to, struct sk_buff *skb, struct sk_buff *skb0)

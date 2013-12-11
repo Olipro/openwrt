@@ -1,5 +1,7 @@
---- a/arch/mips/ath79/mach-ap81.c
-+++ b/arch/mips/ath79/mach-ap81.c
+Index: linux-3.10.23/arch/mips/ath79/mach-ap81.c
+===================================================================
+--- linux-3.10.23.orig/arch/mips/ath79/mach-ap81.c
++++ linux-3.10.23/arch/mips/ath79/mach-ap81.c
 @@ -9,12 +9,16 @@
   *  by the Free Software Foundation.
   */
@@ -112,8 +114,10 @@
  }
  
  MIPS_MACHINE(ATH79_MACH_AP81, "AP81", "Atheros AP81 reference board",
---- a/arch/mips/ath79/Kconfig
-+++ b/arch/mips/ath79/Kconfig
+Index: linux-3.10.23/arch/mips/ath79/Kconfig
+===================================================================
+--- linux-3.10.23.orig/arch/mips/ath79/Kconfig
++++ linux-3.10.23/arch/mips/ath79/Kconfig
 @@ -30,9 +30,10 @@ config ATH79_MACH_AP136
  config ATH79_MACH_AP81
  	bool "Atheros AP81 reference board"

@@ -1,5 +1,7 @@
---- a/fs/yaffs2/yaffs_mtdif1.c
-+++ b/fs/yaffs2/yaffs_mtdif1.c
+Index: linux-3.10.23/fs/yaffs2/yaffs_mtdif1.c
+===================================================================
+--- linux-3.10.23.orig/fs/yaffs2/yaffs_mtdif1.c
++++ linux-3.10.23/fs/yaffs2/yaffs_mtdif1.c
 @@ -127,7 +127,7 @@ int nandmtd1_WriteChunkWithTagsToNAND(ya
  #endif
  
@@ -18,8 +20,10 @@
  	ops.len = (data) ? chunkBytes : 0;
  	ops.ooblen = YTAG1_SIZE;
  	ops.datbuf = data;
---- a/fs/yaffs2/yaffs_mtdif2.c
-+++ b/fs/yaffs2/yaffs_mtdif2.c
+Index: linux-3.10.23/fs/yaffs2/yaffs_mtdif2.c
+===================================================================
+--- linux-3.10.23.orig/fs/yaffs2/yaffs_mtdif2.c
++++ linux-3.10.23/fs/yaffs2/yaffs_mtdif2.c
 @@ -71,7 +71,7 @@ int nandmtd2_WriteChunkWithTagsToNAND(ya
  		yaffs_PackTags2(&pt, tags, !dev->param.no_tags_ecc);
  
@@ -38,8 +42,10 @@
  		ops.ooblen = packed_tags_size;
  		ops.len = data ? dev->data_bytes_per_chunk : packed_tags_size;
  		ops.ooboffs = 0;
---- a/fs/yaffs2/yaffs_mtdif.h
-+++ b/fs/yaffs2/yaffs_mtdif.h
+Index: linux-3.10.23/fs/yaffs2/yaffs_mtdif.h
+===================================================================
+--- linux-3.10.23.orig/fs/yaffs2/yaffs_mtdif.h
++++ linux-3.10.23/fs/yaffs2/yaffs_mtdif.h
 @@ -24,4 +24,11 @@ extern struct nand_oobinfo yaffs_noeccin
  #endif
  int nandmtd_EraseBlockInNAND(yaffs_dev_t *dev, int blockNumber);

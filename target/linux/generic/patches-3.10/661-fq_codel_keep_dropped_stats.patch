@@ -1,5 +1,7 @@
---- a/net/sched/sch_fq_codel.c
-+++ b/net/sched/sch_fq_codel.c
+Index: linux-3.10.23/net/sched/sch_fq_codel.c
+===================================================================
+--- linux-3.10.23.orig/net/sched/sch_fq_codel.c
++++ linux-3.10.23/net/sched/sch_fq_codel.c
 @@ -195,7 +195,6 @@ static int fq_codel_enqueue(struct sk_bu
  		list_add_tail(&flow->flowchain, &q->new_flows);
  		q->new_flow_count++;

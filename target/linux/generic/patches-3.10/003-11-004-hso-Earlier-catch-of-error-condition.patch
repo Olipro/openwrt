@@ -15,8 +15,10 @@ Signed-off-by: David S. Miller <davem@davemloft.net>
  drivers/net/usb/hso.c |    9 +++++----
  1 file changed, 5 insertions(+), 4 deletions(-)
 
---- a/drivers/net/usb/hso.c
-+++ b/drivers/net/usb/hso.c
+Index: linux-3.10.23/drivers/net/usb/hso.c
+===================================================================
+--- linux-3.10.23.orig/drivers/net/usb/hso.c
++++ linux-3.10.23/drivers/net/usb/hso.c
 @@ -2886,6 +2886,11 @@ static int hso_probe(struct usb_interfac
  	struct hso_shared_int *shared_int;
  	struct hso_device *tmp_dev = NULL;

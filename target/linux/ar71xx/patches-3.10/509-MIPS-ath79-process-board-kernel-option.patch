@@ -1,5 +1,7 @@
---- a/arch/mips/ath79/setup.c
-+++ b/arch/mips/ath79/setup.c
+Index: linux-3.10.23/arch/mips/ath79/setup.c
+===================================================================
+--- linux-3.10.23.orig/arch/mips/ath79/setup.c
++++ linux-3.10.23/arch/mips/ath79/setup.c
 @@ -218,6 +218,8 @@ void __init plat_time_init(void)
  	mips_hpt_frequency = clk_get_rate(clk) / 2;
  }

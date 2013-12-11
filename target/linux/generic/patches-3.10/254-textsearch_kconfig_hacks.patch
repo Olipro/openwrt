@@ -1,5 +1,7 @@
---- a/lib/Kconfig
-+++ b/lib/Kconfig
+Index: linux-3.10.23/lib/Kconfig
+===================================================================
+--- linux-3.10.23.orig/lib/Kconfig
++++ linux-3.10.23/lib/Kconfig
 @@ -280,16 +280,16 @@ config BCH_CONST_T
  # Textsearch support is select'ed if needed
  #

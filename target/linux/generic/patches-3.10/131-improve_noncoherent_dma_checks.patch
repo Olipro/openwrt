@@ -16,8 +16,10 @@ Signed-off-by: Felix Fietkau <nbd@openwrt.org>
  arch/mips/mm/dma-default.c                         | 2 ++
  4 files changed, 14 insertions(+), 5 deletions(-)
 
---- a/arch/mips/Kconfig
-+++ b/arch/mips/Kconfig
+Index: linux-3.10.23/arch/mips/Kconfig
+===================================================================
+--- linux-3.10.23.orig/arch/mips/Kconfig
++++ linux-3.10.23/arch/mips/Kconfig
 @@ -297,7 +297,7 @@ config MIPS_MALTA
  	select CEVT_R4K
  	select CSRC_R4K
@@ -38,8 +40,10 @@ Signed-off-by: Felix Fietkau <nbd@openwrt.org>
  config DMA_COHERENT
  	bool
  
---- a/arch/mips/include/asm/dma-coherence.h
-+++ b/arch/mips/include/asm/dma-coherence.h
+Index: linux-3.10.23/arch/mips/include/asm/dma-coherence.h
+===================================================================
+--- linux-3.10.23.orig/arch/mips/include/asm/dma-coherence.h
++++ linux-3.10.23/arch/mips/include/asm/dma-coherence.h
 @@ -9,7 +9,16 @@
  #ifndef __ASM_DMA_COHERENCE_H
  #define __ASM_DMA_COHERENCE_H
@@ -57,8 +61,10 @@ Signed-off-by: Felix Fietkau <nbd@openwrt.org>
 +#endif /* CONFIG_DMA_MAYBE_COHERENT */
  
  #endif
---- a/arch/mips/include/asm/mach-generic/dma-coherence.h
-+++ b/arch/mips/include/asm/mach-generic/dma-coherence.h
+Index: linux-3.10.23/arch/mips/include/asm/mach-generic/dma-coherence.h
+===================================================================
+--- linux-3.10.23.orig/arch/mips/include/asm/mach-generic/dma-coherence.h
++++ linux-3.10.23/arch/mips/include/asm/mach-generic/dma-coherence.h
 @@ -49,11 +49,7 @@ static inline int plat_dma_supported(str
  
  static inline int plat_device_is_coherent(struct device *dev)
@@ -71,8 +77,10 @@ Signed-off-by: Felix Fietkau <nbd@openwrt.org>
  }
  
  #endif /* __ASM_MACH_GENERIC_DMA_COHERENCE_H */
---- a/arch/mips/mm/dma-default.c
-+++ b/arch/mips/mm/dma-default.c
+Index: linux-3.10.23/arch/mips/mm/dma-default.c
+===================================================================
+--- linux-3.10.23.orig/arch/mips/mm/dma-default.c
++++ linux-3.10.23/arch/mips/mm/dma-default.c
 @@ -22,6 +22,7 @@
  
  #include <dma-coherence.h>

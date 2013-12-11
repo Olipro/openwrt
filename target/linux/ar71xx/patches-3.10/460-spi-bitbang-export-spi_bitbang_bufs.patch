@@ -1,5 +1,7 @@
---- a/drivers/spi/spi-bitbang.c
-+++ b/drivers/spi/spi-bitbang.c
+Index: linux-3.10.23/drivers/spi/spi-bitbang.c
+===================================================================
+--- linux-3.10.23.orig/drivers/spi/spi-bitbang.c
++++ linux-3.10.23/drivers/spi/spi-bitbang.c
 @@ -234,13 +234,14 @@ void spi_bitbang_cleanup(struct spi_devi
  }
  EXPORT_SYMBOL_GPL(spi_bitbang_cleanup);
@@ -16,8 +18,10 @@
  
  /*----------------------------------------------------------------------*/
  
---- a/include/linux/spi/spi_bitbang.h
-+++ b/include/linux/spi/spi_bitbang.h
+Index: linux-3.10.23/include/linux/spi/spi_bitbang.h
+===================================================================
+--- linux-3.10.23.orig/include/linux/spi/spi_bitbang.h
++++ linux-3.10.23/include/linux/spi/spi_bitbang.h
 @@ -44,6 +44,7 @@ extern void spi_bitbang_cleanup(struct s
  extern int spi_bitbang_transfer(struct spi_device *spi, struct spi_message *m);
  extern int spi_bitbang_setup_transfer(struct spi_device *spi,

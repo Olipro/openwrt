@@ -1,5 +1,7 @@
---- a/drivers/ssb/Kconfig
-+++ b/drivers/ssb/Kconfig
+Index: linux-3.10.23/drivers/ssb/Kconfig
+===================================================================
+--- linux-3.10.23.orig/drivers/ssb/Kconfig
++++ linux-3.10.23/drivers/ssb/Kconfig
 @@ -138,13 +138,13 @@ config SSB_DRIVER_MIPS
  
  config SSB_SFLASH
@@ -16,8 +18,10 @@
  	default y
  
  config SSB_DRIVER_EXTIF
---- a/drivers/ssb/driver_chipcommon_sflash.c
-+++ b/drivers/ssb/driver_chipcommon_sflash.c
+Index: linux-3.10.23/drivers/ssb/driver_chipcommon_sflash.c
+===================================================================
+--- linux-3.10.23.orig/drivers/ssb/driver_chipcommon_sflash.c
++++ linux-3.10.23/drivers/ssb/driver_chipcommon_sflash.c
 @@ -9,6 +9,19 @@
  
  #include "ssb_private.h"
@@ -101,8 +105,10 @@
 -	return -ENOTSUPP;
 +	return 0;
  }
---- a/drivers/ssb/main.c
-+++ b/drivers/ssb/main.c
+Index: linux-3.10.23/drivers/ssb/main.c
+===================================================================
+--- linux-3.10.23.orig/drivers/ssb/main.c
++++ linux-3.10.23/drivers/ssb/main.c
 @@ -553,6 +553,14 @@ static int ssb_devices_register(struct s
  	}
  #endif
@@ -118,8 +124,10 @@
  	return 0;
  error:
  	/* Unwind the already registered devices. */
---- a/drivers/ssb/pcihost_wrapper.c
-+++ b/drivers/ssb/pcihost_wrapper.c
+Index: linux-3.10.23/drivers/ssb/pcihost_wrapper.c
+===================================================================
+--- linux-3.10.23.orig/drivers/ssb/pcihost_wrapper.c
++++ linux-3.10.23/drivers/ssb/pcihost_wrapper.c
 @@ -38,7 +38,7 @@ static int ssb_pcihost_resume(struct pci
  	struct ssb_bus *ssb = pci_get_drvdata(dev);
  	int err;
@@ -129,8 +137,10 @@
  	err = pci_enable_device(dev);
  	if (err)
  		return err;
---- a/drivers/ssb/sprom.c
-+++ b/drivers/ssb/sprom.c
+Index: linux-3.10.23/drivers/ssb/sprom.c
+===================================================================
+--- linux-3.10.23.orig/drivers/ssb/sprom.c
++++ linux-3.10.23/drivers/ssb/sprom.c
 @@ -54,7 +54,7 @@ static int hex2sprom(u16 *sprom, const c
  	while (cnt < sprom_size_words) {
  		memcpy(tmp, dump, 4);
@@ -140,8 +150,10 @@
  		if (err)
  			return err;
  		sprom[cnt++] = swab16((u16)parsed);
---- a/drivers/ssb/ssb_private.h
-+++ b/drivers/ssb/ssb_private.h
+Index: linux-3.10.23/drivers/ssb/ssb_private.h
+===================================================================
+--- linux-3.10.23.orig/drivers/ssb/ssb_private.h
++++ linux-3.10.23/drivers/ssb/ssb_private.h
 @@ -243,6 +243,10 @@ static inline int ssb_sflash_init(struct
  extern struct platform_device ssb_pflash_dev;
  #endif
@@ -153,8 +165,10 @@
  #ifdef CONFIG_SSB_DRIVER_EXTIF
  extern u32 ssb_extif_watchdog_timer_set_wdt(struct bcm47xx_wdt *wdt, u32 ticks);
  extern u32 ssb_extif_watchdog_timer_set_ms(struct bcm47xx_wdt *wdt, u32 ms);
---- a/include/linux/ssb/ssb_driver_mips.h
-+++ b/include/linux/ssb/ssb_driver_mips.h
+Index: linux-3.10.23/include/linux/ssb/ssb_driver_mips.h
+===================================================================
+--- linux-3.10.23.orig/include/linux/ssb/ssb_driver_mips.h
++++ linux-3.10.23/include/linux/ssb/ssb_driver_mips.h
 @@ -20,6 +20,18 @@ struct ssb_pflash {
  	u32 window_size;
  };
@@ -184,8 +198,10 @@
  };
  
  extern void ssb_mipscore_init(struct ssb_mipscore *mcore);
---- a/include/linux/ssb/ssb_regs.h
-+++ b/include/linux/ssb/ssb_regs.h
+Index: linux-3.10.23/include/linux/ssb/ssb_regs.h
+===================================================================
+--- linux-3.10.23.orig/include/linux/ssb/ssb_regs.h
++++ linux-3.10.23/include/linux/ssb/ssb_regs.h
 @@ -172,6 +172,7 @@
  #define SSB_SPROMSIZE_WORDS_R4		220
  #define SSB_SPROMSIZE_BYTES_R123	(SSB_SPROMSIZE_WORDS_R123 * sizeof(u16))

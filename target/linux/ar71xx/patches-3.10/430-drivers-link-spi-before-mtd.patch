@@ -1,5 +1,7 @@
---- a/drivers/Makefile
-+++ b/drivers/Makefile
+Index: linux-3.10.23/drivers/Makefile
+===================================================================
+--- linux-3.10.23.orig/drivers/Makefile
++++ linux-3.10.23/drivers/Makefile
 @@ -62,8 +62,8 @@ obj-$(CONFIG_IDE)		+= ide/
  obj-$(CONFIG_SCSI)		+= scsi/
  obj-$(CONFIG_ATA)		+= ata/

@@ -12,8 +12,10 @@ Signed-off-by: Charles Manning <cdhmanning@gmail.com>
  yaffs_guts.c |    8 +-------
  1 file changed, 1 insertion(+), 7 deletions(-)
 
---- a/fs/yaffs2/yaffs_guts.c
-+++ b/fs/yaffs2/yaffs_guts.c
+Index: linux-3.10.23/fs/yaffs2/yaffs_guts.c
+===================================================================
+--- linux-3.10.23.orig/fs/yaffs2/yaffs_guts.c
++++ linux-3.10.23/fs/yaffs2/yaffs_guts.c
 @@ -1708,13 +1708,7 @@ static int yaffs_change_obj_name(yaffs_o
  		YBUG();
  	}

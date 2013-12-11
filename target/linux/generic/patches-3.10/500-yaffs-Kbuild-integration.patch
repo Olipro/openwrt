@@ -1,5 +1,7 @@
---- a/fs/Kconfig
-+++ b/fs/Kconfig
+Index: linux-3.10.23/fs/Kconfig
+===================================================================
+--- linux-3.10.23.orig/fs/Kconfig
++++ linux-3.10.23/fs/Kconfig
 @@ -39,6 +39,7 @@ source "fs/gfs2/Kconfig"
  source "fs/ocfs2/Kconfig"
  source "fs/btrfs/Kconfig"
@@ -8,8 +10,10 @@
  
  endif # BLOCK
  
---- a/fs/Makefile
-+++ b/fs/Makefile
+Index: linux-3.10.23/fs/Makefile
+===================================================================
+--- linux-3.10.23.orig/fs/Makefile
++++ linux-3.10.23/fs/Makefile
 @@ -127,3 +127,5 @@ obj-y				+= exofs/ # Multiple modules
  obj-$(CONFIG_CEPH_FS)		+= ceph/
  obj-$(CONFIG_PSTORE)		+= pstore/

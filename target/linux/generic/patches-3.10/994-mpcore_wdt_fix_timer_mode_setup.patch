@@ -8,8 +8,10 @@ Signed-off-by: Vitaly Kuzmichev <vkuzmichev@mvista.com>
  drivers/watchdog/mpcore_wdt.c  |   15 +++++++++++----
  2 files changed, 17 insertions(+), 4 deletions(-)
 
---- a/arch/arm/include/asm/smp_twd.h
-+++ b/arch/arm/include/asm/smp_twd.h
+Index: linux-3.10.23/arch/arm/include/asm/smp_twd.h
+===================================================================
+--- linux-3.10.23.orig/arch/arm/include/asm/smp_twd.h
++++ linux-3.10.23/arch/arm/include/asm/smp_twd.h
 @@ -18,6 +18,12 @@
  #define TWD_TIMER_CONTROL_PERIODIC	(1 << 1)
  #define TWD_TIMER_CONTROL_IT_ENABLE	(1 << 2)
@@ -23,8 +25,10 @@ Signed-off-by: Vitaly Kuzmichev <vkuzmichev@mvista.com>
  #include <linux/ioport.h>
  
  struct twd_local_timer {
---- a/drivers/watchdog/mpcore_wdt.c
-+++ b/drivers/watchdog/mpcore_wdt.c
+Index: linux-3.10.23/drivers/watchdog/mpcore_wdt.c
+===================================================================
+--- linux-3.10.23.orig/drivers/watchdog/mpcore_wdt.c
++++ linux-3.10.23/drivers/watchdog/mpcore_wdt.c
 @@ -120,18 +120,25 @@ static void mpcore_wdt_stop(struct mpcor
  
  static void mpcore_wdt_start(struct mpcore_wdt *wdt)

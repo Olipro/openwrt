@@ -1,5 +1,7 @@
---- a/net/netfilter/nf_conntrack_proto_tcp.c
-+++ b/net/netfilter/nf_conntrack_proto_tcp.c
+Index: linux-3.10.23/net/netfilter/nf_conntrack_proto_tcp.c
+===================================================================
+--- linux-3.10.23.orig/net/netfilter/nf_conntrack_proto_tcp.c
++++ linux-3.10.23/net/netfilter/nf_conntrack_proto_tcp.c
 @@ -31,6 +31,9 @@
  #include <net/netfilter/ipv4/nf_conntrack_ipv4.h>
  #include <net/netfilter/ipv6/nf_conntrack_ipv6.h>

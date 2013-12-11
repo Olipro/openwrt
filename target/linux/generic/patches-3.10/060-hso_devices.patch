@@ -1,5 +1,7 @@
---- a/drivers/net/usb/hso.c
-+++ b/drivers/net/usb/hso.c
+Index: linux-3.10.23/drivers/net/usb/hso.c
+===================================================================
+--- linux-3.10.23.orig/drivers/net/usb/hso.c
++++ linux-3.10.23/drivers/net/usb/hso.c
 @@ -468,8 +468,10 @@ static const struct usb_device_id hso_id
  	{USB_DEVICE(0x0af0, 0x8400)},
  	{USB_DEVICE(0x0af0, 0x8600)},
@@ -13,8 +15,10 @@
  	{USB_DEVICE(0x0af0, 0xd035)},
  	{USB_DEVICE(0x0af0, 0xd055)},
  	{USB_DEVICE(0x0af0, 0xd155)},
---- a/drivers/usb/storage/unusual_devs.h
-+++ b/drivers/usb/storage/unusual_devs.h
+Index: linux-3.10.23/drivers/usb/storage/unusual_devs.h
+===================================================================
+--- linux-3.10.23.orig/drivers/usb/storage/unusual_devs.h
++++ linux-3.10.23/drivers/usb/storage/unusual_devs.h
 @@ -1259,6 +1259,18 @@ UNUSUAL_DEV( 0x0af0, 0x8304, 0x0000, 0x0
  		USB_SC_DEVICE, USB_PR_DEVICE, NULL,
  		0 ),

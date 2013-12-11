@@ -1,5 +1,7 @@
---- a/fs/yaffs2/yaffs_vfs_glue.c
-+++ b/fs/yaffs2/yaffs_vfs_glue.c
+Index: linux-3.10.23/fs/yaffs2/yaffs_vfs_glue.c
+===================================================================
+--- linux-3.10.23.orig/fs/yaffs2/yaffs_vfs_glue.c
++++ linux-3.10.23/fs/yaffs2/yaffs_vfs_glue.c
 @@ -393,6 +393,84 @@ static void yaffs_touch_super(yaffs_dev_
  static int yaffs_vfs_setattr(struct inode *, struct iattr *);
  
@@ -152,8 +154,10 @@
  	T(YAFFS_TRACE_ALWAYS,
  		(TSTR("yaffs_read_super: is_checkpointed %d\n"),
  		dev->is_checkpointed));
---- a/fs/yaffs2/yaffs_linux.h
-+++ b/fs/yaffs2/yaffs_linux.h
+Index: linux-3.10.23/fs/yaffs2/yaffs_linux.h
+===================================================================
+--- linux-3.10.23.orig/fs/yaffs2/yaffs_linux.h
++++ linux-3.10.23/fs/yaffs2/yaffs_linux.h
 @@ -34,6 +34,11 @@ struct yaffs_LinuxContext {
  
  	struct task_struct *readdirProcess;
@@ -166,8 +170,10 @@
  };
  
  #define yaffs_dev_to_lc(dev) ((struct yaffs_LinuxContext *)((dev)->os_context))
---- a/fs/yaffs2/yportenv.h
-+++ b/fs/yaffs2/yportenv.h
+Index: linux-3.10.23/fs/yaffs2/yportenv.h
+===================================================================
+--- linux-3.10.23.orig/fs/yaffs2/yportenv.h
++++ linux-3.10.23/fs/yaffs2/yportenv.h
 @@ -49,6 +49,9 @@
  #include <linux/slab.h>
  #include <linux/vmalloc.h>

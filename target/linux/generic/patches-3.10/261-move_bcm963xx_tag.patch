@@ -1,4 +1,6 @@
---- a/arch/mips/include/asm/mach-bcm63xx/bcm963xx_tag.h
+Index: linux-3.10.23/arch/mips/include/asm/mach-bcm63xx/bcm963xx_tag.h
+===================================================================
+--- linux-3.10.23.orig/arch/mips/include/asm/mach-bcm63xx/bcm963xx_tag.h
 +++ /dev/null
 @@ -1,96 +0,0 @@
 -#ifndef __BCM963XX_TAG_H
@@ -97,8 +99,10 @@
 -};
 -
 -#endif /* __BCM63XX_TAG_H */
---- a/drivers/mtd/bcm63xxpart.c
-+++ b/drivers/mtd/bcm63xxpart.c
+Index: linux-3.10.23/drivers/mtd/bcm63xxpart.c
+===================================================================
+--- linux-3.10.23.orig/drivers/mtd/bcm63xxpart.c
++++ linux-3.10.23/drivers/mtd/bcm63xxpart.c
 @@ -32,7 +32,7 @@
  #include <linux/mtd/mtd.h>
  #include <linux/mtd/partitions.h>
@@ -108,8 +112,10 @@
  #include <asm/mach-bcm63xx/board_bcm963xx.h>
  
  #define BCM63XX_EXTENDED_SIZE	0xBFC00000	/* Extended flash address */
---- a/include/uapi/linux/Kbuild
-+++ b/include/uapi/linux/Kbuild
+Index: linux-3.10.23/include/uapi/linux/Kbuild
+===================================================================
+--- linux-3.10.23.orig/include/uapi/linux/Kbuild
++++ linux-3.10.23/include/uapi/linux/Kbuild
 @@ -67,6 +67,7 @@ header-y += binfmts.h
  header-y += blkpg.h
  header-y += blktrace_api.h
@@ -118,8 +124,10 @@
  header-y += bsg.h
  header-y += btrfs.h
  header-y += can.h
+Index: linux-3.10.23/include/uapi/linux/bcm963xx_tag.h
+===================================================================
 --- /dev/null
-+++ b/include/uapi/linux/bcm963xx_tag.h
++++ linux-3.10.23/include/uapi/linux/bcm963xx_tag.h
 @@ -0,0 +1,96 @@
 +#ifndef __BCM963XX_TAG_H
 +#define __BCM963XX_TAG_H

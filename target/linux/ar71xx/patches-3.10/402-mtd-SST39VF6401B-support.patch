@@ -1,5 +1,7 @@
---- a/drivers/mtd/chips/jedec_probe.c
-+++ b/drivers/mtd/chips/jedec_probe.c
+Index: linux-3.10.23/drivers/mtd/chips/jedec_probe.c
+===================================================================
+--- linux-3.10.23.orig/drivers/mtd/chips/jedec_probe.c
++++ linux-3.10.23/drivers/mtd/chips/jedec_probe.c
 @@ -148,6 +148,7 @@
  #define SST39LF160	0x2782
  #define SST39VF1601	0x234b

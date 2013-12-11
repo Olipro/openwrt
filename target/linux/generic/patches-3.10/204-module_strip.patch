@@ -3,8 +3,10 @@ Subject: [PATCH] build: add a hack for removing non-essential module info
 
 Signed-off-by: Felix Fietkau <nbd@openwrt.org>
 ---
---- a/include/linux/module.h
-+++ b/include/linux/module.h
+Index: linux-3.10.23/include/linux/module.h
+===================================================================
+--- linux-3.10.23.orig/include/linux/module.h
++++ linux-3.10.23/include/linux/module.h
 @@ -82,7 +82,7 @@ void sort_extable(struct exception_table
  void sort_main_extable(void);
  void trim_init_extable(struct module *m);
@@ -59,8 +61,10 @@ Signed-off-by: Felix Fietkau <nbd@openwrt.org>
  
  /* Given an address, look for it in the exception tables */
  const struct exception_table_entry *search_exception_tables(unsigned long add);
---- a/include/linux/moduleparam.h
-+++ b/include/linux/moduleparam.h
+Index: linux-3.10.23/include/linux/moduleparam.h
+===================================================================
+--- linux-3.10.23.orig/include/linux/moduleparam.h
++++ linux-3.10.23/include/linux/moduleparam.h
 @@ -16,6 +16,16 @@
  /* Chosen so that structs with an unsigned long line up. */
  #define MAX_PARAM_PREFIX_LEN (64 - sizeof(unsigned long))
@@ -97,8 +101,10 @@ Signed-off-by: Felix Fietkau <nbd@openwrt.org>
  
  struct kernel_param;
  
---- a/init/Kconfig
-+++ b/init/Kconfig
+Index: linux-3.10.23/init/Kconfig
+===================================================================
+--- linux-3.10.23.orig/init/Kconfig
++++ linux-3.10.23/init/Kconfig
 @@ -1776,6 +1776,13 @@ config MODULE_SIG_HASH
  	default "sha384" if MODULE_SIG_SHA384
  	default "sha512" if MODULE_SIG_SHA512
@@ -113,8 +119,10 @@ Signed-off-by: Felix Fietkau <nbd@openwrt.org>
  endif # MODULES
  
  config INIT_ALL_POSSIBLE
---- a/kernel/module.c
-+++ b/kernel/module.c
+Index: linux-3.10.23/kernel/module.c
+===================================================================
+--- linux-3.10.23.orig/kernel/module.c
++++ linux-3.10.23/kernel/module.c
 @@ -2690,6 +2690,7 @@ static struct module *setup_load_info(st
  
  static int check_modinfo(struct module *mod, struct load_info *info, int flags)
@@ -131,8 +139,10 @@ Signed-off-by: Felix Fietkau <nbd@openwrt.org>
  
  	/* Set up license info based on the info section */
  	set_license(mod, get_modinfo(info, "license"));
---- a/scripts/mod/modpost.c
-+++ b/scripts/mod/modpost.c
+Index: linux-3.10.23/scripts/mod/modpost.c
+===================================================================
+--- linux-3.10.23.orig/scripts/mod/modpost.c
++++ linux-3.10.23/scripts/mod/modpost.c
 @@ -1740,7 +1740,9 @@ static void read_symbols(char *modname)
  		symname = info.strtab + sym->st_name;
  

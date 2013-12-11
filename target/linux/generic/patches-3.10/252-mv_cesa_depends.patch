@@ -1,5 +1,7 @@
---- a/drivers/crypto/Kconfig
-+++ b/drivers/crypto/Kconfig
+Index: linux-3.10.23/drivers/crypto/Kconfig
+===================================================================
+--- linux-3.10.23.orig/drivers/crypto/Kconfig
++++ linux-3.10.23/drivers/crypto/Kconfig
 @@ -164,6 +164,7 @@ config CRYPTO_DEV_MV_CESA
  	depends on PLAT_ORION
  	select CRYPTO_ALGAPI

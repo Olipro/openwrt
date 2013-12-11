@@ -1,5 +1,7 @@
---- a/drivers/usb/core/usb.c
-+++ b/drivers/usb/core/usb.c
+Index: linux-3.10.23/drivers/usb/core/usb.c
+===================================================================
+--- linux-3.10.23.orig/drivers/usb/core/usb.c
++++ linux-3.10.23/drivers/usb/core/usb.c
 @@ -645,6 +645,71 @@ int __usb_get_extra_descriptor(char *buf
  }
  EXPORT_SYMBOL_GPL(__usb_get_extra_descriptor);
@@ -72,8 +74,10 @@
  /**
   * usb_alloc_coherent - allocate dma-consistent buffer for URB_NO_xxx_DMA_MAP
   * @dev: device the buffer will be used with
---- a/include/linux/usb.h
-+++ b/include/linux/usb.h
+Index: linux-3.10.23/include/linux/usb.h
+===================================================================
+--- linux-3.10.23.orig/include/linux/usb.h
++++ linux-3.10.23/include/linux/usb.h
 @@ -675,6 +675,7 @@ static inline bool usb_device_supports_l
  	return udev->bos->ss_cap->bmAttributes & USB_LTM_SUPPORT;
  }

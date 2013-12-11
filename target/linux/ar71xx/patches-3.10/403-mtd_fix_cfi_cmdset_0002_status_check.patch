@@ -1,5 +1,7 @@
---- a/drivers/mtd/chips/cfi_cmdset_0002.c
-+++ b/drivers/mtd/chips/cfi_cmdset_0002.c
+Index: linux-3.10.23/drivers/mtd/chips/cfi_cmdset_0002.c
+===================================================================
+--- linux-3.10.23.orig/drivers/mtd/chips/cfi_cmdset_0002.c
++++ linux-3.10.23/drivers/mtd/chips/cfi_cmdset_0002.c
 @@ -1306,8 +1306,8 @@ static int __xipram do_write_oneword(str
  			break;
  		}

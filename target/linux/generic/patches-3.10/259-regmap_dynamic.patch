@@ -1,5 +1,7 @@
---- a/drivers/base/regmap/Kconfig
-+++ b/drivers/base/regmap/Kconfig
+Index: linux-3.10.23/drivers/base/regmap/Kconfig
+===================================================================
+--- linux-3.10.23.orig/drivers/base/regmap/Kconfig
++++ linux-3.10.23/drivers/base/regmap/Kconfig
 @@ -3,20 +3,24 @@
  # subsystems should select the appropriate symbols.
  
@@ -29,8 +31,10 @@
  config REGMAP_IRQ
 +	select REGMAP
  	bool
---- a/include/linux/regmap.h
-+++ b/include/linux/regmap.h
+Index: linux-3.10.23/include/linux/regmap.h
+===================================================================
+--- linux-3.10.23.orig/include/linux/regmap.h
++++ linux-3.10.23/include/linux/regmap.h
 @@ -47,7 +47,7 @@ struct reg_default {
  	unsigned int def;
  };
@@ -40,8 +44,10 @@
  
  enum regmap_endian {
  	/* Unspecified -> 0 -> Backwards compatible default */
---- a/drivers/base/regmap/Makefile
-+++ b/drivers/base/regmap/Makefile
+Index: linux-3.10.23/drivers/base/regmap/Makefile
+===================================================================
+--- linux-3.10.23.orig/drivers/base/regmap/Makefile
++++ linux-3.10.23/drivers/base/regmap/Makefile
 @@ -1,6 +1,8 @@
 -obj-$(CONFIG_REGMAP) += regmap.o regcache.o
 -obj-$(CONFIG_REGMAP) += regcache-rbtree.o regcache-lzo.o regcache-flat.o
@@ -54,8 +60,10 @@
  obj-$(CONFIG_REGMAP_I2C) += regmap-i2c.o
  obj-$(CONFIG_REGMAP_SPI) += regmap-spi.o
  obj-$(CONFIG_REGMAP_MMIO) += regmap-mmio.o
---- a/drivers/base/regmap/regmap.c
-+++ b/drivers/base/regmap/regmap.c
+Index: linux-3.10.23/drivers/base/regmap/regmap.c
+===================================================================
+--- linux-3.10.23.orig/drivers/base/regmap/regmap.c
++++ linux-3.10.23/drivers/base/regmap/regmap.c
 @@ -13,6 +13,7 @@
  #include <linux/device.h>
  #include <linux/slab.h>

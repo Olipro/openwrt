@@ -1,5 +1,7 @@
---- a/fs/yaffs2/yaffs_mtdif1.c
-+++ b/fs/yaffs2/yaffs_mtdif1.c
+Index: linux-3.10.23/fs/yaffs2/yaffs_mtdif1.c
+===================================================================
+--- linux-3.10.23.orig/fs/yaffs2/yaffs_mtdif1.c
++++ linux-3.10.23/fs/yaffs2/yaffs_mtdif1.c
 @@ -133,7 +133,7 @@ int nandmtd1_WriteChunkWithTagsToNAND(ya
  	ops.datbuf = (__u8 *)data;
  	ops.oobbuf = (__u8 *)&pt1;
@@ -45,8 +47,10 @@
  	if (etags.block_bad) {
  		T(YAFFS_TRACE_BAD_BLOCKS,
  			(TSTR("block %d is marked bad"TENDSTR), block_no));
---- a/fs/yaffs2/yaffs_vfs_glue.c
-+++ b/fs/yaffs2/yaffs_vfs_glue.c
+Index: linux-3.10.23/fs/yaffs2/yaffs_vfs_glue.c
+===================================================================
+--- linux-3.10.23.orig/fs/yaffs2/yaffs_vfs_glue.c
++++ linux-3.10.23/fs/yaffs2/yaffs_vfs_glue.c
 @@ -2607,8 +2607,8 @@ static void yaffs_MTDPutSuper(struct sup
  {
  	struct mtd_info *mtd = yaffs_dev_to_mtd(yaffs_SuperToDevice(sb));
@@ -58,8 +62,10 @@
  
  	put_mtd_device(mtd);
  }
---- a/fs/yaffs2/yaffs_mtdif2.c
-+++ b/fs/yaffs2/yaffs_mtdif2.c
+Index: linux-3.10.23/fs/yaffs2/yaffs_mtdif2.c
+===================================================================
+--- linux-3.10.23.orig/fs/yaffs2/yaffs_mtdif2.c
++++ linux-3.10.23/fs/yaffs2/yaffs_mtdif2.c
 @@ -77,7 +77,7 @@ int nandmtd2_WriteChunkWithTagsToNAND(ya
  	ops.ooboffs = 0;
  	ops.datbuf = (__u8 *)data;
@@ -105,8 +111,10 @@
  			     block_no * dev->param.chunks_per_block *
  			     dev->param.total_bytes_per_chunk);
  
---- a/fs/yaffs2/yaffs_mtdif.h
-+++ b/fs/yaffs2/yaffs_mtdif.h
+Index: linux-3.10.23/fs/yaffs2/yaffs_mtdif.h
+===================================================================
+--- linux-3.10.23.orig/fs/yaffs2/yaffs_mtdif.h
++++ linux-3.10.23/fs/yaffs2/yaffs_mtdif.h
 @@ -31,4 +31,39 @@ int nandmtd_InitialiseNAND(yaffs_dev_t *
  #define MTD_OPS_AUTO_OOB 	MTD_OOB_AUTO
  #endif
@@ -147,8 +155,10 @@
 +#endif
 +
  #endif
---- a/fs/yaffs2/yaffs_mtdif.c
-+++ b/fs/yaffs2/yaffs_mtdif.c
+Index: linux-3.10.23/fs/yaffs2/yaffs_mtdif.c
+===================================================================
+--- linux-3.10.23.orig/fs/yaffs2/yaffs_mtdif.c
++++ linux-3.10.23/fs/yaffs2/yaffs_mtdif.c
 @@ -41,7 +41,7 @@ int nandmtd_EraseBlockInNAND(yaffs_dev_t
  	ei.callback = NULL;
  	ei.priv = (u_long) dev;

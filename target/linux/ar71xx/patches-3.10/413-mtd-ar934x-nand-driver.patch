@@ -1,5 +1,7 @@
---- a/drivers/mtd/nand/Kconfig
-+++ b/drivers/mtd/nand/Kconfig
+Index: linux-3.10.23/drivers/mtd/nand/Kconfig
+===================================================================
+--- linux-3.10.23.orig/drivers/mtd/nand/Kconfig
++++ linux-3.10.23/drivers/mtd/nand/Kconfig
 @@ -552,4 +552,12 @@ config MTD_NAND_RB750
  	tristate "NAND flash driver for the RouterBoard 750"
  	depends on MTD_NAND && ATH79_MACH_RB750
@@ -13,8 +15,10 @@
 +	depends on MTD_NAND_AR934X
 +
  endif # MTD_NAND
---- a/drivers/mtd/nand/Makefile
-+++ b/drivers/mtd/nand/Makefile
+Index: linux-3.10.23/drivers/mtd/nand/Makefile
+===================================================================
+--- linux-3.10.23.orig/drivers/mtd/nand/Makefile
++++ linux-3.10.23/drivers/mtd/nand/Makefile
 @@ -13,6 +13,7 @@ obj-$(CONFIG_MTD_NAND_AMS_DELTA)	+= ams-
  obj-$(CONFIG_MTD_NAND_DENALI)		+= denali.o
  obj-$(CONFIG_MTD_NAND_DENALI_PCI)	+= denali_pci.o

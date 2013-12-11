@@ -2,8 +2,10 @@ This generic GPIO watchdog is used on Huawei E970 (brcm47xx)
 
 Signed-off-by: Mathias Adam <m.adam--openwrt@adamis.de>
 
---- a/drivers/watchdog/Kconfig
-+++ b/drivers/watchdog/Kconfig
+Index: linux-3.10.23/drivers/watchdog/Kconfig
+===================================================================
+--- linux-3.10.23.orig/drivers/watchdog/Kconfig
++++ linux-3.10.23/drivers/watchdog/Kconfig
 @@ -1035,6 +1035,15 @@ config WDT_MTX1
  	  Hardware driver for the MTX-1 boards. This is a watchdog timer that
  	  will reboot the machine after a 100 seconds timer expired.
@@ -20,8 +22,10 @@ Signed-off-by: Mathias Adam <m.adam--openwrt@adamis.de>
  config PNX833X_WDT
  	tristate "PNX833x Hardware Watchdog"
  	depends on SOC_PNX8335
---- a/drivers/watchdog/Makefile
-+++ b/drivers/watchdog/Makefile
+Index: linux-3.10.23/drivers/watchdog/Makefile
+===================================================================
+--- linux-3.10.23.orig/drivers/watchdog/Makefile
++++ linux-3.10.23/drivers/watchdog/Makefile
 @@ -127,6 +127,7 @@ obj-$(CONFIG_RC32434_WDT) += rc32434_wdt
  obj-$(CONFIG_INDYDOG) += indydog.o
  obj-$(CONFIG_JZ4740_WDT) += jz4740_wdt.o
@@ -30,8 +34,10 @@ Signed-off-by: Mathias Adam <m.adam--openwrt@adamis.de>
  obj-$(CONFIG_PNX833X_WDT) += pnx833x_wdt.o
  obj-$(CONFIG_SIBYTE_WDOG) += sb_wdog.o
  obj-$(CONFIG_AR7_WDT) += ar7_wdt.o
+Index: linux-3.10.23/drivers/watchdog/gpio_wdt.c
+===================================================================
 --- /dev/null
-+++ b/drivers/watchdog/gpio_wdt.c
++++ linux-3.10.23/drivers/watchdog/gpio_wdt.c
 @@ -0,0 +1,301 @@
 +/*
 + *      Driver for GPIO-controlled Hardware Watchdogs.
@@ -334,8 +340,10 @@ Signed-off-by: Mathias Adam <m.adam--openwrt@adamis.de>
 +MODULE_LICENSE("GPL");
 +MODULE_ALIAS_MISCDEV(WATCHDOG_MINOR);
 +MODULE_ALIAS("platform:gpio-wdt");
+Index: linux-3.10.23/include/linux/gpio_wdt.h
+===================================================================
 --- /dev/null
-+++ b/include/linux/gpio_wdt.h
++++ linux-3.10.23/include/linux/gpio_wdt.h
 @@ -0,0 +1,21 @@
 +/*
 + *  Definitions for the GPIO watchdog driver

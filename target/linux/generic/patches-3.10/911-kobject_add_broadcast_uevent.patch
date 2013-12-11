@@ -1,5 +1,7 @@
---- a/include/linux/kobject.h
-+++ b/include/linux/kobject.h
+Index: linux-3.10.23/include/linux/kobject.h
+===================================================================
+--- linux-3.10.23.orig/include/linux/kobject.h
++++ linux-3.10.23/include/linux/kobject.h
 @@ -31,6 +31,8 @@
  #define UEVENT_NUM_ENVP			32	/* number of env pointers */
  #define UEVENT_BUFFER_SIZE		2048	/* buffer for the variables */
@@ -17,8 +19,10 @@
 +		     gfp_t allocation);
 +
  #endif /* _KOBJECT_H_ */
---- a/lib/kobject_uevent.c
-+++ b/lib/kobject_uevent.c
+Index: linux-3.10.23/lib/kobject_uevent.c
+===================================================================
+--- linux-3.10.23.orig/lib/kobject_uevent.c
++++ linux-3.10.23/lib/kobject_uevent.c
 @@ -382,6 +382,43 @@ int add_uevent_var(struct kobj_uevent_en
  EXPORT_SYMBOL_GPL(add_uevent_var);
  

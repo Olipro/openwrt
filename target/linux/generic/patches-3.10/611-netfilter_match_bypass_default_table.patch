@@ -1,5 +1,7 @@
---- a/net/ipv4/netfilter/ip_tables.c
-+++ b/net/ipv4/netfilter/ip_tables.c
+Index: linux-3.10.23/net/ipv4/netfilter/ip_tables.c
+===================================================================
+--- linux-3.10.23.orig/net/ipv4/netfilter/ip_tables.c
++++ linux-3.10.23/net/ipv4/netfilter/ip_tables.c
 @@ -310,6 +310,33 @@ struct ipt_entry *ipt_next_entry(const s
  	return (void *)entry + entry->next_offset;
  }

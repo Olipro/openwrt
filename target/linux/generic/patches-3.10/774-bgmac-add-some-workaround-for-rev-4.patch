@@ -8,8 +8,10 @@ Subject: [PATCH] bgmac: add some workaround for rev 4
  drivers/net/ethernet/broadcom/bgmac.h |    4 +++-
  2 files changed, 7 insertions(+), 5 deletions(-)
 
---- a/drivers/net/ethernet/broadcom/bgmac.c
-+++ b/drivers/net/ethernet/broadcom/bgmac.c
+Index: linux-3.10.23/drivers/net/ethernet/broadcom/bgmac.c
+===================================================================
+--- linux-3.10.23.orig/drivers/net/ethernet/broadcom/bgmac.c
++++ linux-3.10.23/drivers/net/ethernet/broadcom/bgmac.c
 @@ -97,6 +97,16 @@ static void bgmac_dma_tx_enable(struct b
  	u32 ctl;
  
@@ -79,8 +81,10 @@ Subject: [PATCH] bgmac: add some workaround for rev 4
  	udelay(2);
  	cmdcfg |= BGMAC_CMDCFG_TE | BGMAC_CMDCFG_RE;
  	bgmac_write(bgmac, BGMAC_CMDCFG, cmdcfg);
---- a/drivers/net/ethernet/broadcom/bgmac.h
-+++ b/drivers/net/ethernet/broadcom/bgmac.h
+Index: linux-3.10.23/drivers/net/ethernet/broadcom/bgmac.h
+===================================================================
+--- linux-3.10.23.orig/drivers/net/ethernet/broadcom/bgmac.h
++++ linux-3.10.23/drivers/net/ethernet/broadcom/bgmac.h
 @@ -194,7 +194,9 @@
  #define  BGMAC_CMDCFG_TAI			0x00000200
  #define  BGMAC_CMDCFG_HD			0x00000400	/* Set if in half duplex mode */

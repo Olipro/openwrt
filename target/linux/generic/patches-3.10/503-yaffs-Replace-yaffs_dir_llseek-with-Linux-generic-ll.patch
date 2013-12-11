@@ -17,8 +17,10 @@ Signed-off-by: Charles Manning <cdhmanning@gmail.com>
  yaffs_vfs_multi.c |   30 +-----------------------------
  2 files changed, 2 insertions(+), 58 deletions(-)
 
---- a/fs/yaffs2/yaffs_vfs_glue.c
-+++ b/fs/yaffs2/yaffs_vfs_glue.c
+Index: linux-3.10.23/fs/yaffs2/yaffs_vfs_glue.c
+===================================================================
+--- linux-3.10.23.orig/fs/yaffs2/yaffs_vfs_glue.c
++++ linux-3.10.23/fs/yaffs2/yaffs_vfs_glue.c
 @@ -342,8 +342,6 @@ static int yaffs_follow_link(struct dent
  
  static void yaffs_touch_super(yaffs_dev_t *dev);

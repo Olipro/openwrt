@@ -1,5 +1,7 @@
---- a/include/linux/netdevice.h
-+++ b/include/linux/netdevice.h
+Index: linux-3.10.23/include/linux/netdevice.h
+===================================================================
+--- linux-3.10.23.orig/include/linux/netdevice.h
++++ linux-3.10.23/include/linux/netdevice.h
 @@ -1109,6 +1109,11 @@ struct net_device {
  	const struct net_device_ops *netdev_ops;
  	const struct ethtool_ops *ethtool_ops;
@@ -22,8 +24,10 @@
  
  /*
   * Cache lines mostly used on receive path (including eth_type_trans())
---- a/include/uapi/linux/if.h
-+++ b/include/uapi/linux/if.h
+Index: linux-3.10.23/include/uapi/linux/if.h
+===================================================================
+--- linux-3.10.23.orig/include/uapi/linux/if.h
++++ linux-3.10.23/include/uapi/linux/if.h
 @@ -83,6 +83,7 @@
  #define IFF_SUPP_NOFCS	0x80000		/* device supports sending custom FCS */
  #define IFF_LIVE_ADDR_CHANGE 0x100000	/* device supports hardware address
@@ -32,9 +36,11 @@
  
  
  #define IF_GET_IFACE	0x0001		/* for querying only */
---- a/include/linux/skbuff.h
-+++ b/include/linux/skbuff.h
-@@ -1883,6 +1883,10 @@ static inline int pskb_trim(struct sk_bu
+Index: linux-3.10.23/include/linux/skbuff.h
+===================================================================
+--- linux-3.10.23.orig/include/linux/skbuff.h
++++ linux-3.10.23/include/linux/skbuff.h
+@@ -1874,6 +1874,10 @@ static inline int pskb_trim(struct sk_bu
  	return (len < skb->len) ? __pskb_trim(skb, len) : 0;
  }
  
@@ -45,7 +51,7 @@
  /**
   *	pskb_trim_unique - remove end from a paged unique (not cloned) buffer
   *	@skb: buffer to alter
-@@ -2007,16 +2011,6 @@ static inline struct sk_buff *dev_alloc_
+@@ -1998,16 +2002,6 @@ static inline struct sk_buff *dev_alloc_
  }
  
  
@@ -62,8 +68,10 @@
  static inline struct sk_buff *netdev_alloc_skb_ip_align(struct net_device *dev,
  		unsigned int length)
  {
---- a/net/Kconfig
-+++ b/net/Kconfig
+Index: linux-3.10.23/net/Kconfig
+===================================================================
+--- linux-3.10.23.orig/net/Kconfig
++++ linux-3.10.23/net/Kconfig
 @@ -23,6 +23,12 @@ menuconfig NET
  
  if NET
@@ -77,8 +85,10 @@
  config WANT_COMPAT_NETLINK_MESSAGES
  	bool
  	help
---- a/net/core/dev.c
-+++ b/net/core/dev.c
+Index: linux-3.10.23/net/core/dev.c
+===================================================================
+--- linux-3.10.23.orig/net/core/dev.c
++++ linux-3.10.23/net/core/dev.c
 @@ -2576,9 +2576,19 @@ int dev_hard_start_xmit(struct sk_buff *
  		if (!list_empty(&ptype_all))
  			dev_queue_xmit_nit(skb, dev);
@@ -125,8 +135,10 @@
  		if (unlikely(rc != NETDEV_TX_OK)) {
  			if (rc & ~NETDEV_TX_MASK)
  				goto out_kfree_gso_skb;
---- a/net/core/skbuff.c
-+++ b/net/core/skbuff.c
+Index: linux-3.10.23/net/core/skbuff.c
+===================================================================
+--- linux-3.10.23.orig/net/core/skbuff.c
++++ linux-3.10.23/net/core/skbuff.c
 @@ -60,6 +60,7 @@
  #include <linux/scatterlist.h>
  #include <linux/errqueue.h>
@@ -158,8 +170,10 @@
  void skb_add_rx_frag(struct sk_buff *skb, int i, struct page *page, int off,
  		     int size, unsigned int truesize)
  {
---- a/net/ethernet/eth.c
-+++ b/net/ethernet/eth.c
+Index: linux-3.10.23/net/ethernet/eth.c
+===================================================================
+--- linux-3.10.23.orig/net/ethernet/eth.c
++++ linux-3.10.23/net/ethernet/eth.c
 @@ -159,6 +159,12 @@ __be16 eth_type_trans(struct sk_buff *sk
  	struct ethhdr *eth;
  

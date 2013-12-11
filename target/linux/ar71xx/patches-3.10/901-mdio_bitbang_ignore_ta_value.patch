@@ -1,5 +1,7 @@
---- a/drivers/net/phy/mdio-bitbang.c
-+++ b/drivers/net/phy/mdio-bitbang.c
+Index: linux-3.10.23/drivers/net/phy/mdio-bitbang.c
+===================================================================
+--- linux-3.10.23.orig/drivers/net/phy/mdio-bitbang.c
++++ linux-3.10.23/drivers/net/phy/mdio-bitbang.c
 @@ -165,16 +165,7 @@ static int mdiobb_read(struct mii_bus *b
  
  	ctrl->ops->set_mdio_dir(ctrl, 0);

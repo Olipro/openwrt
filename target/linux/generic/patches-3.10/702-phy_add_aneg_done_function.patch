@@ -1,5 +1,7 @@
---- a/include/linux/phy.h
-+++ b/include/linux/phy.h
+Index: linux-3.10.23/include/linux/phy.h
+===================================================================
+--- linux-3.10.23.orig/include/linux/phy.h
++++ linux-3.10.23/include/linux/phy.h
 @@ -408,9 +408,18 @@ struct phy_driver {
  	 */
  	int (*config_aneg)(struct phy_device *phydev);
@@ -19,8 +21,10 @@
  	/* Clears any pending interrupts */
  	int (*ack_interrupt)(struct phy_device *phydev);
  
---- a/drivers/net/phy/phy_device.c
-+++ b/drivers/net/phy/phy_device.c
+Index: linux-3.10.23/drivers/net/phy/phy_device.c
+===================================================================
+--- linux-3.10.23.orig/drivers/net/phy/phy_device.c
++++ linux-3.10.23/drivers/net/phy/phy_device.c
 @@ -795,6 +795,9 @@ int genphy_update_link(struct phy_device
  {
  	int status;
@@ -31,8 +35,10 @@
  	/* Do a fake read */
  	status = phy_read(phydev, MII_BMSR);
  
---- a/drivers/net/phy/phy.c
-+++ b/drivers/net/phy/phy.c
+Index: linux-3.10.23/drivers/net/phy/phy.c
+===================================================================
+--- linux-3.10.23.orig/drivers/net/phy/phy.c
++++ linux-3.10.23/drivers/net/phy/phy.c
 @@ -108,6 +108,9 @@ static inline int phy_aneg_done(struct p
  {
  	int retval;

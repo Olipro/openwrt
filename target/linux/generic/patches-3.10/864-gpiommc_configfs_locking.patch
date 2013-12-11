@@ -1,8 +1,10 @@
 The gpiommc configfs context structure needs locking, as configfs
 does not lock access between files.
 
---- a/drivers/mmc/host/gpiommc.c
-+++ b/drivers/mmc/host/gpiommc.c
+Index: linux-3.10.23/drivers/mmc/host/gpiommc.c
+===================================================================
+--- linux-3.10.23.orig/drivers/mmc/host/gpiommc.c
++++ linux-3.10.23/drivers/mmc/host/gpiommc.c
 @@ -144,6 +144,8 @@ struct gpiommc_configfs_device {
  	struct platform_device *pdev;
  	/* The configuration */

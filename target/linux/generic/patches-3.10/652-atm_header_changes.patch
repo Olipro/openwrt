@@ -1,5 +1,7 @@
---- a/include/uapi/linux/atm.h
-+++ b/include/uapi/linux/atm.h
+Index: linux-3.10.23/include/uapi/linux/atm.h
+===================================================================
+--- linux-3.10.23.orig/include/uapi/linux/atm.h
++++ linux-3.10.23/include/uapi/linux/atm.h
 @@ -139,6 +139,9 @@ struct atm_trafprm {
  	int		min_pcr;	/* minimum PCR in cells per second */
  	int		max_cdv;	/* maximum CDV in microseconds */

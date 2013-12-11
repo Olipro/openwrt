@@ -17,8 +17,10 @@ Signed-off-by: Ralf Baechle <ralf@linux-mips.org>
  arch/mips/include/asm/timex.h |   33 ++++++++++++++++++++++++++++++++-
  1 file changed, 32 insertions(+), 1 deletion(-)
 
---- a/arch/mips/include/asm/timex.h
-+++ b/arch/mips/include/asm/timex.h
+Index: linux-3.10.23/arch/mips/include/asm/timex.h
+===================================================================
+--- linux-3.10.23.orig/arch/mips/include/asm/timex.h
++++ linux-3.10.23/arch/mips/include/asm/timex.h
 @@ -10,6 +10,7 @@
  
  #ifdef __KERNEL__

@@ -1,5 +1,7 @@
---- a/net/sched/Kconfig
-+++ b/net/sched/Kconfig
+Index: linux-3.10.23/net/sched/Kconfig
+===================================================================
+--- linux-3.10.23.orig/net/sched/Kconfig
++++ linux-3.10.23/net/sched/Kconfig
 @@ -3,8 +3,9 @@
  # 
  
@@ -11,8 +13,10 @@
  	---help---
  	  When the kernel has several packets to send out over a network
  	  device, it has to decide which ones to send first, which ones to
---- a/net/sched/sch_fq_codel.c
-+++ b/net/sched/sch_fq_codel.c
+Index: linux-3.10.23/net/sched/sch_fq_codel.c
+===================================================================
+--- linux-3.10.23.orig/net/sched/sch_fq_codel.c
++++ linux-3.10.23/net/sched/sch_fq_codel.c
 @@ -594,7 +594,7 @@ static const struct Qdisc_class_ops fq_c
  	.walk		=	fq_codel_walk,
  };
@@ -30,8 +34,10 @@
  
  static int __init fq_codel_module_init(void)
  {
---- a/include/net/sch_generic.h
-+++ b/include/net/sch_generic.h
+Index: linux-3.10.23/include/net/sch_generic.h
+===================================================================
+--- linux-3.10.23.orig/include/net/sch_generic.h
++++ linux-3.10.23/include/net/sch_generic.h
 @@ -315,6 +315,7 @@ extern struct Qdisc noop_qdisc;
  extern struct Qdisc_ops noop_qdisc_ops;
  extern struct Qdisc_ops pfifo_fast_ops;
@@ -40,8 +46,10 @@
  
  struct Qdisc_class_common {
  	u32			classid;
---- a/net/sched/sch_generic.c
-+++ b/net/sched/sch_generic.c
+Index: linux-3.10.23/net/sched/sch_generic.c
+===================================================================
+--- linux-3.10.23.orig/net/sched/sch_generic.c
++++ linux-3.10.23/net/sched/sch_generic.c
 @@ -681,7 +681,7 @@ static void attach_one_default_qdisc(str
  
  	if (dev->tx_queue_len) {
@@ -51,8 +59,10 @@
  		if (!qdisc) {
  			netdev_info(dev, "activation failed\n");
  			return;
---- a/net/sched/sch_mq.c
-+++ b/net/sched/sch_mq.c
+Index: linux-3.10.23/net/sched/sch_mq.c
+===================================================================
+--- linux-3.10.23.orig/net/sched/sch_mq.c
++++ linux-3.10.23/net/sched/sch_mq.c
 @@ -57,7 +57,7 @@ static int mq_init(struct Qdisc *sch, st
  
  	for (ntx = 0; ntx < dev->num_tx_queues; ntx++) {
@@ -62,8 +72,10 @@
  					  TC_H_MAKE(TC_H_MAJ(sch->handle),
  						    TC_H_MIN(ntx + 1)));
  		if (qdisc == NULL)
---- a/net/sched/sch_mqprio.c
-+++ b/net/sched/sch_mqprio.c
+Index: linux-3.10.23/net/sched/sch_mqprio.c
+===================================================================
+--- linux-3.10.23.orig/net/sched/sch_mqprio.c
++++ linux-3.10.23/net/sched/sch_mqprio.c
 @@ -124,7 +124,7 @@ static int mqprio_init(struct Qdisc *sch
  
  	for (i = 0; i < dev->num_tx_queues; i++) {

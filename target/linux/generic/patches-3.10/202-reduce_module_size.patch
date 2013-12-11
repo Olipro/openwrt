@@ -1,5 +1,7 @@
---- a/Makefile
-+++ b/Makefile
+Index: linux-3.10.23/Makefile
+===================================================================
+--- linux-3.10.23.orig/Makefile
++++ linux-3.10.23/Makefile
 @@ -379,7 +379,7 @@ KBUILD_CFLAGS_KERNEL :=
  KBUILD_AFLAGS   := -D__ASSEMBLY__
  KBUILD_AFLAGS_MODULE  := -DMODULE

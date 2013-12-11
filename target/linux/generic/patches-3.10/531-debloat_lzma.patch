@@ -1,5 +1,7 @@
---- a/include/linux/lzma/LzmaDec.h
-+++ b/include/linux/lzma/LzmaDec.h
+Index: linux-3.10.23/include/linux/lzma/LzmaDec.h
+===================================================================
+--- linux-3.10.23.orig/include/linux/lzma/LzmaDec.h
++++ linux-3.10.23/include/linux/lzma/LzmaDec.h
 @@ -31,14 +31,6 @@ typedef struct _CLzmaProps
    UInt32 dicSize;
  } CLzmaProps;
@@ -122,8 +124,10 @@
  /* ---------- One Call Interface ---------- */
  
  /* LzmaDecode
---- a/lib/lzma/LzmaDec.c
-+++ b/lib/lzma/LzmaDec.c
+Index: linux-3.10.23/lib/lzma/LzmaDec.c
+===================================================================
+--- linux-3.10.23.orig/lib/lzma/LzmaDec.c
++++ linux-3.10.23/lib/lzma/LzmaDec.c
 @@ -682,7 +682,7 @@ static void LzmaDec_InitRc(CLzmaDec *p,
    p->needFlush = 0;
  }
@@ -257,8 +261,10 @@
  
  SRes LzmaDecode(Byte *dest, SizeT *destLen, const Byte *src, SizeT *srcLen,
      const Byte *propData, unsigned propSize, ELzmaFinishMode finishMode,
---- a/include/linux/lzma/LzmaEnc.h
-+++ b/include/linux/lzma/LzmaEnc.h
+Index: linux-3.10.23/include/linux/lzma/LzmaEnc.h
+===================================================================
+--- linux-3.10.23.orig/include/linux/lzma/LzmaEnc.h
++++ linux-3.10.23/include/linux/lzma/LzmaEnc.h
 @@ -31,9 +31,6 @@ typedef struct _CLzmaEncProps
  } CLzmaEncProps;
  
@@ -296,8 +302,10 @@
  #ifdef __cplusplus
  }
  #endif
---- a/lib/lzma/LzmaEnc.c
-+++ b/lib/lzma/LzmaEnc.c
+Index: linux-3.10.23/lib/lzma/LzmaEnc.c
+===================================================================
+--- linux-3.10.23.orig/lib/lzma/LzmaEnc.c
++++ linux-3.10.23/lib/lzma/LzmaEnc.c
 @@ -53,7 +53,7 @@ void LzmaEncProps_Init(CLzmaEncProps *p)
    p->writeEndMark = 0;
  }
@@ -586,8 +594,10 @@
 -  LzmaEnc_Destroy(p, alloc, allocBig);
 -  return res;
 -}
---- a/include/linux/lzma/LzFind.h
-+++ b/include/linux/lzma/LzFind.h
+Index: linux-3.10.23/include/linux/lzma/LzFind.h
+===================================================================
+--- linux-3.10.23.orig/include/linux/lzma/LzFind.h
++++ linux-3.10.23/include/linux/lzma/LzFind.h
 @@ -55,11 +55,6 @@ typedef struct _CMatchFinder
  
  #define Inline_MatchFinder_GetNumAvailableBytes(p) ((p)->streamPos - (p)->pos)
@@ -626,8 +636,10 @@
  #ifdef __cplusplus
  }
  #endif
---- a/lib/lzma/LzFind.c
-+++ b/lib/lzma/LzFind.c
+Index: linux-3.10.23/lib/lzma/LzFind.c
+===================================================================
+--- linux-3.10.23.orig/lib/lzma/LzFind.c
++++ linux-3.10.23/lib/lzma/LzFind.c
 @@ -14,9 +14,15 @@
  
  #define kStartMaxLen 3

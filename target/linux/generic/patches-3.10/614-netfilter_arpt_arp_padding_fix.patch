@@ -1,5 +1,7 @@
---- a/include/uapi/linux/netfilter_arp/arp_tables.h
-+++ b/include/uapi/linux/netfilter_arp/arp_tables.h
+Index: linux-3.10.23/include/uapi/linux/netfilter_arp/arp_tables.h
+===================================================================
+--- linux-3.10.23.orig/include/uapi/linux/netfilter_arp/arp_tables.h
++++ linux-3.10.23/include/uapi/linux/netfilter_arp/arp_tables.h
 @@ -68,6 +68,13 @@ struct arpt_arp {
  	__u8 flags;
  	/* Inverse flags */

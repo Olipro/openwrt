@@ -52,8 +52,10 @@ Signed-off-by: Florian Fainelli <florian@openwrt.org>
  arch/mips/boot/compressed/decompress.c |    2 --
  1 file changed, 2 deletions(-)
 
---- a/arch/mips/boot/compressed/decompress.c
-+++ b/arch/mips/boot/compressed/decompress.c
+Index: linux-3.10.23/arch/mips/boot/compressed/decompress.c
+===================================================================
+--- linux-3.10.23.orig/arch/mips/boot/compressed/decompress.c
++++ linux-3.10.23/arch/mips/boot/compressed/decompress.c
 @@ -10,9 +10,7 @@
   * Free Software Foundation;  either version 2 of the  License, or (at your
   * option) any later version.

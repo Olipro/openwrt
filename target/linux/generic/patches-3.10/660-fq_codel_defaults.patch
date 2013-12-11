@@ -1,5 +1,7 @@
---- a/net/sched/sch_fq_codel.c
-+++ b/net/sched/sch_fq_codel.c
+Index: linux-3.10.23/net/sched/sch_fq_codel.c
+===================================================================
+--- linux-3.10.23.orig/net/sched/sch_fq_codel.c
++++ linux-3.10.23/net/sched/sch_fq_codel.c
 @@ -389,9 +389,9 @@ static int fq_codel_init(struct Qdisc *s
  	struct fq_codel_sched_data *q = qdisc_priv(sch);
  	int i;

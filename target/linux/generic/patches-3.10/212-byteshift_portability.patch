@@ -1,5 +1,7 @@
---- a/tools/include/tools/be_byteshift.h
-+++ b/tools/include/tools/be_byteshift.h
+Index: linux-3.10.23/tools/include/tools/be_byteshift.h
+===================================================================
+--- linux-3.10.23.orig/tools/include/tools/be_byteshift.h
++++ linux-3.10.23/tools/include/tools/be_byteshift.h
 @@ -1,7 +1,11 @@
  #ifndef _TOOLS_BE_BYTESHIFT_H
  #define _TOOLS_BE_BYTESHIFT_H
@@ -12,8 +14,10 @@
  
  static inline __u16 __get_unaligned_be16(const __u8 *p)
  {
---- a/tools/include/tools/le_byteshift.h
-+++ b/tools/include/tools/le_byteshift.h
+Index: linux-3.10.23/tools/include/tools/le_byteshift.h
+===================================================================
+--- linux-3.10.23.orig/tools/include/tools/le_byteshift.h
++++ linux-3.10.23/tools/include/tools/le_byteshift.h
 @@ -1,7 +1,11 @@
  #ifndef _TOOLS_LE_BYTESHIFT_H
  #define _TOOLS_LE_BYTESHIFT_H
@@ -26,8 +30,10 @@
  
  static inline __u16 __get_unaligned_le16(const __u8 *p)
  {
+Index: linux-3.10.23/tools/include/tools/linux_types.h
+===================================================================
 --- /dev/null
-+++ b/tools/include/tools/linux_types.h
++++ linux-3.10.23/tools/include/tools/linux_types.h
 @@ -0,0 +1,22 @@
 +#ifndef __LINUX_TYPES_H
 +#define __LINUX_TYPES_H
